@@ -5,11 +5,30 @@
   box-sizing: border-box;
 }
 
-/* Корневой элемент приложения */
 #root {
   display: flex;
+  /* Используем flexbox для вертикальной структуры приложения */
+
   flex-direction: column;
+  /* Элементы располагаются сверху вниз */
+
   min-height: 100vh;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* чуть красивее */
-  background-color: #000; /* дефолтный фон для всех страниц кроме Auth */
+  /* Минимальная высота — весь экран */
+
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  /* Основной шрифт приложения */
+
+  background: linear-gradient(
+    390deg,
+    #050505 0%,
+    #0f0f0f 40%,
+    #221f17 70%,
+    #2a2619 100%
+  );
+  /* Плавный переход фона:
+     сверху почти чёрный →
+     тёмно-серый →
+     тёплый тёмно-золотой →
+     чистый золотой внизу */
 }
+
