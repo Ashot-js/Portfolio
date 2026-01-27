@@ -1,20 +1,20 @@
 import { useState } from "react";
-// Хук React для хранения локального состояния компонента
+// Хук useState для хранения состояния компонента
 
 import { Formik, Form, Field, ErrorMessage } from "formik";
-// Библиотека Formik: управление формой, полями и ошибками
+// Formik для управления формой, Field для полей, ErrorMessage для отображения ошибок
 
 import * as Yup from "yup";
-// Yup — библиотека для валидации данных формы
+// Yup для схемы валидации формы
 
 import { api } from "../../services/api";
-// Кастомный axios-инстанс для работы с API
+// Кастомный axios-инстанс для API-запросов
 
 import { useAppDispatch } from "../../app/hooks";
-// Хук Redux для dispatch экшенов
+// Хук Redux для dispatch
 
 import { loginSuccess } from "../../store/authSlice";
-// Экшен Redux для сохранения пользователя в store
+// Экшен Redux для сохранения пользователя после логина
 
 import { useNavigate } from "react-router";
 // Хук для программной навигации между страницами
@@ -26,184 +26,201 @@ import BgImage from "../../assets/bg.jpg";
 // Фоновое изображение страницы
 
 import { Eye, EyeOff } from "lucide-react";
-// Иконки показать / скрыть пароль
+// Иконки показать/скрыть пароль
 
 const Auth = () => {
-// Функциональный компонент Auth
+  // Основной компонент авторизации
 
   const [isLogin, setIsLogin] = useState(true);
-  // Состояние режима формы: true — Login, false — Register
+  // Состояние режима формы: true - Login, false - Register
 
   const [showPassword, setShowPassword] = useState(false);
-  // Состояние показа пароля (true — текст, false — точки)
+  // Состояние показа пароля: true - показать, false - скрыть
+
+  const [titleText, setTitleText] = useState(
+    "Welcome"
+  );
+  // Состояние текста заголовка. По умолчанию для Login
+
+  const [animClass, setAnimClass] = useState("fade-in");
+  // Класс анимации текста заголовка: fade-in / fade-out
 
   const dispatch = useAppDispatch();
   // Получаем функцию dispatch для Redux
 
   const navigate = useNavigate();
-  // Получаем функцию навигации
+  // Функция навигации между страницами
+
+  const toggleTitle = (login: boolean) => {
+    // Функция смены текста заголовка при переключении Login/Register
+
+    setAnimClass("fade-out");
+    // Сначала применяем класс fade-out для плавного исчезновения
+
+    setTimeout(() => {
+      // Ждём 500 мс (длительность анимации) перед сменой текста
+
+      setTitleText(
+        login
+          ? "Welcome"
+          // Текст для Login
+
+          : "Welcome to the World of Scientific Fantasy"
+          // Текст для Register (новый заголовок)
+      );
+
+      setAnimClass("fade-in");
+      // После смены текста применяем fade-in для плавного появления
+    }, 500);
+  };
 
   const schema = Yup.object({
-  // Схема валидации формы
-
-    email: Yup.string()
-      .email("Invalid email")
-      // Проверка на корректный email
-      .required("Email required"),
-      // Email обязателен
-
-    password: Yup.string()
-      .min(6, "Min 6 chars")
-      // Минимум 6 символов
-      .required("Password required"),
-      // Пароль обязателен
+    // Схема валидации формы
+    email: Yup.string().email("Invalid email").required("Email required"),
+    password: Yup.string().min(6, "Min 6 chars").required("Password required"),
+    confirmPassword: Yup.string().when("password", {
+      is: () => !isLogin,
+      then: (schema) =>
+        schema
+          .required("Confirm password required")
+          .oneOf([Yup.ref("password")], "Passwords must match"),
+      otherwise: (schema) => schema.notRequired(),
+    }),
   });
 
-  const handleSubmit = async (values: { email: string; password: string }) => {
-  // Функция отправки формы (login или register)
-
+  const handleSubmit = async (values: {
+    email: string;
+    password: string;
+    confirmPassword?: string;
+  }) => {
+    // Функция обработки отправки формы
     if (isLogin) {
-    // Если режим Login
-
+      // Если режим Login
       const res = await api.get(
         `/users?email=${values.email}&password=${values.password}`
       );
-      // Запрос пользователя по email и паролю
-
       if (!res.data.length) return alert("Wrong email or password");
-      // Если пользователь не найден — ошибка
-
       dispatch(loginSuccess(res.data[0]));
-      // Сохраняем пользователя в Redux
-
       navigate("/");
-      // Переход на главную страницу
-
     } else {
-    // Если режим Register
-
+      // Если режим Register
       const existing = await api.get(`/users?email=${values.email}`);
-      // Проверяем, существует ли пользователь
-
       if (existing.data.length) return alert("User already exists");
-      // Если email занят — ошибка
-
-      const res = await api.post("/users", values);
-      // Создаём нового пользователя
-
+      const res = await api.post("/users", {
+        email: values.email,
+        password: values.password,
+      });
       dispatch(loginSuccess(res.data));
-      // Сохраняем нового пользователя в Redux
-
       navigate("/");
-      // Переход на главную страницу
     }
   };
 
   return (
-  // JSX-разметка компонента
-
     <div
       className={`AuthPageWrapper ${isLogin ? "login" : "register"}`}
-      // Wrapper с классом login или register
+      // Контейнер страницы с модификатором login/register
 
       style={{
         backgroundImage: `url(${BgImage})`,
-        // Устанавливаем фоновое изображение
+        // Фоновое изображение
 
         backgroundSize: "cover",
-        // Картинка на весь экран
+        // Картинка на весь контейнер
 
         backgroundRepeat: "no-repeat",
         // Без повторений
 
         backgroundPosition: "center",
-        // Центрируем изображение
+        // Центрирование изображения
       }}
     >
-      <div className={`AuthPage ${isLogin ? "login" : "register"}`}>
-      {/* // Контейнер формы с модификатором режима */}
+      <h1 className={`AuthPageWrapper_title ${animClass}`}>
+        {titleText}
+        {/* Текст заголовка меняется при переключении Login/Register */}
+      </h1>
 
-        {/* Единая большая кнопка Login/Register */}
+      <div className={`AuthPage ${isLogin ? "login" : "register"}`}>
+        {/* Контейнер формы */}
+
         <div className="AuthPage_toggle">
-        {/* // Контейнер переключателя режима */}
+          {/* Переключатель Login / Register */}
 
           <div
             className={`segment login ${isLogin ? "active" : ""}`}
-            // Сегмент Login
-
-            onClick={() => setIsLogin(true)}
-            // Переключаемся в режим Login
+            onClick={() => {
+              setIsLogin(true);
+              toggleTitle(true);
+            }}
+            // При клике активируем Login и меняем текст заголовка
           >
             Login
-            {/* // Текст кнопки */}
           </div>
 
           <div
             className={`segment register ${!isLogin ? "active" : ""}`}
-            // Сегмент Register
-
-            onClick={() => setIsLogin(false)}
-            // Переключаемся в режим Register
+            onClick={() => {
+              setIsLogin(false);
+              toggleTitle(false);
+            }}
+            // При клике активируем Register и меняем текст заголовка
           >
             Register
-            {/* // Текст кнопки */}
           </div>
         </div>
 
-        {/* Форма */}
         <Formik
-          initialValues={{ email: "", password: "" }}
-          // Начальные значения формы
-
+          initialValues={{ email: "", password: "", confirmPassword: "" }}
           validationSchema={schema}
-          // Схема валидации Yup
-
           onSubmit={handleSubmit}
-          // Функция отправки формы
         >
           <Form className="AuthPage_form">
-          {/* // HTML-форма Formik */}
-
+            {/* Поле email */}
             <Field name="email" placeholder="Email" />
-            {/* // Поле ввода email */}
-
             <ErrorMessage name="email" component="div" className="error" />
-            {/* // Сообщение об ошибке email */}
 
+            {/* Поле пароля */}
             <div className="password-wrapper">
-            {/* // Контейнер для поля пароля и иконки */}
-
               <Field
                 name="password"
-                // Имя поля
-
                 type={showPassword ? "text" : "password"}
-                // Тип поля: текст или пароль
-
                 placeholder="Password"
-                // Placeholder
               />
-
               <span
                 className="toggle-password"
-                // Иконка переключения пароля
-
                 onClick={() => setShowPassword(!showPassword)}
-                // Меняем состояние показа пароля
               >
                 {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
-                {/* // Меняем иконку в зависимости от состояния */}
               </span>
             </div>
-
             <ErrorMessage name="password" component="div" className="error" />
-            {/* // Сообщение об ошибке пароля */}
 
+            {/* Поле подтверждения пароля при регистрации */}
+            {!isLogin && (
+              <>
+                <div className="password-wrapper">
+                  <Field
+                    name="confirmPassword"
+                    type={showPassword ? "text" : "password"}
+                    placeholder="Confirm password"
+                  />
+                  <span
+                    className="toggle-password"
+                    onClick={() => setShowPassword(!showPassword)}
+                  >
+                    {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+                  </span>
+                </div>
+                <ErrorMessage
+                  name="confirmPassword"
+                  component="div"
+                  className="error"
+                />
+              </>
+            )}
+
+            {/* Кнопка отправки формы */}
             <button type="submit" className="submit-btn">
-            {/* // Кнопка отправки формы */}
-
               {isLogin ? "Login" : "Register"}
-              {/* // Текст кнопки зависит от режима */}
             </button>
           </Form>
         </Formik>
@@ -213,4 +230,4 @@ const Auth = () => {
 };
 
 export default Auth;
-// Экспорт компонента Auth
+// Экспортируем компонент

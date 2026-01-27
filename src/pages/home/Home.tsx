@@ -1,18 +1,11 @@
 import { useRef } from "react";
 import Slider from "react-slick";
-// Компонент слайдера из библиотеки react-slick
-
 import "slick-carousel/slick/slick.css";
-// Основные стили slick-слайдера
-
 import "slick-carousel/slick/slick-theme.css";
 // Тема и дополнительные стили slick
-
 import "./Home.scss";
 
-
 const slides = [
-
   { id: 1, src: "/images/slide1.jpg" },
   { id: 2, src: "/images/slide2.jpg" },
   { id: 3, src: "/images/slide3.jpg" },
@@ -24,36 +17,25 @@ const slides = [
 
 export default function Home() {
   // Основной React-компонент страницы Home
-
   const sliderRef = useRef<Slider | null>(null);
   // ref для доступа к методам слайдера (prev / next)
 
   const settings = {
     // Объект настроек для react-slick
-
     dots: true,
     // Показывать точки навигации снизу
-
     infinite: true,
     // Бесконечная прокрутка слайдов
-
-    speed: 800,
+    speed: 500,
     // Скорость анимации переключения (в миллисекундах)
-
     slidesToShow: 1,
     // Сколько слайдов показывать одновременно
-
     slidesToScroll: 1,
     // Сколько слайдов перелистывать за раз
-
     arrows: false,
     // Отключаем стандартные стрелки slick
-
     adaptiveHeight: true,
     // Высота слайдера подстраивается под контент
-
-    lazyLoad: "ondemand" as const,
-    // Ленивая загрузка изображений по необходимости
 
     draggable: true,
     // Возможность перетаскивать мышкой

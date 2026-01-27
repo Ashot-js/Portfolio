@@ -1,368 +1,219 @@
 /* Контейнер страницы */
-// Комментарий: общий контейнер страницы авторизации
 .AuthPageWrapper {
-  // Главный wrapper для страницы авторизации
+  display: flex; // Используем flex-контейнер для выравнивания содержимого
+  flex-direction: column; // Размещаем элементы вертикально
+  gap: 25px; // Расстояние между элементами по вертикали
+  justify-content: center; // Выравнивание элементов по вертикали (по центру)
+  align-items: center; // Выравнивание элементов по горизонтали (по центру)
 
-  display: flex;
-  // Используем flex для центрирования контента
-
-  justify-content: center;
-  // Центрируем по горизонтали
-
-  align-items: center;
-  // Центрируем по вертикали
-
-  min-height: 100vh;
-  // Минимальная высота — весь экран
-
-  position: relative;
-  // Нужно для позиционирования псевдоэлемента ::before
+  flex: 1; // Контейнер занимает всё доступное пространство между Navbar и Footer
+  overflow-y: auto; // Добавляет вертикальный скролл, если контента больше, чем высота контейнера
+  padding-top: 110px; // Отступ сверху, чтобы не перекрывать Navbar
+  padding-bottom: 70px; // Отступ снизу, чтобы не перекрывать Footer
+  position: relative; // Позволяет использовать псевдоэлемент ::before для фонового слоя
 
   &::before {
-    // Псевдоэлемент для затемнённого оверлея
-
-    content: "";
-    // Обязательное свойство для отображения псевдоэлемента
-
-    position: absolute;
-    // Абсолютное позиционирование поверх страницы
-
-    inset: 0;
-    // Растягиваем на всю область родителя
-
-    background: rgba(22, 18, 18, 0.6);
-    // Полупрозрачный тёмный фон
-
-    z-index: 0;
-    // Помещаем под формой
-
-    transition: background 0.4s ease;
-    // Плавная смена фона при переключении login/register
+    content: ""; // Создает пустой псевдоэлемент
+    position: absolute; // Абсолютное позиционирование относительно контейнера
+    inset: 0; // Растягиваем псевдоэлемент на всю ширину и высоту родителя
+    background: rgba(22, 18, 18, 0.6); // Темный полупрозрачный фон
+    z-index: 0; // Помещаем слой под контент
+    transition: background 0.4s ease; // Плавное изменение фона при смене классов
   }
 
   &.login::before {
-    // Стили фона для режима логина
-
-    background: rgba(43, 48, 43, 0.55);
-    // Зелёно-тёмный оттенок
+    background: rgba(43, 48, 43, 0.55); // Специальный фон для страницы логина
+  }
+  &.register::before {
+    background: rgba(
+      44,
+      49,
+      44,
+      0.56
+    ); // Специальный фон для страницы регистрации
   }
 
-  &.register::before {
-    // Стили фона для режима регистрации
+  &_title {
+    z-index: 1; // Заголовок выше фонового псевдоэлемента
+    color: #ece194; // Цвет текста
+    font-family: monospace; // Моноширинный шрифт
+    font-size: 25px; // Размер текста
+    font-weight: 500; // Толщина шрифта
+    text-align: center; // Выравнивание по центру
 
-    background: rgba(30, 22, 30, 0.6);
-    // Фиолетово-тёмный оттенок
+    opacity: 1; // Прозрачность текста (1 — полностью видимый)
+    transform: translateY(0); // Начальное положение по вертикали
+    transition:
+      opacity 0.5s ease,
+      // Плавное появление/исчезновение
+      transform 0.5s ease; // Плавное смещение
+
+    &.fade-out {
+      opacity: 0; // Прячем текст
+      transform: translateY(-20px); // Сдвигаем вверх при исчезновении
+    }
+
+    &.fade-in {
+      opacity: 1; // Показываем текст
+      transform: translateY(0); // Возвращаем на место
+    }
   }
 }
 
-/* Форма */
-// Основной контейнер формы
+/* Форма авторизации */
 .AuthPage {
-  // Контейнер login/register формы
-
-  display: flex;
-  // Flex-контейнер
-
-  flex-direction: column;
-  // Располагаем элементы вертикально
-
-  z-index: 1;
-  // Выше фонового overlay
-
-  max-width: 450px;
-  // Максимальная ширина формы
-
-  width: 90%;
-  // Адаптивная ширина на мобильных
-
-  padding: 25px;
-  // Внутренние отступы
-
-  border-radius: 16px;
-  // Скругление углов формы
-
-  background: rgba(25, 25, 25, 0.85);
-  // Полупрозрачный фон формы
-
-  color: #fbe8a6;
-  // Цвет текста
-
-  font-family: monospace;
-  // Моноширинный шрифт
-
-  box-shadow: 0 0 10px rgba(212, 175, 55, 0.15);
-  // Лёгкая золотая тень
-
-  transition: background 0.4s ease;
-  // Плавная смена фона
+  display: flex; // Flex-контейнер для формы
+  flex-direction: column; // Элементы формы располагаются вертикально
+  z-index: 1; // Над фоном
+  max-width: 500px; // Максимальная ширина формы
+  width: 90%; // Адаптивная ширина до 90% от контейнера
+  padding: 25px; // Внутренний отступ
+  border-radius: 25px; // Скругление углов
+  background: rgba(25, 25, 25, 0.85); // Полупрозрачный темный фон
+  color: #fbe8a6; // Цвет текста внутри формы
+  font-family: monospace; // Шрифт
+  box-shadow: 0 0 8px rgba(212, 175, 55, 0.15); // Легкая тень
+  transition: background 0.3s ease; // Плавное изменение фона при смене класса
 
   &.register {
-    // Модификатор формы регистрации
-
-    background: rgba(30, 22, 30, 0.85);
-    // Другой цвет фона
+    background: rgba(26, 27, 26, 0.88); // Специальный фон для формы регистрации
   }
 
-  /* Единая кнопка переключения */
-  // Контейнер переключателя Login / Register
   .AuthPage_toggle {
-    display: flex;
-    // Горизонтальное расположение сегментов
-
-    border-radius: 12px;
-    // Скругление общего контейнера
-
-    overflow: hidden;
-    // Обрезаем края сегментов
-
-    margin-bottom: 20px;
-    // Отступ снизу
-
-    cursor: pointer;
-    // Курсор «рука»
+    display: flex; // Flex-контейнер для переключателя
+    border-radius: 16px; // Скругленные углы
+    overflow: hidden; // Скрываем выступающие части
+    margin-bottom: 20px; // Отступ снизу
+    cursor: pointer; // Курсор в виде руки
 
     .segment {
-      // Один сегмент (Login или Register)
-
-      flex: 1;
-      // Равная ширина кнопок
-
-      text-align: center;
-      // Текст по центру
-
-      padding: 10px 0;
-      // Вертикальные отступы
-
-      font-weight: 600;
-      // Полужирный текст
-
-      background: rgba(40, 35, 30, 0.6);
-      // Фон неактивной кнопки
-
-      color: #fbe8a6;
-      // Цвет текста
-
-      transition: all 0.3s ease;
-      // Плавные анимации
+      flex: 1; // Равная ширина для каждого сегмента
+      text-align: center; // Текст по центру
+      padding: 10px 0; // Вертикальный отступ
+      font-weight: 600; // Полужирный текст
+      background: rgba(40, 35, 30, 0.6); // Темный фон
+      color: #fbe8a6; // Цвет текста
+      transition: all 0.3s ease; // Плавные изменения
 
       &.active {
-        // Активный сегмент
-
-        background: linear-gradient(145deg, #fdebb2, #f4d27b);
-        // Золотой градиент
-
-        color: #1c1c1c;
-        // Тёмный текст
-
-        box-shadow: inset 0 0 6px rgba(212, 175, 55, 0.35);
-        // Внутренняя подсветка
+        background: linear-gradient(
+          145deg,
+          #fdebb2,
+          #f4d27b
+        ); // Градиент для активного сегмента
+        color: #1c1c1c; // Цвет текста активного сегмента
+        box-shadow: inset 0 0 6px rgba(212, 175, 55, 0.35); // Внутренняя тень
       }
 
       &:hover {
-        // Эффект наведения
-
-        background: rgba(212, 175, 55, 0.2);
-        // Подсветка фона
-
-        color: #fff;
-        // Белый текст
+        background: rgba(212, 175, 55, 0.2); // Легкий эффект при наведении
+        color: #fff; // Белый текст на ховер
       }
     }
   }
 
   &_form {
-    // Контейнер формы Formik
-
-    display: flex;
-    // Flex-контейнер
-
-    flex-direction: column;
-    // Поля друг под другом
+    display: flex; // Flex-контейнер для полей формы
+    flex-direction: column; // Поля вертикально
 
     input {
-      // Все input-поля
-
-      margin-bottom: 12px;
-      // Отступ снизу
-
-      padding: 10px;
-      // Внутренние отступы
-
-      border-radius: 8px;
-      // Скругление углов
-
-      border: 1px solid #d4af37;
-      // Золотая рамка
-
-      background: rgba(30, 30, 30, 0.85);
-      // Тёмный фон
-
-      color: #fbe8a6;
-      // Цвет текста
-
-      font-family: monospace;
-      // Шрифт
-
-      transition: all 0.25s ease;
-      // Плавные эффекты
+      margin-bottom: 18px; // Отступ снизу
+      padding: 12px; // Внутренний отступ
+      border-radius: 16px; // Скругление углов
+      border: 1px solid #d4af37; // Золотистая рамка
+      background: rgba(30, 30, 30, 0.85); // Темный фон
+      color: #fbe8a6; // Цвет текста
+      font-family: monospace; // Шрифт
+      transition: all 0.25s ease; // Плавные изменения при фокусе
 
       &::placeholder {
-        // Placeholder текста
-
-        color: #ccc;
-        // Серый цвет
+        color: #ccc; // Цвет подсказки
       }
 
       &:focus {
-        // Состояние фокуса
-
-        outline: none;
-        // Убираем стандартную обводку
-
-        border-color: #ffd700;
-        // Яркая золотая рамка
-
-        box-shadow: 0 0 6px rgba(212, 175, 55, 0.5);
-        // Подсветка
+        outline: none; // Убираем стандартный outline
+        border-color: #ffd700; // Цвет рамки при фокусе
+        box-shadow: 0 0 6px rgba(212, 175, 55, 0.5); // Тень при фокусе
       }
     }
 
     .error {
-      // Сообщение об ошибке
-
-      color: #ff6b6b;
-      // Красный цвет
-
-      font-size: 12px;
-      // Маленький текст
-
-      margin-bottom: 5px;
-      // Отступ снизу
+      color: #ff6b6b; // Цвет текста ошибки
+      font-size: 12px; // Размер шрифта ошибки
+      margin-bottom: 5px; // Отступ снизу
     }
 
     .password-wrapper {
-      // Контейнер поля пароля
-
-      display: flex;
-      // Flex для иконки
-
-      position: relative;
-      // Для позиционирования иконки
+      display: flex; // Flex-контейнер для input и иконки
+      position: relative; // Для позиционирования иконки
 
       input {
-        flex: 1;
-        // Растягиваем input
-
-        padding-right: 36px;
-        // Место под иконку
+        flex: 1; // Занимает всю доступную ширину
+        padding-right: 36px; // Отступ справа для иконки
       }
 
       .toggle-password {
-        // Иконка показать/скрыть пароль
-
-        position: absolute;
-        // Абсолютное позиционирование
-
-        right: 10px;
-        // Отступ справа
-
-        top: 10px;
-        // Отступ сверху
-
-        cursor: pointer;
-        // Курсор «рука»
-
-        color: #fbe8a6;
-        // Цвет иконки
-
-        transition: color 0.25s ease;
-        // Плавная смена цвета
+        position: absolute; // Абсолютное позиционирование
+        right: 10px; // Отступ справа
+        top: 10px; // Отступ сверху
+        cursor: pointer; // Курсор в виде руки
+        color: #fbe8a6; // Цвет иконки
+        transition: color 0.25s ease; // Плавная смена цвета при ховере
 
         &:hover {
-          color: #ffd700;
-          // Подсветка при наведении
+          color: #ffd700; // Цвет при наведении
         }
       }
     }
 
     .submit-btn {
-      // Кнопка отправки формы
-
-      margin-top: 12px;
-      // Отступ сверху
-
-      width: 100%;
-      // На всю ширину
-
-      background: linear-gradient(145deg, #d4af37, #ffd700);
-      // Золотой градиент
-
-      color: #1c1c1c;
-      // Тёмный текст
-
-      border: none;
-      // Без рамки
-
-      border-radius: 8px;
-      // Скругление
-
-      padding: 10px;
-      // Отступы
-
-      font-weight: 600;
-      // Полужирный текст
-
-      cursor: pointer;
-      // Курсор «рука»
-
-      transition: all 0.25s ease;
-      // Плавная анимация
+      margin-top: 12px; // Отступ сверху
+      width: 100%; // Занимает всю ширину формы
+      background: rgba(25, 25, 25, 0.85); // Темный фон
+      border: 1px solid #d4af37; // Золотистая рамка
+      color: #d4af37; // Цвет текста
+      border-radius: 16px; // Скругление углов
+      padding: 10px; // Внутренний отступ
+      font-weight: 600; // Полужирный текст
+      cursor: pointer; // Курсор в виде руки
+      transition: all 0.25s ease; // Плавное изменение при ховере
 
       &:hover {
-        transform: translateY(-1px);
-        // Лёгкий подъём кнопки
-
-        box-shadow: 0 2px 6px rgba(212, 175, 55, 0.35);
-        // Подсветка
+        transform: translateY(-1px); // Легкое поднятие кнопки
+        box-shadow: 0 2px 6px rgba(212, 175, 55, 0.35); // Тень при ховере
       }
     }
   }
 }
 
 /* MOBILE */
-// Адаптация под мобильные устройства
 @media (max-width: 768px) {
   .AuthPage {
-    padding: 20px;
-    // Меньшие отступы
+    padding: 20px; // Отступы уменьшаются для мобильных
 
     .AuthPage_toggle .segment {
-      font-size: 0.95rem;
-      // Уменьшаем текст
-
-      padding: 8px 0;
-      // Уменьшаем высоту
+      font-size: 0.95rem; // Меньший размер текста для мобильных
+      padding: 8px 0; // Меньший отступ
     }
 
     &_form input {
-      font-size: 0.95rem;
-      // Меньший текст
-
-      padding: 8px;
-      // Меньшие отступы
+      font-size: 0.95rem; // Размер текста input уменьшается
+      padding: 8px; // Меньший отступ внутри input
     }
 
     .password-wrapper input {
-      padding-right: 32px;
-      // Коррекция под иконку
+      padding-right: 32px; // Меньший отступ для иконки
     }
 
     .submit-btn {
-      font-size: 0.95rem;
-      // Меньший текст
-
-      padding: 8px;
-      // Меньшие отступы
+      font-size: 0.95rem; // Меньший размер текста кнопки
+      padding: 8px; // Меньший отступ
     }
+  }
+
+  .AuthPageWrapper {
+    gap: 20px; // Меньший промежуток между элементами
+    padding-top: 90px; // Подгонка отступа для Navbar на мобильных
+    padding-bottom: 70px; // Отступ снизу для Footer
   }
 }

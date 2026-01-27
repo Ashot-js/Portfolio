@@ -23,16 +23,16 @@
   width: 100%;
   // Растягиваем футер на всю ширину экрана
 
-  padding: 15px 30px;
-  // Внутренние отступы: сверху/снизу 15px, слева/справа 30px
+  padding: 20px 30px;
+  // Внутренние отступы: сверху/снизу 30px, слева/справа 30px
 
   background: rgba(0, 0, 0, 0.55);
   // Полупрозрачный тёмный фон
 
-  backdrop-filter: blur(6px);
+  backdrop-filter: blur(8px);
   // Размытие фона под футером (glassmorphism)
 
-  box-shadow: 0 -4px 10px rgba(212, 175, 55, 0.12);
+  box-shadow: 0 -3px 10px rgba(212, 175, 55, 0.12);
   // Лёгкая тень сверху футера
 
   font-family: monospace;
@@ -60,14 +60,14 @@
     transform: translateX(-50%);
     // Смещаем линию ровно в центр
 
-    width: 70%;
+    width: 80%;
     // Ширина линии — 70% от ширины футера
 
     height: 1px;
     // Толщина линии
 
     background: linear-gradient(
-      90deg,
+      100deg,
       rgba(212, 175, 55, 0.2),
       rgba(212, 175, 55, 0.8),
       rgba(212, 175, 55, 0.2)
