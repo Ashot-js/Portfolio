@@ -1,0 +1,10 @@
+.MainLayout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  &_mainContent {
+    flex: 1;
+    padding-top: 110px; // под высоту navbar
+  }
+}

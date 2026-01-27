@@ -1,0 +1,15 @@
+/* Сброс отступов и box-sizing */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Корневой элемент приложения */
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* чуть красивее */
+  background-color: #000; /* дефолтный фон для всех страниц кроме Auth */
+}
