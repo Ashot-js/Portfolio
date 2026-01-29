@@ -53,22 +53,22 @@ export default function Contact() {
       {/* Верхний контейнер: контактная информация */}
       <div className="ContactContainer ContactContainer--info">
         {/* Заголовок */}
-        <h2 className="ContactHeader">Связаться со мной</h2>
+        <h2 className="ContactHeader">Contact me</h2>
         {/* Контактные данные */}
-        <p>📞 Номер: +374 00 000000</p>
-        <p>✉ Email: example@mail.com</p>
+        <p>📞  No.: +37499769898</p>
+        <p>✉ Email:ashotg771@gmail.com</p>
         <p>💬 Telegram: @yourtelegram</p>
       </div>
 
       {/* Нижний контейнер: комментарии */}
       <div className="ContactContainer ContactContainer--feedback">
         {/* Заголовок блока */}
-        <div className="ContactHeader">Admin ответит в течение 15 минут</div>
+        <div className="ContactHeader">Average response time: 15 minutes.</div>
 
         {/* Текстовое поле для ввода комментария */}
         <textarea
           className="Feedback_input"
-          placeholder="Напишите ваш комментарий..."
+          placeholder="Type your message here..."
           value={comment} // Значение из состояния
           onChange={(e) => setComment(e.target.value)} // Обновление состояния при вводе
         />
