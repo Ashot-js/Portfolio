@@ -75,7 +75,7 @@ const Footer = () => {
         <span className="Footer_left">
           {/* Левая часть футера */}
 
-          © {new Date().getFullYear()} YourApp
+          © {new Date().getFullYear()} MyApp
           {/* Текущий год генерируется автоматически */}
         </span>
 

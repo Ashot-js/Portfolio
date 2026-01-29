@@ -38,7 +38,7 @@ const Auth = () => {
   // Состояние показа пароля: true - показать, false - скрыть
 
   const [titleText, setTitleText] = useState(
-    "Welcome"
+    "Welcome back! Please sign in"
   );
   // Состояние текста заголовка. По умолчанию для Login
 
@@ -62,10 +62,10 @@ const Auth = () => {
 
       setTitleText(
         login
-          ? "Welcome"
+          ? "Welcome back! Please sign in"
           // Текст для Login
 
-          : "Welcome to the World of Scientific Fantasy"
+          : "Welcome! Create your account"
           // Текст для Register (новый заголовок)
       );
 
