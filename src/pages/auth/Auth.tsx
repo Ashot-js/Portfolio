@@ -1,31 +1,19 @@
 import { useState } from "react";
-// Хук useState для хранения состояния компонента
-
 import { Formik, Form, Field, ErrorMessage } from "formik";
-// Formik для управления формой, Field для полей, ErrorMessage для отображения ошибок
-
 import * as Yup from "yup";
-// Yup для схемы валидации формы
-
 import { api } from "../../services/api";
 // Кастомный axios-инстанс для API-запросов
-
 import { useAppDispatch } from "../../app/hooks";
 // Хук Redux для dispatch
-
 import { loginSuccess } from "../../store/authSlice";
 // Экшен Redux для сохранения пользователя после логина
-
 import { useNavigate } from "react-router";
 // Хук для программной навигации между страницами
-
 import "./Auth.scss";
-// Стили страницы авторизации
-
 import BgImage from "../../assets/bg.jpg";
 // Фоновое изображение страницы
-
 import { Eye, EyeOff } from "lucide-react";
+import Button from "../../components/ui/button/Button";
 // Иконки показать/скрыть пароль
 
 const Auth = () => {
@@ -37,9 +25,7 @@ const Auth = () => {
   const [showPassword, setShowPassword] = useState(false);
   // Состояние показа пароля: true - показать, false - скрыть
 
-  const [titleText, setTitleText] = useState(
-    "Welcome back! Please sign in"
-  );
+  const [titleText, setTitleText] = useState("Welcome back! Please sign in");
   // Состояние текста заголовка. По умолчанию для Login
 
   const [animClass, setAnimClass] = useState("fade-in");
@@ -63,10 +49,10 @@ const Auth = () => {
       setTitleText(
         login
           ? "Welcome back! Please sign in"
-          // Текст для Login
+          : // Текст для Login
 
-          : "Welcome! Create your account"
-          // Текст для Register (новый заголовок)
+            "Welcome! Create your account",
+        // Текст для Register (новый заголовок)
       );
 
       setAnimClass("fade-in");
@@ -97,7 +83,7 @@ const Auth = () => {
     if (isLogin) {
       // Если режим Login
       const res = await api.get(
-        `/users?email=${values.email}&password=${values.password}`
+        `/users?email=${values.email}&password=${values.password}`,
       );
       if (!res.data.length) return alert("Wrong email or password");
       dispatch(loginSuccess(res.data[0]));
@@ -123,15 +109,6 @@ const Auth = () => {
       style={{
         backgroundImage: `url(${BgImage})`,
         // Фоновое изображение
-
-        backgroundSize: "cover",
-        // Картинка на весь контейнер
-
-        backgroundRepeat: "no-repeat",
-        // Без повторений
-
-        backgroundPosition: "center",
-        // Центрирование изображения
       }}
     >
       <h1 className={`AuthPageWrapper_title ${animClass}`}>
@@ -219,9 +196,9 @@ const Auth = () => {
             )}
 
             {/* Кнопка отправки формы */}
-            <button type="submit" className="submit-btn">
+            <Button type="submit" className="rounded" variant="secondary">
               {isLogin ? "Login" : "Register"}
-            </button>
+            </Button>
           </Form>
         </Formik>
       </div>

@@ -1,15 +1,17 @@
 /* Контейнер страницы */
 .AuthPageWrapper {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 100vh;
   display: flex; // Используем flex-контейнер для выравнивания содержимого
+  padding-top: 100px;
   flex-direction: column; // Размещаем элементы вертикально
-  gap: 25px; // Расстояние между элементами по вертикали
-  justify-content: center; // Выравнивание элементов по вертикали (по центру)
+  gap: 30px; // Расстояние между элементами по вертикали
+  justify-content: start; // Выравнивание элементов по вертикали (по центру)
   align-items: center; // Выравнивание элементов по горизонтали (по центру)
-
   flex: 1; // Контейнер занимает всё доступное пространство между Navbar и Footer
   overflow-y: auto; // Добавляет вертикальный скролл, если контента больше, чем высота контейнера
-  padding-top: 50px; // Отступ сверху, чтобы не перекрывать Navbar
-  padding-bottom: 80px; // Отступ снизу, чтобы не перекрывать Footer
   position: relative; // Позволяет использовать псевдоэлемент ::before для фонового слоя
 
   &::before {
@@ -67,12 +69,12 @@
   z-index: 1; // Над фоном
   max-width: 500px; // Максимальная ширина формы
   width: 90%; // Адаптивная ширина до 90% от контейнера
-  padding: 22px; // Внутренний отступ
-  border-radius: 25px; // Скругление углов
+  padding: 20px; // Внутренний отступ
+  border-radius: 22px; // Скругление углов
   background: rgba(25, 25, 25, 0.85); // Полупрозрачный темный фон
   color: #fbe8a6; // Цвет текста внутри формы
   font-family: monospace; // Шрифт
-  box-shadow: 0 0 8px rgba(212, 175, 55, 0.15); // Легкая тень
+  box-shadow: 0 0 8px rgba(219, 181, 54, 0.15); // Легкая тень
   transition: background 0.3s ease; // Плавное изменение фона при смене класса
 
   &.register {
@@ -83,7 +85,7 @@
     display: flex; // Flex-контейнер для переключателя
     border-radius: 16px; // Скругленные углы
     overflow: hidden; // Скрываем выступающие части
-    margin-bottom: 18px; // Отступ снизу
+    margin-bottom: 16px; // Отступ снизу
     cursor: pointer; // Курсор в виде руки
 
     .segment {
@@ -94,7 +96,7 @@
       font-size: 16px;
       background: rgba(40, 35, 30, 0.6); // Темный фон
       color: #fbe8a6; // Цвет текста
-      transition: all 0.3s ease; // Плавные изменения
+      transition: all 0.4s ease; // Плавные изменения
 
       &.active {
         background: linear-gradient(
@@ -118,7 +120,7 @@
     flex-direction: column; // Поля вертикально
 
     input {
-      margin-bottom: 18px; // Отступ снизу
+      margin-bottom: 16px; // Отступ снизу
       padding: 12px; // Внутренний отступ
       border-radius: 16px; // Скругление углов
       border: 1px solid #d4af37; // Золотистая рамка
@@ -167,24 +169,23 @@
       }
     }
 
-    .submit-btn {
-      margin-top: 12px; // Отступ сверху
-      width: 100%; // Занимает всю ширину формы
-      background: rgba(25, 25, 25, 0.85); // Темный фон
-      border: 1px solid #d4af37; // Золотистая рамка
-      color: #d4af37; // Цвет текста
-      border-radius: 16px; // Скругление углов
-      padding: 10px; // Внутренний отступ
-      font-weight: 600; // Полужирный текст
-      font-size: 16px;
-      cursor: pointer; // Курсор в виде руки
-      transition: all 0.25s ease; // Плавное изменение при ховере
+    // .submit-btn {
+    //   width: 100%; // Занимает всю ширину формы
+    //   background: rgba(25, 25, 25, 0.85); // Темный фон
+    //   border: 1px solid #d4af37; // Золотистая рамка
+    //   color: #d4af37; // Цвет текста
+    //   border-radius: 16px; // Скругление углов
+    //   padding: 10px; // Внутренний отступ
+    //   font-weight: 600; // Полужирный текст
+    //   font-size: 16px;
+    //   cursor: pointer; // Курсор в виде руки
+    //   transition: all 0.25s ease; // Плавное изменение при ховере
 
-      &:hover {
-        transform: translateY(-1px); // Легкое поднятие кнопки
-        box-shadow: 0 2px 6px rgba(212, 175, 55, 0.35); // Тень при ховере
-      }
-    }
+    //   &:hover {
+    //     transform: translateY(-1px); // Легкое поднятие кнопки
+    //     box-shadow: 0 2px 5px rgba(212, 175, 55, 0.35); // Тень при ховере
+    //   }
+    // }
   }
 }
 
@@ -211,11 +212,5 @@
       font-size: 0.95rem; // Меньший размер текста кнопки
       padding: 8px; // Меньший отступ
     }
-  }
-
-  .AuthPageWrapper {
-    gap: 20px; // Меньший промежуток между элементами
-    padding-top: 90px; // Подгонка отступа для Navbar на мобильных
-    padding-bottom: 70px; // Отступ снизу для Footer
   }
 }

@@ -8,6 +8,9 @@
   font-size: 16px;
   transition: all 0.25s ease;
   text-align: center;
+  &.rounded {
+    border-radius: 16px;
+  }
 
   &.btn--primary {
     /* Кнопка Submit */

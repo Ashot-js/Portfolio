@@ -26,7 +26,7 @@ export default function Contact() {
         method: "POST", // Метод добавления данных
         headers: { "Content-Type": "application/json" }, // Отправляем JSON
         body: JSON.stringify({
-          text: comment,                  // Текст комментария
+          text: comment, // Текст комментария
           createdAt: new Date().toISOString(), // Дата и время отправки
         }),
       });
@@ -49,15 +49,33 @@ export default function Contact() {
   return (
     // Обёртка для обоих контейнеров (верхний и нижний)
     <div className="ContactWrapper">
-      
       {/* Верхний контейнер: контактная информация */}
       <div className="ContactContainer ContactContainer--info">
         {/* Заголовок */}
         <h2 className="ContactHeader">Contact me</h2>
         {/* Контактные данные */}
-        <p>📞  No.: +37499769898</p>
-        <p>✉ Email:ashotg771@gmail.com</p>
-        <p>💬 Telegram: @yourtelegram</p>
+        <p>📞 No.: +37499769898</p>
+        <p>
+          ✉ Email:
+          <a
+            className="ContactWrapper_a_gmail"
+            href={`mailto:${"ashotg771" + "@gmail.com"}`}
+          >
+            ashottg771@gmail.com
+          </a>
+        </p>
+
+        <p>
+          💬 Telegram:
+          <a
+            className="ContactWrapper_a_tg"
+            href="https://t.me/IE_YU"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            @IE_YU
+          </a>
+        </p>
       </div>
 
       {/* Нижний контейнер: комментарии */}
@@ -77,7 +95,7 @@ export default function Contact() {
         <button
           className="Feedback_button"
           onClick={sendComment} // Вызывает функцию отправки
-          disabled={sending}    // Блокируется во время отправки
+          disabled={sending} // Блокируется во время отправки
         >
           {/* Текст кнопки зависит от состояния отправки */}
           {sending ? "Отправка..." : "Отправить"}
