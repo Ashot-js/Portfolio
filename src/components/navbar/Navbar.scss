@@ -5,7 +5,7 @@
   position: fixed;
   // Фиксирует navbar на экране при скролле
 
-  top: 20px;
+  top: 12px;
   // Отступ сверху от края окна
 
   left: 30px;
@@ -173,7 +173,7 @@
       transform: translateY(-1px);
       // Лёгкий подъём кнопки вверх
 
-      box-shadow: 0 5px 12px rgba(212, 175, 55, 0.35);
+      box-shadow: 0 4px 8px rgba(161, 139, 66, 0.35);
       // Усиленная тень при наведении
     }
   }

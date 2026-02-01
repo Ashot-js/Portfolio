@@ -7,7 +7,7 @@
   display: flex; // Используем flex-контейнер для выравнивания содержимого
   padding-top: 100px;
   flex-direction: column; // Размещаем элементы вертикально
-  gap: 30px; // Расстояние между элементами по вертикали
+  gap: 60px; // Расстояние между элементами по вертикали
   justify-content: start; // Выравнивание элементов по вертикали (по центру)
   align-items: center; // Выравнивание элементов по горизонтали (по центру)
   flex: 1; // Контейнер занимает всё доступное пространство между Navbar и Footer
@@ -42,7 +42,7 @@
     font-size: 22px; // Размер текста
     font-weight: 500; // Толщина шрифта
     text-align: center; // Выравнивание по центру
-
+    margin-top: 22px;
     opacity: 1; // Прозрачность текста (1 — полностью видимый)
     transform: translateY(0); // Начальное положение по вертикали
     transition:
@@ -71,7 +71,8 @@
   width: 90%; // Адаптивная ширина до 90% от контейнера
   padding: 20px; // Внутренний отступ
   border-radius: 22px; // Скругление углов
-  background: rgba(25, 25, 25, 0.85); // Полупрозрачный темный фон
+  background: rgba(0, 0, 0, 0.55);
+  box-shadow: 0 0 8px rgba(211, 175, 57, 0.18);
   color: #fbe8a6; // Цвет текста внутри формы
   font-family: monospace; // Шрифт
   box-shadow: 0 0 8px rgba(219, 181, 54, 0.15); // Легкая тень
@@ -95,6 +96,7 @@
       font-weight: 600; // Полужирный текст
       font-size: 16px;
       background: rgba(40, 35, 30, 0.6); // Темный фон
+
       color: #fbe8a6; // Цвет текста
       transition: all 0.4s ease; // Плавные изменения
 
@@ -141,9 +143,9 @@
     }
 
     .error {
-      color: #ff6b6b; // Цвет текста ошибки
+      color: #ed6a6a; // Цвет текста ошибки
       font-size: 12px; // Размер шрифта ошибки
-      margin-bottom: 5px; // Отступ снизу
+      margin-bottom: 10px;
     }
 
     .password-wrapper {
@@ -169,23 +171,41 @@
       }
     }
 
-    // .submit-btn {
-    //   width: 100%; // Занимает всю ширину формы
-    //   background: rgba(25, 25, 25, 0.85); // Темный фон
-    //   border: 1px solid #d4af37; // Золотистая рамка
-    //   color: #d4af37; // Цвет текста
-    //   border-radius: 16px; // Скругление углов
-    //   padding: 10px; // Внутренний отступ
-    //   font-weight: 600; // Полужирный текст
-    //   font-size: 16px;
-    //   cursor: pointer; // Курсор в виде руки
-    //   transition: all 0.25s ease; // Плавное изменение при ховере
+    .rounded {
+      width: 100%; // Занимает всю ширину формы
+      padding: 8px 15px;
+      // Внутренние отступы кнопки
 
-    //   &:hover {
-    //     transform: translateY(-1px); // Легкое поднятие кнопки
-    //     box-shadow: 0 2px 5px rgba(212, 175, 55, 0.35); // Тень при ховере
-    //   }
-    // }
+      font-size: 1rem;
+      // Размер текста
+
+      transition:
+        transform 0.25s ease,
+        background 0.25s ease,
+        color 0.25s ease,
+        box-shadow 0.25s ease;
+      // Плавные анимации для нескольких свойств
+
+      &:hover {
+        // При наведении на кнопку
+
+        background: linear-gradient(
+          135deg,
+          rgba(201, 171, 74, 0.35),
+          rgba(192, 168, 35, 0.35)
+        );
+        // Золотистый градиент
+
+        color: black;
+        // Цвет текста становится чёрным
+
+        transform: translateY(-1px);
+        // Лёгкий подъём кнопки вверх
+
+        box-shadow: 0 2px 6px rgba(172, 150, 78, 0.35);
+        // Усиленная тень при наведении
+      }
+    }
   }
 }
 
