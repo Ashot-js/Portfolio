@@ -7,7 +7,6 @@ import About from "../pages/About/About";
 import Contact from "../pages/contact/Contact";
 import Auth from "../pages/auth/Auth";
 import ErrorPage from "../pages/error/ErrorPage";
-// import { lazy,} from "react";
 
 export const router = createBrowserRouter([
   {

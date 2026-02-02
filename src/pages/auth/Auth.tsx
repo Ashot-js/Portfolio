@@ -1,134 +1,66 @@
 import { useState } from "react";
-import { Formik, Form, Field, ErrorMessage } from "formik";
-import * as Yup from "yup";
-import { api } from "../../services/api";
-// Кастомный axios-инстанс для API-запросов
-import { useAppDispatch } from "../../app/hooks";
-// Хук Redux для dispatch
-import { loginSuccess } from "../../store/authSlice";
-// Экшен Redux для сохранения пользователя после логина
-import { useNavigate } from "react-router";
-// Хук для программной навигации между страницами
+import LoginForm from "../login/LoginForm";
+import RegisterForm from "../register/RegisterForm";
 import "./Auth.scss";
 import BgImage from "../../assets/bg.jpg";
-// Фоновое изображение страницы
-import { Eye, EyeOff } from "lucide-react";
-import Button from "../../components/ui/button/Button";
-// Иконки показать/скрыть пароль
 
 const Auth = () => {
-  // Основной компонент авторизации
+  // Основной компонент страницы авторизации
 
   const [isLogin, setIsLogin] = useState(true);
-  // Состояние режима формы: true - Login, false - Register
-
-  const [showPassword, setShowPassword] = useState(false);
-  // Состояние показа пароля: true - показать, false - скрыть
+  // Состояние переключения между Login и Register
+  // true — показываем форму логина, false — форму регистрации
 
   const [titleText, setTitleText] = useState("Welcome back! Please sign in");
-  // Состояние текста заголовка. По умолчанию для Login
+  // Состояние текста заголовка страницы, меняется при переключении формы
 
   const [animClass, setAnimClass] = useState("fade-in");
-  // Класс анимации текста заголовка: fade-in / fade-out
-
-  const dispatch = useAppDispatch();
-  // Получаем функцию dispatch для Redux
-
-  const navigate = useNavigate();
-  // Функция навигации между страницами
+  // Состояние класса анимации для плавного появления/исчезновения текста заголовка
 
   const toggleTitle = (login: boolean) => {
     // Функция смены текста заголовка при переключении Login/Register
-
     setAnimClass("fade-out");
-    // Сначала применяем класс fade-out для плавного исчезновения
+    // Сначала применяем класс fade-out, чтобы текст исчезал плавно
 
     setTimeout(() => {
-      // Ждём 500 мс (длительность анимации) перед сменой текста
+      // Ждём 500 мс перед сменой текста, чтобы анимация успела проиграться
 
       setTitleText(
-        login
-          ? "Welcome back! Please sign in"
-          : // Текст для Login
-
-            "Welcome! Create your account",
-        // Текст для Register (новый заголовок)
+        login ? "Welcome back! Please sign in" : "Welcome! Create your account",
+        // Меняем текст заголовка в зависимости от выбранной формы
       );
 
       setAnimClass("fade-in");
-      // После смены текста применяем fade-in для плавного появления
+      // После смены текста применяем fade-in, чтобы новый заголовок плавно появился
     }, 500);
-  };
-
-  const schema = Yup.object({
-    // Схема валидации формы
-    email: Yup.string().email("Invalid email").required("Email required"),
-    password: Yup.string().min(6, "Min 6 chars").required("Password required"),
-    confirmPassword: Yup.string().when("password", {
-      is: () => !isLogin,
-      then: (schema) =>
-        schema
-          .required("Confirm password required")
-          .oneOf([Yup.ref("password")], "Passwords must match"),
-      otherwise: (schema) => schema.notRequired(),
-    }),
-  });
-
-  const handleSubmit = async (values: {
-    email: string;
-    password: string;
-    confirmPassword?: string;
-  }) => {
-    // Функция обработки отправки формы
-    if (isLogin) {
-      // Если режим Login
-      const res = await api.get(
-        `/users?email=${values.email}&password=${values.password}`,
-      );
-      if (!res.data.length) return alert("Wrong email or password");
-      dispatch(loginSuccess(res.data[0]));
-      navigate("/");
-    } else {
-      // Если режим Register
-      const existing = await api.get(`/users?email=${values.email}`);
-      if (existing.data.length) return alert("User already exists");
-      const res = await api.post("/users", {
-        email: values.email,
-        password: values.password,
-      });
-      dispatch(loginSuccess(res.data));
-      navigate("/");
-    }
   };
 
   return (
     <div
       className={`AuthPageWrapper ${isLogin ? "login" : "register"}`}
-      // Контейнер страницы с модификатором login/register
-
-      style={{
-        backgroundImage: `url(${BgImage})`,
-        // Фоновое изображение
-      }}
+      // Основной контейнер страницы
+      // Класс login/register нужен для различного фонового стиля и цвета псевдоэлемента ::before
+      style={{ backgroundImage: `url(${BgImage})` }}
+      // Устанавливаем фон через inline-стиль
     >
       <h1 className={`AuthPageWrapper_title ${animClass}`}>
         {titleText}
-        {/* Текст заголовка меняется при переключении Login/Register */}
+        {/* Заголовок страницы с анимацией fade-in / fade-out */}
       </h1>
 
       <div className={`AuthPage ${isLogin ? "login" : "register"}`}>
-        {/* Контейнер формы */}
+        {/* Контейнер для формы + переключателя Login/Register */}
 
         <div className="AuthPage_toggle">
-          {/* Переключатель Login / Register */}
+          {/* Переключатель между Login и Register */}
 
           <div
             className={`segment login ${isLogin ? "active" : ""}`}
             onClick={() => {
               setIsLogin(true);
               toggleTitle(true);
+              // При клике на Login: активируем состояние isLogin и меняем заголовок
             }}
-            // При клике активируем Login и меняем текст заголовка
           >
             Login
           </div>
@@ -138,73 +70,19 @@ const Auth = () => {
             onClick={() => {
               setIsLogin(false);
               toggleTitle(false);
+              // При клике на Register: активируем состояние isLogin=false и меняем заголовок
             }}
-            // При клике активируем Register и меняем текст заголовка
           >
             Register
           </div>
         </div>
 
-        <Formik
-          initialValues={{ email: "", password: "", confirmPassword: "" }}
-          validationSchema={schema}
-          onSubmit={handleSubmit}
-        >
-          <Form className="AuthPage_form">
-            {/* Поле email */}
-            <Field name="email" placeholder="Email" />
-            <ErrorMessage name="email" component="div" className="error" />
-
-            {/* Поле пароля */}
-            <div className="password-wrapper">
-              <Field
-                name="password"
-                type={showPassword ? "text" : "password"}
-                placeholder="Password"
-              />
-              <span
-                className="toggle-password"
-                onClick={() => setShowPassword(!showPassword)}
-              >
-                {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
-              </span>
-            </div>
-            <ErrorMessage name="password" component="div" className="error" />
-
-            {/* Поле подтверждения пароля при регистрации */}
-            {!isLogin && (
-              <>
-                <div className="password-wrapper">
-                  <Field
-                    name="confirmPassword"
-                    type={showPassword ? "text" : "password"}
-                    placeholder="Confirm password"
-                  />
-                  <span
-                    className="toggle-password"
-                    onClick={() => setShowPassword(!showPassword)}
-                  >
-                    {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
-                  </span>
-                </div>
-                <ErrorMessage
-                  name="confirmPassword"
-                  component="div"
-                  className="error"
-                />
-              </>
-            )}
-
-            {/* Кнопка отправки формы */}
-            <Button type="submit" className="rounded" variant="secondary">
-              {isLogin ? "Login" : "Register"}
-            </Button>
-          </Form>
-        </Formik>
+        {/* Показываем нужную форму в зависимости от состояния isLogin */}
+        {isLogin ? <LoginForm /> : <RegisterForm />}
       </div>
     </div>
   );
 };
 
 export default Auth;
-// Экспортируем компонент
+// Экспортируем компонент Auth для использования в роутинге или других компонентах

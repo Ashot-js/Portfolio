@@ -1,104 +1,96 @@
 /* Контейнер страницы */
 .AuthPageWrapper {
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  height: 100vh;
-  display: flex; // Используем flex-контейнер для выравнивания содержимого
-  padding-top: 100px;
-  flex-direction: column; // Размещаем элементы вертикально
-  gap: 60px; // Расстояние между элементами по вертикали
-  justify-content: start; // Выравнивание элементов по вертикали (по центру)
-  align-items: center; // Выравнивание элементов по горизонтали (по центру)
-  flex: 1; // Контейнер занимает всё доступное пространство между Navbar и Footer
-  overflow-y: auto; // Добавляет вертикальный скролл, если контента больше, чем высота контейнера
-  position: relative; // Позволяет использовать псевдоэлемент ::before для фонового слоя
+  background-size: cover; // Фоновое изображение растягивается по контейнеру
+  background-repeat: no-repeat; // Фон не повторяется
+  background-position: center; // Фон центрируется
+  height: 100vh; // Высота страницы на весь экран
+  display: flex; // Используем Flexbox для выравнивания контента
+  padding-top: 100px; // Отступ сверху (например, для Navbar)
+  flex-direction: column; // Элементы располагаются вертикально
+  gap: 60px; // Вертикальный промежуток между элементами
+  justify-content: start; // Выравнивание элементов по вертикали (сверху)
+  align-items: center; // Выравнивание по горизонтали (по центру)
+  flex: 1; // Контейнер занимает всё доступное пространство
+  overflow-y: auto; // Добавляет вертикальный скролл, если контента больше
+  position: relative; // Чтобы псевдоэлемент ::before позиционировался относительно контейнера
 
   &::before {
-    content: ""; // Создает пустой псевдоэлемент
-    position: absolute; // Абсолютное позиционирование относительно контейнера
-    inset: 0; // Растягиваем псевдоэлемент на всю ширину и высоту родителя
-    background: rgba(22, 18, 18, 0.6); // Темный полупрозрачный фон
-    z-index: 0; // Помещаем слой под контент
+    content: ""; // Создаем пустой псевдоэлемент
+    position: absolute; // Абсолютное позиционирование
+    inset: 0; // Растягиваем на всю ширину и высоту родителя
+    background: rgba(22, 18, 18, 0.6); // Полупрозрачный темный фон
+    z-index: 0; // Помещаем под контент
     transition: background 0.4s ease; // Плавное изменение фона при смене классов
   }
 
   &.login::before {
-    background: rgba(43, 48, 43, 0.55); // Специальный фон для страницы логина
+    background: rgba(43, 48, 43, 0.55); // Фон для режима Login
   }
+
   &.register::before {
-    background: rgba(
-      44,
-      49,
-      44,
-      0.56
-    ); // Специальный фон для страницы регистрации
+    background: rgba(44, 49, 44, 0.56); // Фон для режима Register
   }
 
   &_title {
     z-index: 1; // Заголовок выше фонового псевдоэлемента
-    color: #ece194; // Цвет текста
+    color: #ece194; // Цвет текста заголовка
     font-family: monospace; // Моноширинный шрифт
     font-size: 22px; // Размер текста
     font-weight: 500; // Толщина шрифта
-    text-align: center; // Выравнивание по центру
-    margin-top: 22px;
+    text-align: center; // Выравнивание текста по центру
+    margin-top: 22px; // Отступ сверху заголовка
     opacity: 1; // Прозрачность текста (1 — полностью видимый)
-    transform: translateY(0); // Начальное положение по вертикали
+    transform: translateY(0); // Начальное вертикальное положение
     transition:
       opacity 0.5s ease,
-      // Плавное появление/исчезновение
-      transform 0.5s ease; // Плавное смещение
+      // Плавное появление/исчезновение текста
+      transform 0.5s ease; // Плавное смещение при анимации
 
     &.fade-out {
-      opacity: 0; // Прячем текст
-      transform: translateY(-20px); // Сдвигаем вверх при исчезновении
+      opacity: 0; // Скрываем текст
+      transform: translateY(-20px); // Сдвигаем текст вверх при исчезновении
     }
 
     &.fade-in {
       opacity: 1; // Показываем текст
-      transform: translateY(0); // Возвращаем на место
+      transform: translateY(0); // Возвращаем текст на место
     }
   }
 }
 
-/* Форма авторизации */
+/* Контейнер формы и переключатель */
 .AuthPage {
-  display: flex; // Flex-контейнер для формы
-  flex-direction: column; // Элементы формы располагаются вертикально
-  z-index: 1; // Над фоном
-  max-width: 500px; // Максимальная ширина формы
-  width: 90%; // Адаптивная ширина до 90% от контейнера
-  padding: 20px; // Внутренний отступ
+  display: flex; // Flex-контейнер для формы и toggle
+  flex-direction: column; // Расположение элементов вертикально
+  z-index: 1; // Поверх фонового псевдоэлемента
+  max-width: 500px; // Максимальная ширина блока
+  width: 90%; // Адаптивная ширина (до 90% от контейнера)
+  padding: 20px; // Внутренние отступы
   border-radius: 22px; // Скругление углов
-  background: rgba(0, 0, 0, 0.55);
-  box-shadow: 0 0 8px rgba(211, 175, 57, 0.18);
-  color: #fbe8a6; // Цвет текста внутри формы
-  font-family: monospace; // Шрифт
-  box-shadow: 0 0 8px rgba(219, 181, 54, 0.15); // Легкая тень
-  transition: background 0.3s ease; // Плавное изменение фона при смене класса
+  background: rgba(0, 0, 0, 0.55); // Полупрозрачный темный фон
+  box-shadow: 0 0 8px rgba(219, 181, 54, 0.15); // Легкая тень для объема
+  transition: background 0.3s ease; // Плавное изменение фона
 
   &.register {
-    background: rgba(26, 27, 26, 0.88); // Специальный фон для формы регистрации
+    background: rgba(26, 27, 26, 0.88); // Фон для режима Register
   }
 
   .AuthPage_toggle {
     display: flex; // Flex-контейнер для переключателя
-    border-radius: 16px; // Скругленные углы
-    overflow: hidden; // Скрываем выступающие части
+    border-radius: 16px; // Скругленные углы переключателя
+    overflow: hidden; // Скрываем выступающие элементы
     margin-bottom: 16px; // Отступ снизу
-    cursor: pointer; // Курсор в виде руки
+    cursor: pointer; // Курсор "рука"
 
     .segment {
-      flex: 1; // Равная ширина для каждого сегмента
+      flex: 1; // Каждая кнопка toggle занимает равную ширину
       text-align: center; // Текст по центру
       padding: 10px 0; // Вертикальный отступ
       font-weight: 600; // Полужирный текст
-      font-size: 16px;
-      background: rgba(40, 35, 30, 0.6); // Темный фон
-
+      font-size: 16px; // Размер текста
+      background: rgba(40, 35, 30, 0.6); // Темный фон сегмента
       color: #fbe8a6; // Цвет текста
-      transition: all 0.4s ease; // Плавные изменения
+      transition: all 0.4s ease; // Плавные изменения всех свойств
 
       &.active {
         background: linear-gradient(
@@ -112,125 +104,17 @@
 
       &:hover {
         background: rgba(212, 175, 55, 0.2); // Легкий эффект при наведении
-        color: #fff; // Белый текст на ховер
+        color: #fff; // Белый текст на hover
       }
     }
   }
 
-  &_form {
-    display: flex; // Flex-контейнер для полей формы
-    flex-direction: column; // Поля вертикально
-
-    input {
-      margin-bottom: 16px; // Отступ снизу
-      padding: 12px; // Внутренний отступ
-      border-radius: 16px; // Скругление углов
-      border: 1px solid #d4af37; // Золотистая рамка
-      background: rgba(30, 30, 30, 0.85); // Темный фон
-      color: #fbe8a6; // Цвет текста
-      font-family: monospace; // Шрифт
-      transition: all 0.25s ease; // Плавные изменения при фокусе
-
-      &::placeholder {
-        color: #ccc; // Цвет подсказки
-      }
-
-      &:focus {
-        outline: none; // Убираем стандартный outline
-        border-color: #ffd700; // Цвет рамки при фокусе
-        box-shadow: 0 0 6px rgba(212, 175, 55, 0.5); // Тень при фокусе
-      }
-    }
-
-    .error {
-      color: #ed6a6a; // Цвет текста ошибки
-      font-size: 12px; // Размер шрифта ошибки
-      margin-bottom: 10px;
-    }
-
-    .password-wrapper {
-      display: flex; // Flex-контейнер для input и иконки
-      position: relative; // Для позиционирования иконки
-
-      input {
-        flex: 1; // Занимает всю доступную ширину
-        padding-right: 36px; // Отступ справа для иконки
-      }
-
-      .toggle-password {
-        position: absolute; // Абсолютное позиционирование
-        right: 10px; // Отступ справа
-        top: 10px; // Отступ сверху
-        cursor: pointer; // Курсор в виде руки
-        color: #fbe8a6; // Цвет иконки
-        transition: color 0.25s ease; // Плавная смена цвета при ховере
-
-        &:hover {
-          color: #ffd700; // Цвет при наведении
-        }
-      }
-    }
-
-    .rounded {
-      width: 100%; // Занимает всю ширину формы
-      padding: 8px 15px;
-      // Внутренние отступы кнопки
-
-      font-size: 1rem;
-      // Размер текста
-
-      transition:
-        transform 0.25s ease,
-        background 0.25s ease,
-        color 0.25s ease,
-        box-shadow 0.25s ease;
-      // Плавные анимации для нескольких свойств
-
-      &:hover {
-        // При наведении на кнопку
-
-        background: linear-gradient(
-          135deg,
-          rgba(201, 171, 74, 0.35),
-          rgba(192, 168, 35, 0.35)
-        );
-        // Золотистый градиент
-
-        color: black;
-        // Цвет текста становится чёрным
-
-        transform: translateY(-1px);
-        // Лёгкий подъём кнопки вверх
-
-        box-shadow: 0 2px 6px rgba(172, 150, 78, 0.35);
-        // Усиленная тень при наведении
-      }
-    }
-  }
-}
-
-/* MOBILE */
-@media (max-width: 768px) {
-  .AuthPage {
-    padding: 20px; // Отступы уменьшаются для мобильных
+  @media (max-width: 768px) {
+    padding: 20px; // Уменьшаем padding на мобильных
 
     .AuthPage_toggle .segment {
-      font-size: 0.95rem; // Меньший размер текста для мобильных
-      padding: 8px 0; // Меньший отступ
-    }
-
-    &_form input {
-      font-size: 0.95rem; // Размер текста input уменьшается
-      padding: 8px; // Меньший отступ внутри input
-    }
-
-    .password-wrapper input {
-      padding-right: 32px; // Меньший отступ для иконки
-    }
-
-    .submit-btn {
-      font-size: 0.95rem; // Меньший размер текста кнопки
-      padding: 8px; // Меньший отступ
+      font-size: 0.95rem; // Меньший шрифт для мобильных
+      padding: 8px 0; // Меньший вертикальный padding
     }
   }
 }
