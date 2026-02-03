@@ -1,3 +1,11 @@
+// User.ts
+export interface User {
+  id: number;
+  email: string;
+  password: string; // пароль нужен только для запросов к json-server, не хранить в Redux
+}
+
+// types.ts
 // CSS / SCSS
 declare module "*.css";
 declare module "*.scss";
@@ -23,7 +31,6 @@ declare module "react-slick" {
     swipeToSlide?: boolean;
   }
 
-  // Slider как компонент JSX с поддержкой ref
   const Slider: React.ForwardRefExoticComponent<
     SliderProps & React.RefAttributes<Slider>
   > & {
@@ -37,13 +44,11 @@ declare module "react-slick" {
 // Тип языка
 export type Language = "en" | "ru" | "fr" | "it" | "am" | "de";
 
-// Интерфейс текста на языке
 export interface LanguageText {
   title: string;
   paragraphs: string[];
 }
 
-// Интерфейс для кнопки выбора языка
 export interface LanguageOption {
   code: Language;
   label: string;

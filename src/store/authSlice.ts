@@ -1,64 +1,58 @@
-// Импортируем функцию createSlice из Redux Toolkit
-import { createSlice } from "@reduxjs/toolkit";
-
-// Импортируем тип PayloadAction для типизации action.payload
-import type { PayloadAction } from "@reduxjs/toolkit";
-
-// Импортируем тип User (описание пользователя)
+// authSlice.ts
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import type { User } from "../types/User";
 
-// Описываем интерфейс состояния auth
+// Интерфейс состояния auth
 interface AuthState {
-  // user может быть объектом User или null (если не авторизован)
-  user: User | null;
+  user: Omit<User, "password"> | null; // храним только безопасные данные
 }
 
-// Начальное состояние auth
-const initialState: AuthState = {
-  // Пытаемся получить пользователя из localStorage
-  // localStorage.getItem("user") возвращает string | null
-  // Если null — подставляем строку "null"
-  // JSON.parse("null") → null
-  user: JSON.parse(localStorage.getItem("user") || "null"),
+// Функция для безопасной загрузки user из localStorage
+const loadUserFromLocalStorage = (): Omit<User, "password"> | null => {
+  try {
+    const storedUser = localStorage.getItem("user");
+    if (!storedUser) return null;
+
+    // Парсим данные как User
+    const parsedUser: User = JSON.parse(storedUser);
+
+    // Создаём объект без password с явным типом
+    const safeUser: Omit<User, "password"> = {
+      id: parsedUser.id,
+      email: parsedUser.email,
+    };
+
+    return safeUser;
+  } catch (error) {
+    console.error("Ошибка при загрузке пользователя из localStorage:", error);
+    return null;
+  }
 };
 
-// Создаём slice (часть Redux store)
+// Начальное состояние
+const initialState: AuthState = {
+  user: loadUserFromLocalStorage(),
+};
+
+// Создаём slice auth
 const authSlice = createSlice({
-  // Имя slice (будет использоваться в Redux DevTools)
   name: "auth",
-
-  // Начальное состояние
   initialState,
-
-  // Reducers — функции, которые меняют состояние
   reducers: {
-    // Reducer для успешного логина
-    loginSuccess(state, action: PayloadAction<User>) {
-      // Сохраняем пользователя в Redux state
+    // Успешный логин
+    loginSuccess(state, action: PayloadAction<Omit<User, "password">>) {
       state.user = action.payload;
-
-      // Сохраняем пользователя в localStorage
-      // чтобы он не пропал после перезагрузки страницы
       localStorage.setItem("user", JSON.stringify(action.payload));
     },
 
-    // Reducer для выхода из аккаунта
+    // Выход из аккаунта
     logout(state) {
-      // Очищаем пользователя в Redux state
       state.user = null;
-
-      // Удаляем пользователя из localStorage
       localStorage.removeItem("user");
     },
   },
 });
 
-// Экспортируем actions (loginSuccess и logout)
+// Экспорт actions и reducer
 export const { loginSuccess, logout } = authSlice.actions;
-
-// Экспортируем reducer для подключения в store
 export default authSlice.reducer;
-
-
-// Redux хранит текущего пользователя
-// localStorage — чтобы не выкидывало при перезагрузке
