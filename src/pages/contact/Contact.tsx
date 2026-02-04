@@ -1,13 +1,20 @@
 import { useState } from "react";
-import Button from "../../components/ui/button/Button"; // путь подстрой при необходимости
+import { useAppSelector } from "../../app/hooks"; // Redux selector для пользователя
+import Button from "../../components/ui/button/Button";
 import "./Contact.scss";
 
 export default function Contact() {
+  const user = useAppSelector((state) => state.auth.user); // текущий пользователь
   const [comment, setComment] = useState("");
   const [sending, setSending] = useState(false);
 
   const sendComment = async () => {
     if (!comment.trim()) return;
+
+    if (!user) {
+      alert("Вы должны быть залогинены, чтобы отправить комментарий ❌");
+      return;
+    }
 
     setSending(true);
 
@@ -18,12 +25,17 @@ export default function Contact() {
         body: JSON.stringify({
           text: comment,
           createdAt: new Date().toISOString(),
+          user: {
+            id: user.id,
+            email: user.email,
+          },
         }),
       });
 
       setComment("");
       alert("Комментарий сохранён ✅");
-    } catch {
+    } catch (err) {
+      console.error(err);
       alert("Ошибка при сохранении ❌");
     } finally {
       setSending(false);
@@ -32,21 +44,21 @@ export default function Contact() {
 
   return (
     <div className="ContactWrapper">
+      {/* Информация */}
       <div className="ContactContainer ContactContainer--info">
         <h2 className="ContactHeader">Contact me</h2>
         <p>📞 No.: +37499769898</p>
         <p>
-          ✉ Email:
+          ✉ Email:{" "}
           <a
             className="ContactWrapper_a_gmail"
             href={`mailto:${"ashotg771" + "@gmail.com"}`}
           >
-            ashottg771@gmail.com
+            ashotg771@gmail.com
           </a>
         </p>
-
         <p>
-          💬 Telegram:
+          💬 Telegram:{" "}
           <a
             className="ContactWrapper_a_tg"
             href="https://t.me/IE_YU"
@@ -58,6 +70,7 @@ export default function Contact() {
         </p>
       </div>
 
+      {/* Форма обратной связи */}
       <div className="ContactContainer ContactContainer--feedback">
         <div className="ContactHeader">
           We'll get back to your email address sometime today.
@@ -70,7 +83,6 @@ export default function Contact() {
           onChange={(e) => setComment(e.target.value)}
         />
 
-        {/* UI Button с твоим вариантом */}
         <Button variant="primary" onClick={sendComment} disabled={sending}>
           {sending ? "Отправка..." : "Отправить"}
         </Button>

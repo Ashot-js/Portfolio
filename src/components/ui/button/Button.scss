@@ -13,7 +13,8 @@
   &.btn--primary {
     align-self: flex-start;
     padding: 8px 20px;
-    box-shadow: 0 1px 1.5px 0.5px rgba(212, 175, 55, 0.6);
+    margin-top: 12px;
+    box-shadow: 0.5px 1px 0.5px 1px rgba(212, 175, 55, 0.6);
     background: linear-gradient(
       155deg,
       #2b2b2b,
@@ -44,7 +45,7 @@
     padding: 10px 14px;
     background: rgba(40, 35, 30, 0.6);
     color: #fbe8a6;
-    box-shadow: 0 1px 1.5px 0.5px rgba(212, 175, 55, 0.6);
+    box-shadow: 0.5px 1px 1.5px 0.5px rgba(212, 175, 55, 0.6);
     font-weight: 500;
     transition: all 0.3s ease;
 

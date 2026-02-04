@@ -15,7 +15,7 @@
   border-radius: 28px;
 
   /* Box-shadow золотой, как у баннера */
-  box-shadow: 0 1px 4px 1px rgba(215, 179, 60, 0.5);
+  box-shadow: 0 1px 3px 1px rgba(215, 179, 60, 0.5);
   z-index: 1000;
 
   .Nav_logo img {
@@ -31,7 +31,7 @@
 
   .Nav_links {
     display: flex;
-    gap: 150px;
+    gap: 120px;
     a {
       text-decoration: none;
       color: #e0d19c; /* золотистый текст по общему стилю */
@@ -80,7 +80,7 @@
     }
 
     .Nav_logout {
-      padding: 4px 8px;
+      padding: 3px px;
       font-size: 0.85rem;
     }
   }
