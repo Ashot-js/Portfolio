@@ -4,7 +4,6 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./Home.scss";
 
-// Массив слайдов
 const slides = [
   { id: 1, src: "/images/slide1.jpg" },
   { id: 2, src: "/images/slide2.jpg" },
@@ -17,10 +16,8 @@ const slides = [
 ];
 
 export default function Home() {
-  // ref для доступа к методам Slider
   const sliderRef = useRef<Slider>(null);
 
-  // Настройки слайдера
   const settings: Settings = {
     dots: true,
     infinite: true,
@@ -36,10 +33,8 @@ export default function Home() {
 
   return (
     <section className="Home">
-      {/* Заголовок страницы */}
       <h2 className="Home_title">The staggering scale of the universe.</h2>
 
-      {/* Слайдер */}
       <div className="Home_sliderWrapper">
         <div className="Home_sliderInner">
           <Slider ref={sliderRef} {...settings}>
@@ -51,22 +46,24 @@ export default function Home() {
           </Slider>
         </div>
 
-        {/* Текст под слайдером */}
         <p className="Home_subtext">
           We are literally made of stardust, as the elements of our bodies were
           forged in the hearts of ancient stars
         </p>
 
-        {/* Кнопки навигации */}
-        <button
+        {/* navigation */}
+        <div
           className="Home_prev"
-          onClick={() => sliderRef.current?.slickPrev()}
+          role="button"
           aria-label="Previous slide"
+          onClick={() => sliderRef.current?.slickPrev()}
         />
-        <button
+
+        <div
           className="Home_next"
-          onClick={() => sliderRef.current?.slickNext()}
+          role="button"
           aria-label="Next slide"
+          onClick={() => sliderRef.current?.slickNext()}
         />
       </div>
     </section>

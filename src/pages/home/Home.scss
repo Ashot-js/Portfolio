@@ -63,13 +63,16 @@
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    border: none;
     cursor: pointer;
 
     background: linear-gradient(155deg, #494444, #4d4224);
     box-shadow: 0 1px 4px 1px rgba(212, 175, 55, 0.5);
     z-index: 10;
     transition: all 0.3s ease;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     &:hover {
       background: linear-gradient(155deg, #473e3e, #7c6733);
@@ -82,8 +85,6 @@
       height: 10px;
       border-top: 1px solid #000;
       border-right: 1px solid #000;
-      display: block;
-      margin: auto;
     }
   }
 
@@ -104,7 +105,7 @@
   }
 }
 
-/* ✨ анимация текста */
+/* animation */
 @keyframes fadeSlideUp {
   from {
     opacity: 0;
@@ -116,7 +117,7 @@
   }
 }
 
-/* 📱 TABLET */
+/* TABLET */
 @media (max-width: 1024px) {
   .Home {
     &_sliderWrapper {
@@ -130,7 +131,7 @@
   }
 }
 
-/* 📱 MOBILE */
+/* MOBILE */
 @media (max-width: 768px) {
   .Home {
     padding: 20px 0;

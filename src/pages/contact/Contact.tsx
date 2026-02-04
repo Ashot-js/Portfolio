@@ -1,59 +1,39 @@
-// Импортируем хук useState из React для работы с состоянием компонента
 import { useState } from "react";
-
-// Подключаем SCSS стили для этого компонента
+import Button from "../../components/ui/button/Button"; // путь подстрой при необходимости
 import "./Contact.scss";
 
-// Экспортируем компонент Contact по умолчанию
 export default function Contact() {
-  // Состояние для текста комментария
-  const [comment, setComment] = useState(""); // Изначально пустая строка
+  const [comment, setComment] = useState("");
+  const [sending, setSending] = useState(false);
 
-  // Состояние для отслеживания процесса отправки
-  const [sending, setSending] = useState(false); // false — пока не отправляем
-
-  // Функция для отправки комментария на сервер
   const sendComment = async () => {
-    // Если поле пустое или только пробелы — ничего не делаем
     if (!comment.trim()) return;
 
-    // Включаем состояние отправки (кнопка будет заблокирована)
     setSending(true);
 
     try {
-      // Отправляем POST-запрос на сервер
       await fetch("http://localhost:3000/comments", {
-        method: "POST", // Метод добавления данных
-        headers: { "Content-Type": "application/json" }, // Отправляем JSON
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          text: comment, // Текст комментария
-          createdAt: new Date().toISOString(), // Дата и время отправки
+          text: comment,
+          createdAt: new Date().toISOString(),
         }),
       });
 
-      // Очищаем поле после успешной отправки
       setComment("");
-
-      // Сообщение пользователю об успехе
       alert("Комментарий сохранён ✅");
     } catch {
-      // Если произошла ошибка — сообщаем пользователю
       alert("Ошибка при сохранении ❌");
     } finally {
-      // В любом случае выключаем состояние отправки
       setSending(false);
     }
   };
 
-  // JSX — то, что будет отрисовано на странице
   return (
-    // Обёртка для обоих контейнеров (верхний и нижний)
     <div className="ContactWrapper">
-      {/* Верхний контейнер: контактная информация */}
       <div className="ContactContainer ContactContainer--info">
-        {/* Заголовок */}
         <h2 className="ContactHeader">Contact me</h2>
-        {/* Контактные данные */}
         <p>📞 No.: +37499769898</p>
         <p>
           ✉ Email:
@@ -78,30 +58,22 @@ export default function Contact() {
         </p>
       </div>
 
-      {/* Нижний контейнер: комментарии */}
       <div className="ContactContainer ContactContainer--feedback">
-        {/* Заголовок блока */}
         <div className="ContactHeader">
           We'll get back to your email address sometime today.
         </div>
 
-        {/* Текстовое поле для ввода комментария */}
         <textarea
           className="Feedback_input"
           placeholder="Type your message here..."
-          value={comment} // Значение из состояния
-          onChange={(e) => setComment(e.target.value)} // Обновление состояния при вводе
+          value={comment}
+          onChange={(e) => setComment(e.target.value)}
         />
 
-        {/* Кнопка отправки */}
-        <button
-          className="Feedback_button"
-          onClick={sendComment} // Вызывает функцию отправки
-          disabled={sending} // Блокируется во время отправки
-        >
-          {/* Текст кнопки зависит от состояния отправки */}
+        {/* UI Button с твоим вариантом */}
+        <Button variant="primary" onClick={sendComment} disabled={sending}>
           {sending ? "Отправка..." : "Отправить"}
-        </button>
+        </Button>
       </div>
     </div>
   );
