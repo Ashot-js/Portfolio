@@ -81,7 +81,9 @@ export default function Contact() {
       {/* Нижний контейнер: комментарии */}
       <div className="ContactContainer ContactContainer--feedback">
         {/* Заголовок блока */}
-        <div className="ContactHeader">Average response time: 15 minutes.</div>
+        <div className="ContactHeader">
+          We'll get back to your email address sometime today.
+        </div>
 
         {/* Текстовое поле для ввода комментария */}
         <textarea

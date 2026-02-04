@@ -20,7 +20,7 @@
     inset: 0;
     background: rgba(22, 18, 18, 0.6);
     z-index: 0;
-    transition: background 0.4s ease;
+    transition: background 0.3s ease;
   }
 
   &.login::before {
@@ -35,15 +35,11 @@
     z-index: 1;
     color: #ece194;
     font-family: monospace;
-    font-size: 22px;
-    font-weight: 500;
+    font-size: 20px;
+    font-weight: 600;
     text-align: center;
-    margin-top: 22px;
     opacity: 1;
-    transform: translateY(0);
-    transition:
-      opacity 0.5s ease,
-      transform 0.5s ease;
+    transition: all 0.5s ease;
 
     &.fade-out {
       opacity: 0;
@@ -55,35 +51,9 @@
       transform: translateY(0);
     }
   }
-
-  /* Анимированный баннер сверху */
-  .AnimatedBanner {
-    width: 90%;
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%) translateY(-100%);
-    background: linear-gradient(155deg, #2b2b2b, #3b321c);
-    color: #fbe8a6;
-    padding: 16px 32px;
-    border-radius: 12px;
-    box-shadow: 0 3px 8px rgba(212, 175, 55, 0.5);
-    z-index: 2;
-    font-weight: 600;
-    font-family: monospace;
-    opacity: 0;
-    transition:
-      transform 0.8s ease,
-      opacity 0.8s ease;
-  }
-
-  &.showBanner .AnimatedBanner {
-    transform: translateX(-50%) translateY(20px);
-    opacity: 1;
-  }
 }
 
-/* Контейнер формы и переключатель */
+/* Контейнер формы */
 .AuthPage {
   display: flex;
   flex-direction: column;
@@ -92,17 +62,16 @@
   width: 90%;
   padding: 22px;
   border-radius: 22px;
-  /* Общий фон для Login и Register — как баннер */
   background: linear-gradient(155deg, #2b2b2b, #3b321c);
-  box-shadow: 0 1px 6px 1px rgba(212, 175, 55, 0.5); /* как у баннера */
+  box-shadow: 0 1px 6px 1px rgba(212, 175, 55, 0.5);
   transition: background 0.3s ease;
 
   .AuthPage_toggle {
     display: flex;
+    box-shadow: 0 1px 3px rgba(212, 175, 55, 0.5);
     border-radius: 16px;
     overflow: hidden;
     margin-bottom: 16px;
-    cursor: pointer;
 
     .segment {
       flex: 1;
@@ -110,9 +79,9 @@
       padding: 10px 0;
       font-weight: 600;
       font-size: 16px;
-      /* Цвет текста и фон сегмента под общий стиль */
       background: rgba(40, 35, 30, 0.6);
-      color: #fbe8a6;
+      color: #e4d291;
+      cursor: pointer;
       transition: all 0.4s ease;
 
       &.active {
@@ -131,9 +100,9 @@
   @media (max-width: 768px) {
     padding: 20px;
 
-    .AuthPage_toggle .segment {
-      font-size: 0.95rem;
-      padding: 8px 0;
+    .segment {
+      font-size: 0.85rem;
+      padding: 6px 0;
     }
   }
 }

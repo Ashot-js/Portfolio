@@ -89,9 +89,7 @@ const LoginForm = () => {
         <Field name="email" placeholder="Email" />
         {/* Поле ввода email */}
         <ErrorMessage name="email" component="div" className="error" />
-        {/* Вывод ошибки валидации email */}
 
-        {/* Password */}
         <div className="password-wrapper">
           {/* Контейнер для поля пароля и иконки показать/скрыть */}
           <Field
@@ -112,11 +110,7 @@ const LoginForm = () => {
         <ErrorMessage name="password" component="div" className="error" />
         {/* Вывод ошибки валидации пароля */}
 
-        {/* Submit */}
-        <Button className="rounded" variant="secondary">
-          Login
-          {/* Кнопка отправки формы */}
-        </Button>
+        <Button variant="secondary">Login</Button>
       </Form>
     </Formik>
   );

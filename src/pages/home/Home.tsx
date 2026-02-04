@@ -13,7 +13,7 @@ const slides = [
   { id: 5, src: "/images/slide5.jpg" },
   { id: 6, src: "/images/slide6.jpg" },
   { id: 7, src: "/images/slide7.jpg" },
-  { id: 8, src: "/images/slide8.jpg" }
+  { id: 8, src: "/images/slide8.jpg" },
 ];
 
 export default function Home() {
@@ -31,7 +31,7 @@ export default function Home() {
     adaptiveHeight: true,
     draggable: true,
     swipe: true,
-    swipeToSlide: true
+    swipeToSlide: true,
   };
 
   return (
@@ -53,7 +53,8 @@ export default function Home() {
 
         {/* Текст под слайдером */}
         <p className="Home_subtext">
-          We are literally made of stardust, as the elements of our bodies were forged in the hearts of ancient stars
+          We are literally made of stardust, as the elements of our bodies were
+          forged in the hearts of ancient stars
         </p>
 
         {/* Кнопки навигации */}

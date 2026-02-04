@@ -55,7 +55,6 @@
     }
   }
 
-  /* 🔹 Кнопки назад/вперёд с тёмно-золотым градиентом и тенью */
   &_prev,
   &_next {
     position: absolute;
@@ -67,13 +66,13 @@
     border: none;
     cursor: pointer;
 
-    background: linear-gradient(155deg, #494444, #4d4224); /* градиент */
-    box-shadow: 0 1px 4px 1px rgba(212, 175, 55, 0.5); /* золотая тень */
+    background: linear-gradient(155deg, #494444, #4d4224);
+    box-shadow: 0 1px 4px 1px rgba(212, 175, 55, 0.5);
     z-index: 10;
     transition: all 0.3s ease;
 
     &:hover {
-      background: linear-gradient(155deg, #473e3e, #7c6733); /* градиент */
+      background: linear-gradient(155deg, #473e3e, #7c6733);
       transform: translateY(-50%) scale(1.1);
     }
 

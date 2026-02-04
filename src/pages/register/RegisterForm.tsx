@@ -92,22 +92,14 @@ const RegisterForm = () => {
   return (
     <Formik
       initialValues={{ email: "", password: "", confirmPassword: "" }}
-      // Начальные значения формы
-
       validationSchema={schema}
       // Схема валидации формы
-
       onSubmit={handleSubmit}
       // Функция при отправке формы
     >
       <Form className="RegisterForm">
-        {/* Email */}
         <Field name="email" placeholder="Email" />
-        {/* Поле ввода email */}
         <ErrorMessage name="email" component="div" className="error" />
-        {/* Вывод ошибки email */}
-
-        {/* Password */}
         <div className="password-wrapper">
           {/* Контейнер поля password и иконки показать/скрыть */}
           <Field
@@ -126,7 +118,6 @@ const RegisterForm = () => {
           </span>
         </div>
         <ErrorMessage name="password" component="div" className="error" />
-        {/* Вывод ошибки password */}
 
         {/* Confirm Password */}
         <div className="password-wrapper">
@@ -149,10 +140,7 @@ const RegisterForm = () => {
           component="div"
           className="error"
         />
-        {/* Вывод ошибки confirmPassword */}
-
-        {/* Submit */}
-        <Button className="rounded" variant="secondary">
+        <Button variant="secondary">
           Register
           {/* Кнопка отправки формы */}
         </Button>
