@@ -152,7 +152,7 @@ const RegisterForm = () => {
         {/* Вывод ошибки confirmPassword */}
 
         {/* Submit */}
-        <Button type="submit" className="rounded" variant="secondary">
+        <Button className="rounded" variant="secondary">
           Register
           {/* Кнопка отправки формы */}
         </Button>

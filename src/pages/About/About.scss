@@ -5,7 +5,6 @@
   align-items: flex-start; // верхнее выравнивание
   padding: 16px;
   margin-top: 150px; // высота Navbar
-
   overflow: auto; // скролл только если контента больше
   font-family: monospace;
 }
@@ -15,16 +14,20 @@
   flex-direction: column;
   max-width: 820px;
   width: 100%;
-  padding: 32px 40px; // уменьшенный padding
-  min-height: auto; // убрали фиксированную высоту
-  background: rgba(20, 20, 20, 0.85);
-  border-left: 3px solid #d4af37;
-  border-radius: 6px;
-  box-shadow: 0 0 18px rgba(212, 175, 55, 0.25);
+  padding: 32px 40px;
+  min-height: auto;
+  background: linear-gradient(
+    155deg,
+    #2b2b2b,
+    #3b321c
+  ); /* градиент как баннер/форма */
+  border-left: 3px solid rgba(212, 175, 55, 0.6); /* золотая полоска слева */
+  border-radius: 12px; /* скругление как у формы */
+  box-shadow: 0 1px 4px 1px rgba(212, 175, 55, 0.5);
   position: relative;
   animation: slideIn 0.7s ease forwards;
   gap: 24px;
-  overflow: auto; // если текст выше
+  overflow: auto;
 }
 
 /* Верхнее место для изображения */

@@ -105,17 +105,6 @@
     }
   }
 
-  .rounded {
-    width: 100%;
-    // Кнопка отправки занимает всю ширину формы
-
-    padding: 10px 16px;
-    // Внутренние отступы кнопки
-
-    font-size: 1rem;
-    // Размер текста кнопки
-  }
-
   @media (max-width: 768px) {
     input {
       padding: 8px;

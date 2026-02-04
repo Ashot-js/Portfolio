@@ -2,8 +2,8 @@ import { Link } from "react-router";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { logout } from "../../store/authSlice";
 import Button from "../ui/button/Button"; // твоя UI кнопка
-import './Navbar.scss';
-import ReactLogo from '../../assets/logo.jpg';
+import "./Navbar.scss";
+import ReactLogo from "../../assets/logo.jpg";
 
 const Navbar = () => {
   const user = useAppSelector((s) => s.auth.user);

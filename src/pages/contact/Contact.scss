@@ -1,84 +1,103 @@
 /* Контейнер-обёртка для обоих блоков (верхний и нижний) */
 .ContactWrapper {
-  position: fixed; // Фиксируем контейнер на экране, он не скроллится
-  left: 16px; // Отступ слева от края экрана
-  bottom: 90px; // Отступ снизу, чуть выше футера
-  display: flex; // Используем flex для расположения контейнеров
-  flex-direction: column; // Контейнеры располагаются сверху вниз
-  gap: 16px; // Расстояние между контейнерами
-  z-index: 100; // На переднем плане поверх остальных элементов
-  &_a_tg {
-    color: #d4af37;
-    padding-left: 8px;
-  }
+  position: fixed; /* Фиксируем контейнер на экране */
+  left: 16px;
+  bottom: 90px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  z-index: 100;
+
+  &_a_tg,
   &_a_gmail {
-    color: #d4af37;
+    color: #fbe8a6; /* золотой текст */
     padding-left: 8px;
   }
 }
 
 /* Общие стили для обоих контейнеров */
 .ContactContainer {
-  max-width: 820px; // Максимальная ширина контейнера
-  padding: 32px 40px; // Внутренние отступы сверху/снизу и слева/справа
-  background: rgba(20, 20, 20, 0.85); // Темный полупрозрачный фон
-  border-left: 3px solid #d4af37; // Золотая полоска слева (как в About)
-  border-radius: 6px; // Скругление углов контейнера
-  box-shadow: 0 0 8px rgba(212, 175, 55, 0.25); // Мягкая тень для объёма
-  animation: slideIn 0.7s ease forwards; // Анимация появления с выездом слева
-  display: flex; // Flex для расположения внутреннего контента
-  flex-direction: column; // Внутренние элементы сверху вниз
-  gap: 12px; // Расстояние между внутренними элементами
+  max-width: 820px;
+  padding: 32px 40px;
+  background: linear-gradient(155deg, #2b2b2b, #302a1a); /* как баннер/форма */
+  border-radius: 12px;
+  box-shadow: 0 1px 6px 1px rgba(181, 155, 68, 0.5); /* золотая тень как у формы */
+  animation: slideIn 0.7s ease forwards;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  border-left: 3px solid rgba(212, 175, 55, 0.6); /* золотая полоска слева */
 }
 
-/* Верхний контейнер: контактная информация (номер, email, telegram) */
+/* Верхний контейнер: контактная информация */
 .ContactContainer--info {
-  min-width: 600px; // Минимальная ширина для контактов
-  color: #fbe8a6; // Цвет текста (светло-жёлтый, как в About)
+  min-width: 600px;
+  color: #fbe8a6;
 
   .ContactHeader {
-    font-weight: 600; // Полужирный шрифт для заголовка
-    margin-bottom: 8px; // Отступ снизу после заголовка
+    font-weight: 600;
+    margin-bottom: 8px;
   }
 
   p {
-    margin: 4px 0; // Вертикальные отступы для каждого абзаца
-    font-size: 0.95rem; // Размер шрифта чуть меньше заголовка
-    color: #e0d7b0; // Цвет текста абзацев (немного светлее заголовка)
+    margin: 4px 0;
+    font-size: 0.95rem;
+    color: #e0d7b0;
   }
 }
 
-/* Нижний контейнер: textarea и кнопка отправки комментария */
+/* Нижний контейнер: textarea и кнопка */
 .ContactContainer--feedback {
   .ContactHeader {
-    color: #fbe8a6; // Заголовок светло-жёлтый
-    font-weight: 600; // Полужирный
+    color: #fbe8a6;
+    font-weight: 600;
   }
 
   .Feedback_input {
-    width: 100%; // Растягиваем на всю ширину контейнера
-    min-height: 100px; // Минимальная высота textarea
-    padding: 12px 14px; // Внутренние отступы
-    resize: vertical; // Можно изменять высоту, но не ширину
-    background: rgba(10, 10, 10, 0.7); // Темный полупрозрачный фон
-    border: 1px solid rgba(212, 175, 55, 0.4); // Золотая рамка с прозрачностью
-    border-radius: 6px; // Скругление углов
-    color: #fbe8a6; // Цвет текста внутри textarea
-    font-family: inherit; // Наследуем шрифт страницы
+    width: 100%;
+    min-height: 100px;
+    padding: 12px 14px;
+    resize: vertical;
+    background: rgba(10, 10, 10, 0.7);
+    border: 1px solid rgba(212, 175, 55, 0.5);
+    border-radius: 6px;
+    color: #fbe8a6;
+    font-family: inherit;
+    transition: all 0.3s ease;
+
+    &:focus {
+      border-color: #d4af37;
+      box-shadow: 0 0 8px rgba(212, 175, 55, 0.5);
+      outline: none;
+    }
   }
 
   .Feedback_button {
-    align-self: flex-start; // Кнопка слева внутри контейнера
-    padding: 8px 20px; // Внутренние отступы кнопки
-    background: #d4af37; // Золотой фон кнопки
-    border: none; // Убираем рамку по умолчанию
-    border-radius: 6px; // Скругление углов кнопки
-    font-weight: 600; // Полужирный текст кнопки
-    cursor: pointer; // Курсор pointer при наведении
+    align-self: flex-start;
+    padding: 8px 20px;
+    background: linear-gradient(
+      155deg,
+      #2b2b2b,
+      #3b321c
+    ); /* как баннер/форма */
+    border: 1px solid rgba(181, 153, 63, 0.5);
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    color: #fbe8a6;
+    box-shadow: 0 1px 4px 1px rgba(212, 175, 55, 0.5);
+    transition: all 0.3s ease;
+
+    &:hover {
+      background: linear-gradient(155deg, #3b321c, #2b2b2b);
+      color: #fff;
+      transform: translateY(-1px);
+      box-shadow: 0 0.5px 6px 0.5px rgba(212, 175, 55, 0.6);
+    }
 
     &:disabled {
-      opacity: 0.6; // Полупрозрачная кнопка, если отключена
-      cursor: not-allowed; // Курсор запрещен
+      opacity: 0.6;
+      cursor: not-allowed;
     }
   }
 }
@@ -86,24 +105,24 @@
 /* Анимация появления (выезд слева) */
 @keyframes slideIn {
   from {
-    transform: translateX(-60px); // Начальное смещение слева
-    opacity: 0; // Прозрачность 0 в начале
+    transform: translateX(-60px);
+    opacity: 0;
   }
   to {
-    transform: translateX(0); // Конечная позиция
-    opacity: 1; // Полная непрозрачность
+    transform: translateX(0);
+    opacity: 1;
   }
 }
 
-/* Адаптация под мобильные устройства */
+/* Мобильная адаптация */
 @media (max-width: 768px) {
   .ContactWrapper {
-    left: 2.5%; // Уменьшенный отступ слева
-    right: 2.5%; // Уменьшенный отступ справа
-    bottom: 70px; // Отступ снизу чуть выше футера
+    left: 2.5%;
+    right: 2.5%;
+    bottom: 70px;
   }
 
   .ContactContainer {
-    padding: 24px 20px; // Меньшие внутренние отступы на маленьких экранах
+    padding: 24px 20px;
   }
 }

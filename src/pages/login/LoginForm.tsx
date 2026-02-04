@@ -113,7 +113,7 @@ const LoginForm = () => {
         {/* Вывод ошибки валидации пароля */}
 
         {/* Submit */}
-        <Button type="submit" className="rounded" variant="secondary">
+        <Button className="rounded" variant="secondary">
           Login
           {/* Кнопка отправки формы */}
         </Button>
