@@ -12,7 +12,7 @@ export default function Contact() {
     if (!comment.trim()) return;
 
     if (!user) {
-      alert("Вы должны быть залогинены, чтобы отправить комментарий ❌");
+      alert("You must be logged in to post a comment ❌");
       return;
     }
 
@@ -33,10 +33,10 @@ export default function Contact() {
       });
 
       setComment("");
-      alert("Комментарий сохранён ✅");
+      alert("Comment saved✅");
     } catch (err) {
       console.error(err);
-      alert("Ошибка при сохранении ❌");
+      alert("Sending failed ❌");
     } finally {
       setSending(false);
     }
@@ -72,9 +72,7 @@ export default function Contact() {
 
       {/* Форма обратной связи */}
       <div className="ContactContainer ContactContainer--feedback">
-        <div className="ContactHeader">
-          We'll get back to your email address sometime today.
-        </div>
+        <div className="ContactHeader">Email reply is coming today!</div>
 
         <textarea
           className="Feedback_input"
@@ -84,7 +82,7 @@ export default function Contact() {
         />
 
         <Button variant="primary" onClick={sendComment} disabled={sending}>
-          {sending ? "Отправка..." : "Отправить"}
+          {sending ? "sending..." : "send"}
         </Button>
       </div>
     </div>

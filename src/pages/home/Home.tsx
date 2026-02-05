@@ -5,14 +5,11 @@ import "slick-carousel/slick/slick-theme.css";
 import "./Home.scss";
 
 const slides = [
-  { id: 1, src: "/images/slide1.jpg" },
-  { id: 2, src: "/images/slide2.jpg" },
-  { id: 3, src: "/images/slide3.jpg" },
-  { id: 4, src: "/images/slide4.jpg" },
-  { id: 5, src: "/images/slide5.jpg" },
-  { id: 6, src: "/images/slide6.jpg" },
-  { id: 7, src: "/images/slide7.jpg" },
-  { id: 8, src: "/images/slide8.jpg" },
+  { id: 1, src: "/images/slide1.webp" },
+  { id: 2, src: "/images/slide2.webp" },
+  { id: 3, src: "/images/slide3.webp" },
+  { id: 4, src: "/images/slide4.webp" },
+  { id: 5, src: "/images/slide5.webp" },
 ];
 
 export default function Home() {
