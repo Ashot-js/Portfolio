@@ -12,15 +12,15 @@
   // Форма занимает всю ширину контейнера
 
   input {
-    padding: 12px;
+    padding: 11px;
     // Внутренний отступ поля ввода
 
-    border-radius: 16px;
+    border-radius: 14px;
     // Скругленные углы поля
 
-    border: 1px solid #d4af37;
+    border: 0.5px solid #82795c;
     // Золотистая рамка вокруг input
-
+    box-shadow: inset 0.5px 1px 2px 0.5px rgba(212, 175, 55, 0.5);
     background: rgba(30, 30, 30, 0.85);
     // Темный полупрозрачный фон
 
@@ -52,13 +52,9 @@
 
   .error {
     color: #ed6a6a;
-    // Красный цвет текста ошибки
-
     font-size: 12px;
-    // Размер шрифта ошибки
-
-    margin-bottom: 2px;
-    // Отступ снизу после ошибки
+    margin-bottom: -2px;
+    margin-top: -2px;
   }
 
   .password-wrapper {
@@ -72,7 +68,7 @@
       flex: 1;
       // Поле пароля занимает всю доступную ширину
 
-      padding-right: 36px;
+      padding-right: 10px;
       // Отступ справа для иконки
     }
 

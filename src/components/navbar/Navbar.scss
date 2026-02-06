@@ -1,13 +1,13 @@
 .Nav {
   user-select: none;
   position: fixed;
-  top: 15px;
-  left: 30px;
-  right: 30px;
+  top: 12px;
+  left: 15px;
+  right: 15px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.3rem 0.3rem;
+  padding: 0.5rem;
 
   /* Фон как у баннера и формы */
   background: linear-gradient(155deg, #2b2b2b, #3b321c);
@@ -19,7 +19,7 @@
   z-index: 1000;
 
   .Nav_logo img {
-    width: 50px;
+    width: 40px;
     border-radius: 50%;
     cursor: pointer;
     transition: transform 0.25s ease;
