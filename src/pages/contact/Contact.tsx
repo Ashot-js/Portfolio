@@ -46,7 +46,7 @@ export default function Contact() {
     <div className="ContactWrapper">
       {/* Информация */}
       <div className="ContactContainer ContactContainer--info">
-        <h2 className="ContactHeader">Contact me</h2>
+        <h2 className="ContactHeader">Get in Touch </h2>
         <p>📞 No.: +37499769898</p>
         <p>
           ✉ Email:{" "}

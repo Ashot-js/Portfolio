@@ -64,18 +64,16 @@
     height: 40px;
     border-radius: 50%;
     cursor: pointer;
-
-    background: linear-gradient(155deg, #494444, #4d4224);
+    background: linear-gradient(155deg, #544d4d, #69592f);
     box-shadow: 0 1px 4px 1px rgba(212, 175, 55, 0.5);
     z-index: 10;
     transition: all 0.3s ease;
-
     display: flex;
     align-items: center;
     justify-content: center;
 
     &:hover {
-      background: linear-gradient(155deg, #473e3e, #7c6733);
+      background: linear-gradient(155deg, #928338, #d09b15);
       transform: translateY(-50%) scale(1.1);
     }
 

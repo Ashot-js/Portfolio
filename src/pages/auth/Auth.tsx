@@ -11,12 +11,20 @@ const Auth = () => {
 
   const toggleTitle = (login: boolean) => {
     setAnimClass("fade-out");
+
     setTimeout(() => {
       setTitleText(
         login ? "Welcome back! Please sign in" : "Welcome! Create your account",
       );
       setAnimClass("fade-in");
-    }, 500);
+    }, 600);
+  };
+
+  const handleToggle = (login: boolean) => {
+    if (login === isLogin) return;
+
+    setIsLogin(login);
+    toggleTitle(login);
   };
 
   return (
@@ -27,28 +35,27 @@ const Auth = () => {
       <h1 className={`AuthPageWrapper_title ${animClass}`}>{titleText}</h1>
 
       <div className="AuthPage">
-        <div className="AuthPage_toggle">
+        <div className="AuthPage_toggle" role="tablist">
           <div
             className={`segment ${isLogin ? "active" : ""}`}
-            onClick={() => {
-              setIsLogin(true);
-              toggleTitle(true);
-            }}
+            role="tab"
+            aria-selected={isLogin}
+            onClick={() => handleToggle(true)}
           >
             Login
           </div>
+
           <div
             className={`segment ${!isLogin ? "active" : ""}`}
-            onClick={() => {
-              setIsLogin(false);
-              toggleTitle(false);
-            }}
+            role="tab"
+            aria-selected={!isLogin}
+            onClick={() => handleToggle(false)}
           >
             Register
           </div>
         </div>
 
-        {isLogin ? <LoginForm /> : <RegisterForm />}
+        {isLogin ? <LoginForm key="login" /> : <RegisterForm key="register" />}
       </div>
     </div>
   );

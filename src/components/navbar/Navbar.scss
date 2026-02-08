@@ -19,13 +19,13 @@
   z-index: 1000;
 
   .Nav_logo img {
-    width: 40px;
+    width: 42px;
     border-radius: 50%;
     cursor: pointer;
     transition: transform 0.25s ease;
 
     &:hover {
-      transform: scale(1.05);
+      transform: scale(1.1);
     }
   }
 
@@ -76,12 +76,12 @@
     }
 
     .Nav_logo img {
-      width: 48px;
+      width: 24px;
     }
 
     .Nav_logout {
-      padding: 3px px;
-      font-size: 0.85rem;
+      padding: 2px;
+      font-size: 0.8rem;
     }
   }
 }
