@@ -8,8 +8,6 @@ import "./Footer.scss";
 // Подключаем стили футера
 
 const Footer = () => {
-  // Объявляем функциональный компонент Footer
-
   const [hidden, setHidden] = useState(false);
   // Состояние: скрыт ли футер (true = скрыт)
 
@@ -73,9 +71,7 @@ const Footer = () => {
         {/* Внутренний контейнер для контента футера */}
 
         <span className="Footer_left">
-          {/* Левая часть футера */}
-
-          © {new Date().getFullYear()} MyApp
+          {/* Левая часть футера */}© {new Date().getFullYear()} MyApp
           {/* Текущий год генерируется автоматически */}
         </span>
 
