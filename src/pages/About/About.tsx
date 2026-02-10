@@ -1,10 +1,9 @@
 import { useState } from "react";
 import "./About.scss";
-
 import { Language, LanguageOption } from "../../types/global";
 import { ABOUT_TEXTS } from "../../types/about.texts";
-
 import ReactLogo from "../../assets/reactlogo.png";
+import GlobeImg from "../../assets/earth.jpg";
 import Button from "../../components/ui/button/Button";
 
 export default function About() {
@@ -57,12 +56,19 @@ export default function About() {
 
         <div className="AboutContent AboutContent--bottom">
           <h1 className="AboutTitle">{ABOUT_TEXTS[lang].title}</h1>
-
           {ABOUT_TEXTS[lang].paragraphs.map((p, i) => (
             <p key={i} className="AboutText">
               {p}
             </p>
           ))}
+        </div>
+      </div>
+
+      {/* Глобус справа */}
+      <div className="AboutGlobeWrapper">
+        <div className="AboutGlobeContainer">
+          <img src={GlobeImg} alt="Globe Eurasia" className="AboutGlobe" />
+          <div className="AboutGlobeHighlight" />
         </div>
       </div>
     </div>
