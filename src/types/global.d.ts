@@ -44,7 +44,9 @@ declare module "react-slick" {
 // Тип языка
 export type Language = "en" | "ru" | "fr" | "it" | "am" | "de";
 
-export type BrowserTimer = ReturnType<typeof setTimeout>; // это работает для setTimeout и setInterval
+// Тип для таймеров (setTimeout / setInterval) в React
+export type BrowserTimer = ReturnType<typeof setTimeout> | null;
+
 
 export interface LanguageText {
   title: string;

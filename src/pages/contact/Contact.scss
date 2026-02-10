@@ -2,10 +2,10 @@
 .ContactWrapper {
   position: fixed; /* Фиксируем контейнер на экране */
   left: 16px;
-  bottom: 90px;
+  bottom: 100px;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 30px;
   z-index: 100;
 
   &_a_tg,

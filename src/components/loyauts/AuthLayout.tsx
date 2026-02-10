@@ -1,5 +1,5 @@
 import { Outlet } from "react-router";
-import Footer from "../footer/Footer";
+
 import "./AuthLayout.scss";
 
 const AuthLayout = () => {
@@ -8,7 +8,6 @@ const AuthLayout = () => {
       <main className="AuthLayout_mainContent">
         <Outlet />
       </main>
-      <Footer />
     </div>
   );
 };

@@ -39,7 +39,7 @@
       font-family: monospace;
       font-size: 1.2rem;
       position: relative;
-      transition: color 0.3s ease;
+      transition: color 0.4s ease;
 
       &:hover {
         color: #d4af37;
@@ -54,7 +54,7 @@
         height: 2px;
         border-radius: 2px;
         background-color: #cbb260; /* золотая линия под ссылкой */
-        transition: width 0.3s ease;
+        transition: width 0.4s ease;
       }
 
       &:hover::after {

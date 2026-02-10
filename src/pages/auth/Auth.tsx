@@ -1,31 +1,45 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import LoginForm from "../login/LoginForm";
 import RegisterForm from "../register/RegisterForm";
 import "./Auth.scss";
 import BgImage from "../../assets/bg.jpg";
+import type { BrowserTimer } from "../../types/global"; // импорт типа таймера
 
 const Auth = () => {
   const [isLogin, setIsLogin] = useState(true);
   const [titleText, setTitleText] = useState("Welcome back! Please sign in");
   const [animClass, setAnimClass] = useState("fade-in");
 
+  // useRef для хранения таймера
+  const timeoutRef = useRef<BrowserTimer>(null);
+
   const toggleTitle = (login: boolean) => {
     setAnimClass("fade-out");
 
-    setTimeout(() => {
+    // очищаем старый таймер, если он есть
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
+
+    timeoutRef.current = setTimeout(() => {
       setTitleText(
         login ? "Welcome back! Please sign in" : "Welcome! Create your account",
       );
       setAnimClass("fade-in");
+      timeoutRef.current = null; // обнуляем после выполнения
     }, 600);
   };
 
   const handleToggle = (login: boolean) => {
     if (login === isLogin) return;
-
     setIsLogin(login);
     toggleTitle(login);
   };
+
+  // Очистка таймера при размонтировании компонента
+  useEffect(() => {
+    return () => {
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    };
+  }, []);
 
   return (
     <div

@@ -1,11 +1,7 @@
 import { useEffect, useState } from "react";
-// Импортируем хуки useEffect (для побочных эффектов) и useState (для состояния)
-
 import { FaGithub, FaTelegramPlane, FaLinkedinIn } from "react-icons/fa";
 // Импортируем иконки соцсетей из react-icons
-
 import "./Footer.scss";
-// Подключаем стили футера
 
 const Footer = () => {
   const [hidden, setHidden] = useState(false);
