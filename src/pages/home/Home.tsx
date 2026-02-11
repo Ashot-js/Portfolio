@@ -1,66 +1,31 @@
-import { useRef } from "react";
-import Slider, { Settings } from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 import "./Home.scss";
 
-const slides = [
-  { id: 1, src: "/images/slide1.webp" },
-  { id: 2, src: "/images/slide2.webp" },
-  { id: 3, src: "/images/slide3.webp" },
-  { id: 4, src: "/images/slide4.webp" },
-  { id: 5, src: "/images/slide5.webp" },
-];
-
-export default function Home() {
-  const sliderRef = useRef<Slider>(null);
-
-  const settings: Settings = {
-    dots: true,
-    infinite: true,
-    speed: 700,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    arrows: false,
-    adaptiveHeight: true,
-    draggable: true,
-    swipe: true,
-    swipeToSlide: true,
-  };
-
+function Home() {
   return (
     <section className="Home">
-      <div className="Home_sliderWrapper">
-        <div className="Home_sliderInner">
-          <Slider ref={sliderRef} {...settings}>
-            {slides.map((slide) => (
-              <div key={slide.id} className="Home_slide">
-                <img src={slide.src} alt={`slide-${slide.id}`} />
-              </div>
-            ))}
-          </Slider>
-        </div>
-
-        <p className="Home_subtext">
-          We are literally made of stardust, as the elements of our bodies were
-          forged in the hearts of ancient stars
+      {/* Левая часть */}
+      <div className="Home_left">
+        <h1 className="Home_title">
+          Welcome to <span>My Portfolio</span>
+        </h1>
+        <p className="Home_subtitle">
+          This is my first project, we are still at the beginning stage.
         </p>
+      </div>
 
-        {/* navigation */}
-        <div
-          className="Home_prev"
-          role="button"
-          aria-label="Previous slide"
-          onClick={() => sliderRef.current?.slickPrev()}
-        />
-
-        <div
-          className="Home_next"
-          role="button"
-          aria-label="Next slide"
-          onClick={() => sliderRef.current?.slickNext()}
-        />
+      {/* Правая часть с прозрачным 3D кубом */}
+      <div className="Home_right">
+        <div className="Home_cube">
+          <div className="face face--front"></div>
+          <div className="face face--back"></div>
+          <div className="face face--left"></div>
+          <div className="face face--right"></div>
+          <div className="face face--top"></div>
+          <div className="face face--bottom"></div>
+        </div>
       </div>
     </section>
   );
 }
+
+export default Home;
