@@ -30,8 +30,6 @@ export default function Home() {
 
   return (
     <section className="Home">
-      <h2 className="Home_title">The staggering scale of the universe.</h2>
-
       <div className="Home_sliderWrapper">
         <div className="Home_sliderInner">
           <Slider ref={sliderRef} {...settings}>
