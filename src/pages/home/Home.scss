@@ -52,14 +52,21 @@
   animation: rotateCube 8s linear infinite;
 
   .face {
+    font-size: 12px;
     position: absolute;
     width: 140px;
     height: 140px;
     background: rgba(168, 144, 64, 0.2); // слегка видимая прозрачная грань
     border: 1px solid #d4af37;
     backface-visibility: hidden; // предотвращает мерцание
+
+    display: flex; /* flex-контейнер */
+    justify-content: center; /* центр по горизонтали */
+    align-items: center; /* центр по вертикали */
+    text-align: center; /* для многострочного текста */
   }
 
+  /* Грани куба */
   .face--front {
     transform: rotateY(0deg) translateZ(75px);
   }
@@ -71,6 +78,8 @@
   }
   .face--right {
     transform: rotateY(90deg) translateZ(75px);
+    writing-mode: vertical-rl; /* вертикальный текст сверху вниз */
+    text-orientation: upright; /* буквы не переворачиваются */
   }
   .face--top {
     transform: rotateX(90deg) translateZ(75px);

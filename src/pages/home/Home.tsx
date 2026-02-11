@@ -16,12 +16,12 @@ function Home() {
       {/* Правая часть с прозрачным 3D кубом */}
       <div className="Home_right">
         <div className="Home_cube">
-          <div className="face face--front"></div>
-          <div className="face face--back"></div>
-          <div className="face face--left"></div>
-          <div className="face face--right"></div>
-          <div className="face face--top"></div>
-          <div className="face face--bottom"></div>
+          <div className="face face--front">Js</div>
+          <div className="face face--back">Js</div>
+          <div className="face face--left">Js</div>
+          <div className="face face--right">Js</div>
+          <div className="face face--top">Js</div>
+          <div className="face face--bottom">Js</div>
         </div>
       </div>
     </section>
