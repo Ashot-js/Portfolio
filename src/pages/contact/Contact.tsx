@@ -1,10 +1,12 @@
 import { useState } from "react";
-import { useAppSelector } from "../../app/hooks"; // Redux selector для пользователя
+import { useAppSelector } from "../../app/hooks";
 import Button from "../../components/ui/button/Button";
 import "./Contact.scss";
 
+import ContactBg from "../../assets/contact-bg.jpg"; // пример картинки
+
 export default function Contact() {
-  const user = useAppSelector((state) => state.auth.user); // текущий пользователь
+  const user = useAppSelector((state) => state.auth.user);
   const [comment, setComment] = useState("");
   const [sending, setSending] = useState(false);
 
@@ -43,48 +45,54 @@ export default function Contact() {
   };
 
   return (
-    <div className="ContactWrapper">
-      {/* Информация */}
-      <div className="ContactContainer ContactContainer--info">
-        <h2 className="ContactHeader">Get in Touch </h2>
-        <p>📞 No.: +37499769898</p>
-        <p>
-          ✉ Email:{" "}
-          <a
-            className="ContactWrapper_a_gmail"
-            href={`mailto:${"ashotg771" + "@gmail.com"}`}
-          >
-            ashotg771@gmail.com
-          </a>
-        </p>
-        <p>
-          💬 Telegram:{" "}
-          <a
-            className="ContactWrapper_a_tg"
-            href="https://t.me/IE_YU"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            @IE_YU
-          </a>
-        </p>
+    <>
+      {/* 🔹 Новый fixed div с картинкой */}
+      <div className="ContactBackground">
+        <img src={ContactBg} alt="Contact background" />
       </div>
 
-      {/* Форма обратной связи */}
-      <div className="ContactContainer ContactContainer--feedback">
-        <div className="ContactHeader">Email reply is coming today!</div>
+      {/* 🔹 Старые блоки — НЕ ТРОГАЕМ */}
+      <div className="ContactWrapper">
+        <div className="ContactContainer ContactContainer--info">
+          <h2 className="ContactHeader">Get in Touch</h2>
+          <p>📞 No.: +37499769898</p>
+          <p>
+            ✉ Email:
+            <a
+              className="ContactWrapper_a_gmail"
+              href="mailto:ashotg771@gmail.com"
+            >
+              ashotg771@gmail.com
+            </a>
+          </p>
+          <p>
+            💬 Telegram:
+            <a
+              className="ContactWrapper_a_tg"
+              href="https://t.me/IE_YU"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              @IE_YU
+            </a>
+          </p>
+        </div>
 
-        <textarea
-          className="Feedback_input"
-          placeholder="Type your message here..."
-          value={comment}
-          onChange={(e) => setComment(e.target.value)}
-        />
+        <div className="ContactContainer ContactContainer--feedback">
+          <div className="ContactHeader">Email reply is coming today!</div>
 
-        <Button variant="primary" onClick={sendComment} disabled={sending}>
-          {sending ? "sending..." : "send"}
-        </Button>
+          <textarea
+            className="Feedback_input"
+            placeholder="Type your message here..."
+            value={comment}
+            onChange={(e) => setComment(e.target.value)}
+          />
+
+          <Button variant="primary" onClick={sendComment} disabled={sending}>
+            {sending ? "sending..." : "send"}
+          </Button>
+        </div>
       </div>
-    </div>
+    </>
   );
 }

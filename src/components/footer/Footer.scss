@@ -23,16 +23,15 @@
   width: 100%;
   // Растягиваем футер на всю ширину экрана
 
-  padding: 18px 40px;
+  padding: 12px 20px;
   // Внутренние отступы: сверху/снизу 18px, слева/справа 30px
 
-  background: rgba(0, 0, 0, 0.55);
   // Полупрозрачный тёмный фон
 
-  backdrop-filter: blur(8px);
+  backdrop-filter: blur(6px);
   // Размытие фона под футером (glassmorphism)
 
-  box-shadow: 0 -3px 12px rgba(212, 175, 55, 0.12);
+  box-shadow: 0 -4px 10px rgba(212, 175, 55, 0.12);
   // Лёгкая тень сверху футера
 
   font-family: monospace;
@@ -118,7 +117,7 @@
     display: flex;
     // Располагаем иконки в ряд
 
-    gap: 28px;
+    gap: 26px;
     // Расстояние между иконками
 
     a {
@@ -127,7 +126,7 @@
       color: #fbe8a6;
       // Цвет иконок
 
-      font-size: 1.25rem;
+      font-size: 1.2rem;
       // Размер иконок
 
       transition:

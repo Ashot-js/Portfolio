@@ -1,6 +1,6 @@
 // authSlice.ts
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import type { User } from "../types/User";
+import type { User } from "../types/global";
 
 // Интерфейс состояния auth
 interface AuthState {

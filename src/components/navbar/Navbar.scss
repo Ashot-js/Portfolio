@@ -1,21 +1,17 @@
 .Nav {
   user-select: none;
   position: fixed;
-  top: 12px;
+  top: 10px;
   left: 15px;
   right: 15px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0.5rem;
-
-  /* Фон как у баннера и формы */
-  background: linear-gradient(155deg, #2b2b2b, #3b321c);
+  background: linear-gradient(155deg, #141313, #3e392d);
   backdrop-filter: blur(6px);
   border-radius: 28px;
-
-  /* Box-shadow золотой, как у баннера */
-  box-shadow: 0 1px 3px 1px rgba(215, 179, 60, 0.5);
+  box-shadow: 0 1px 2px 1px rgba(215, 179, 60, 0.5);
   z-index: 1000;
 
   .Nav_logo img {
