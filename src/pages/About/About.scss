@@ -1,11 +1,11 @@
 .AboutPage {
   user-select: none;
-  min-height: calc(100vh - 50px - 90px);
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
   padding: 16px;
-  margin-top: 140px;
+  margin-top: 120px;
+  margin-bottom: 40px;
   font-family: monospace;
   gap: 18px;
   overflow: auto;
@@ -35,7 +35,6 @@
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  padding-left: 60px;
   animation: slideInGlobe 1s ease forwards;
 }
 
@@ -242,7 +241,6 @@
   }
   .AboutGlobeWrapper {
     flex-basis: auto;
-    max-width: 200px;
-    margin-top: 32px;
+    max-width: 130px;
   }
 }
