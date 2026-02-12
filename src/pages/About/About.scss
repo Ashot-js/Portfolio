@@ -1,37 +1,80 @@
 .AboutPage {
   user-select: none;
   display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
-  padding: 16px;
-  margin-top: 140px;
-  margin-bottom: 40px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 90px;
   font-family: monospace;
-  gap: 18px;
-  overflow: auto;
+  gap: 25px;
+  overflow-x: hidden; // ✅ фикс
+  overflow-y: auto;
+  padding: 14px;
 }
 
 .AboutContainer {
-  user-select: none;
   flex: 1;
-  max-width: 750px;
+  max-width: 900px;
   display: flex;
   flex-direction: column;
-  padding: 30px;
-  background: linear-gradient(155deg, #141313, #3e392d);
-  border-left: 3px solid rgba(212, 175, 55, 0.6);
+  padding: 16px;
   border-radius: 12px;
-  box-shadow: 0 1px 4px 1px rgba(212, 175, 55, 0.5);
+  box-shadow: 0 1px 4px rgba(212, 175, 55, 0.5);
   animation: slideIn 0.7s ease forwards;
-  gap: 16px;
+  gap: 10px;
   position: relative;
-  overflow: auto;
+  overflow: hidden;
 }
 
-/* Глобус */
+/* React logo */
+.AboutImageWrapper {
+  display: flex;
+  justify-content: start;
+}
+
+.AboutImage {
+  width: 180px;
+  border-radius: 6px;
+  border: 1px solid #d4af37;
+  opacity: 0;
+  animation: imageAppear 0.7s ease forwards;
+}
+
+/* Language */
+.AboutLang {
+  position: absolute;
+  top: 20px;
+  right: 16px;
+  z-index: 5;
+}
+
+.AboutLang_menu {
+  margin-top: 6px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 2px 6px rgba(42, 41, 16, 0.6);
+  .AboutLang_item {
+    font-size: 14px;
+  }
+}
+
+/* Content */
+.AboutTitle {
+  margin-bottom: 14px;
+  color: #fbe8a6;
+  font-size: 1.2rem;
+}
+
+.AboutText {
+  line-height: 1.8;
+  color: #e0d7b0;
+  font-size: 1.1em;
+  font-family: monospace;
+}
+
+/* Globe */
 .AboutGlobeWrapper {
-  user-select: none;
-  flex-basis: 50%;
+  flex-basis: 40;
   display: flex;
   justify-content: center;
   align-items: flex-start;
@@ -40,8 +83,7 @@
 
 .AboutGlobeContainer {
   position: relative;
-  width: 100%;
-  max-width: 320px;
+  width: 160px;
   aspect-ratio: 1 / 1;
   border-radius: 50%;
   overflow: hidden;
@@ -52,113 +94,29 @@
   height: 100%;
   border-radius: 50%;
   animation: rotateGlobe 20s linear infinite;
+  position: relative;
+  z-index: 2;
 }
 
-/* Логотип React с однократной анимацией появления */
-.AboutImageWrapper {
-  max-width: 200px;
-  display: flex;
-  justify-content: center;
-}
-
-.AboutImage {
-  width: 200px;
-  border-radius: 4%;
-  border: 1px solid #d4af37;
-  opacity: 0;
-  transform: translateX(-5px) scale(0.95);
-  animation: imageAppear 0.7s ease forwards;
-}
-
-@keyframes imageAppear {
-  0% {
-    opacity: 0;
-    transform: translateX(-30px) scale(0.95);
-  }
-  50% {
-    opacity: 0.8;
-    transform: translateX(10px) scale(1.02);
-  }
-  100% {
-    opacity: 1;
-    transform: translateX(0) scale(1);
-  }
-}
-
-/* Кнопка выбора языка */
-.AboutLang {
+.AboutGlobeHighlight {
   position: absolute;
-  top: 20px;
-  right: 16px;
-  z-index: 5;
-  display: inline-block;
+  inset: -15%;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(212, 175, 55, 0.25),
+    transparent 70%
+  );
+  filter: blur(14px);
+  animation: pulseHighlight 3.5s ease-in-out infinite;
+  z-index: 1;
+  pointer-events: none;
 }
 
-.AboutLang_current {
-  color: #d4af37;
-  font-weight: 500;
-  white-space: nowrap;
-  padding: 2px 3px;
-  transition: color 0.3s ease;
-}
-
-.AboutLang_current:hover {
-  color: #f5d77a;
-}
-
-.AboutLang_menu {
-  position: absolute;
-  top: 100%;
-  right: 0;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 1px;
-  box-shadow: 0 2px 6px rgba(42, 41, 16, 0.6);
-  z-index: 10;
-}
-
-.AboutLang_item {
-  width: 100%;
-  cursor: pointer;
-  padding: 6px 8px;
-  text-align: center;
-  color: #c9b76a;
-  transition:
-    color 0.2s ease,
-    background-color 0.2s ease;
-}
-
-.AboutLang_item:hover {
-  color: #fff;
-  background: rgba(226, 185, 52, 0.08);
-}
-
-.AboutLang_item.active {
-  color: #fff;
-  font-weight: 500;
-}
-
-/* Текстовый контент */
-.AboutContent--bottom {
-  flex: 1;
-}
-
-.AboutTitle {
-  margin-bottom: 14px;
-  color: #fbe8a6;
-  font-size: 1.2rem;
-}
-
-.AboutText {
-  line-height: 1.8;
-  color: #e0d7b0;
-}
-
-/* Анимации */
+/* Animations */
 @keyframes slideIn {
   from {
-    transform: translateX(-60px);
+    transform: translateX(-50px);
     opacity: 0;
   }
   to {
@@ -169,7 +127,7 @@
 
 @keyframes slideInGlobe {
   from {
-    transform: translateX(60px) scale(0.8);
+    transform: translateX(50px) scale(0.85);
     opacity: 0;
   }
   to {
@@ -179,59 +137,45 @@
 }
 
 @keyframes rotateGlobe {
-  from {
-    transform: rotate(0deg);
-  }
   to {
     transform: rotate(360deg);
   }
 }
 
 @keyframes pulseHighlight {
-  from {
-    transform: scale(0.9);
-    opacity: 0.4;
+  0% {
+    transform: scale(0.95);
+    opacity: 0.35;
   }
-  to {
+  100% {
     transform: scale(1.1);
     opacity: 0.7;
   }
 }
 
-/* TABLET */
-@media (max-width: 1024px) {
-  .AboutContainer {
-    padding: 32px 36px;
+@keyframes imageAppear {
+  from {
+    opacity: 0;
+    transform: translateX(-20px) scale(0.95);
   }
-  .AboutImage {
-    max-width: 180px;
-  }
-  .AboutGlobeWrapper {
-    flex-basis: 25%;
-    max-width: 250px;
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
   }
 }
 
 /* MOBILE */
-@media (max-width: 768px) {
+@media (max-width: 728px) {
   .AboutPage {
     flex-direction: column;
     align-items: center;
-    gap: 24px;
   }
-  .AboutContainer {
-    padding: 28px 24px;
-    max-width: 100%;
-  }
-  .AboutImage {
-    max-width: 100px;
-  }
-  .AboutLang {
-    top: 12px;
-    right: 12px;
-  }
+
   .AboutGlobeWrapper {
-    flex-basis: auto;
-    max-width: 130px;
+    margin-top: 12px;
+  }
+
+  .AboutImage {
+    width: 120px;
   }
 }

@@ -1,4 +1,5 @@
 import { useState } from "react";
+
 import "./About.scss";
 import { Language, LanguageOption } from "../../types/global";
 import { ABOUT_TEXTS } from "../../types/about.texts";
@@ -21,6 +22,12 @@ export default function About() {
 
   return (
     <div className="AboutPage">
+      <div className="AboutGlobeWrapper">
+        <div className="AboutGlobeContainer">
+          <div className="AboutGlobeHighlight" />
+          <img src={GlobeImg} alt="Globe Eurasia" className="AboutGlobe" />
+        </div>
+      </div>
       <div className="AboutContainer">
         <div className="AboutImageWrapper">
           <img src={ReactLogo} alt="Avatar" className="AboutImage" />
@@ -41,7 +48,9 @@ export default function About() {
                 <Button
                   key={l.code}
                   variant="lang"
-                  className={`AboutLang_item ${l.code === lang ? "active" : ""}`}
+                  className={`AboutLang_item ${
+                    l.code === lang ? "active" : ""
+                  }`}
                   onClick={() => {
                     setLang(l.code);
                     setOpen(false);
@@ -61,14 +70,6 @@ export default function About() {
               {p}
             </p>
           ))}
-        </div>
-      </div>
-
-      {/* Глобус справа */}
-      <div className="AboutGlobeWrapper">
-        <div className="AboutGlobeContainer">
-          <img src={GlobeImg} alt="Globe Eurasia" className="AboutGlobe" />
-          <div className="AboutGlobeHighlight" />
         </div>
       </div>
     </div>

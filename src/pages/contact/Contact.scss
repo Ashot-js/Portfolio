@@ -17,13 +17,12 @@
 
 /* ===== КОНТЕЙНЕР-ОБЁРТКА ДЛЯ ДВУХ БЛОКОВ ===== */
 .ContactWrapper {
-  position: fixed;
-  left: 16px;
-  margin-top: 140px;
-  margin-bottom: 20px;
+  margin-top: 120px;
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  font-size: 1em;
+  gap: 60px;
+  padding: 20px;
   z-index: 2;
 
   &_a_tg,
@@ -40,13 +39,13 @@
 
 /* ===== ОБЩИЕ СТИЛИ КОНТЕЙНЕРОВ ===== */
 .ContactContainer {
-  max-width: 720px;
-  padding: 14px 18px;
+  max-width: 580px;
+  padding: 18px;
   border-radius: 12px;
   box-shadow: 0 1px 4px 1px rgba(181, 155, 68, 0.5);
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 16px;
   border-left: 3px solid rgba(212, 175, 55, 0.6);
   animation: slideIn 1.2s cubic-bezier(0.25, 0.9, 0.25, 1) forwards;
 
@@ -58,17 +57,13 @@
 
 /* ===== ВЕРХНИЙ БЛОК: ИНФОРМАЦИЯ ===== */
 .ContactContainer--info {
-  min-width: 600px;
   color: #fbe8a6;
-
   .ContactHeader {
-    font-weight: 600;
-    margin-bottom: 8px;
+    font-weight: 400;
   }
 
   p {
-    margin: 4px 0;
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     color: #e0d7b0;
   }
 }
@@ -86,7 +81,7 @@
 
   .Feedback_input {
     width: 100%;
-    min-height: 100px;
+    min-height: 40px;
     padding: 12px 14px;
     resize: vertical;
     background: rgba(10, 10, 10, 0.7);

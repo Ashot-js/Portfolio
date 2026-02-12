@@ -65,7 +65,7 @@ export default function Contact() {
               ashotg771@gmail.com
             </a>
           </p>
-          <p>
+          {/* <p>
             💬 Telegram:
             <a
               className="ContactWrapper_a_tg"
@@ -75,7 +75,7 @@ export default function Contact() {
             >
               @IE_YU
             </a>
-          </p>
+          </p> */}
         </div>
 
         <div className="ContactContainer ContactContainer--feedback">
