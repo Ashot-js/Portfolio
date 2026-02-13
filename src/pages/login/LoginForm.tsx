@@ -110,7 +110,7 @@ const LoginForm = () => {
         <ErrorMessage name="password" component="div" className="error" />
         {/* Вывод ошибки валидации пароля */}
 
-        <Button variant="secondary">Login</Button>
+        <Button variant="primary">Login</Button>
       </Form>
     </Formik>
   );

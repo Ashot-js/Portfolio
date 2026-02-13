@@ -140,7 +140,7 @@ const RegisterForm = () => {
           component="div"
           className="error"
         />
-        <Button variant="secondary">
+        <Button variant="primary">
           Register
           {/* Кнопка отправки формы */}
         </Button>

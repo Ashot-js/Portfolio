@@ -75,11 +75,7 @@ export default function About() {
         {/* Блок переключения языка */}
         <div className="AboutLang">
           {/* Кнопка текущего языка */}
-          <Button
-            variant="lang"
-            className="AboutLang_current"
-            onClick={() => setOpen((prev) => !prev)}
-          >
+          <Button variant="lang" onClick={() => setOpen((prev) => !prev)}>
             {/* Отображаем название текущего языка */}
             {languages.find((l) => l.code === lang)?.label}
           </Button>

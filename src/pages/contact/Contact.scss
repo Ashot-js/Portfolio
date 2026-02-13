@@ -44,6 +44,7 @@
   box-shadow: 0 1px 4px 1px rgba(181, 155, 68, 0.5);
   display: flex;
   flex-direction: column;
+  align-items: start;
   animation: slideIn 1.2s cubic-bezier(0.25, 0.9, 0.25, 1) forwards;
   gap: 20px;
   &:hover {
@@ -85,7 +86,6 @@
     height: auto;
     resize: vertical;
     padding: 5px 0 0 5px; // top→5px  right→0  bottom→0 left→5px
-
     box-sizing: border-box;
     font-family: monospace;
     font-size: 12px;

@@ -103,13 +103,13 @@
   width: 90%;
   // размеры контейнера формы
 
-  padding: 18px 16px;
+  padding: 22px;
   // внутренние отступы
 
   border-radius: 28px;
   // скругленные углы
 
-  box-shadow: 0 1px 5px 1px rgba(212, 175, 55, 0.5);
+  box-shadow: 0 1px 3px 1px rgba(212, 175, 55, 0.5);
   // тень вокруг формы
 
   /* плавный градиент и тень */
@@ -123,7 +123,8 @@
 /* Градиенты с лёгкой анимацией движения */
 /* ============================= */
 .AuthPageWrapper.login .AuthPage {
-  background: linear-gradient(200deg, #2b2b2b 0%, #3b321c 100%);
+  background: linear-gradient(155deg, rgba(54, 51, 51, 0), rgba(57, 54, 48, 0));
+
   // фон формы для login
 
   background-size: 200% 200%;
@@ -134,7 +135,8 @@
 }
 
 .AuthPageWrapper.register .AuthPage {
-  background: linear-gradient(200deg, #1f2a24 0%, #3f3b22 100%);
+  background: linear-gradient(155deg, rgba(54, 51, 51, 0), rgba(57, 54, 48, 0));
+
   // фон формы для register
 
   background-size: 200% 200%;
@@ -230,7 +232,12 @@
     font-weight: 600;
     font-size: 14px;
 
-    background: rgba(40, 35, 30, 0.6);
+    background: linear-gradient(
+      155deg,
+      rgba(54, 51, 51, 0),
+      rgba(57, 54, 48, 0)
+    );
+
     // цвет сегмента по умолчанию
 
     color: #e4d291;
@@ -243,16 +250,22 @@
     // плавное изменение всех свойств
 
     &.active {
-      background: linear-gradient(155deg, #2b2b2b, #3b321c);
-      color: #fbe8a6;
-      box-shadow: inset 0 0 6px rgba(212, 175, 55, 0.35);
+      background: linear-gradient(
+        155deg,
+        rgba(16, 15, 15, 0),
+        rgba(26, 25, 23, 0)
+      );
+
+      box-shadow: inset 0 0 8px rgba(232, 191, 57, 0.35);
       // стили активного сегмента
     }
 
     &:hover {
-      background: rgba(212, 175, 55, 0.2);
+      background: rgba(212, 175, 55, 0.1);
       color: #fff;
-      // hover эффекты
+      transform: translateY(-1px);
+      box-shadow: 0 1px 1px rgba(212, 175, 55, 0.6);
+      border-color: rgba(212, 175, 55, 0.6);
     }
   }
 }
