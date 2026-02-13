@@ -1,4 +1,3 @@
-// router.tsx
 import { createBrowserRouter } from "react-router";
 // Импортируем функцию для создания маршрутизатора (React Router v6)
 
@@ -9,7 +8,7 @@ import MainLayout from "../components/loyauts/MainLayout";
 // Основной лейаут приложения с Navbar и Footer
 
 import AuthLayout from "../components/loyauts/AuthLayout";
-// Лейаут для страниц аутентификации (обычно без Navbar)
+// Лейаут для страниц аутентификации
 
 import ProtectedRoute from "../components/protectedRoute/ProtectedRoute";
 // Компонент для защиты маршрутов — проверяет авторизацию
@@ -17,7 +16,6 @@ import ProtectedRoute from "../components/protectedRoute/ProtectedRoute";
 import ErrorPage from "../pages/error/ErrorPage";
 // Страница для отображения ошибок маршрутизации (404, 500 и т.д.)
 
-// Lazy загрузка страниц — компонент будет загружаться только при переходе на маршрут
 const Home = lazy(() => import("../pages/home/Home"));
 const About = lazy(() => import("../pages/About/About"));
 const Contact = lazy(() => import("../pages/contact/Contact"));
@@ -30,7 +28,7 @@ const withSuspense = (el: React.ReactNode) => (
 );
 
 export const router = createBrowserRouter([
-  // 🔴 AUTH — маршруты без Navbar, с Footer
+  // 🔴 AUTH — маршруты
   {
     element: <AuthLayout />, // Лейаут для страниц аутентификации
     children: [

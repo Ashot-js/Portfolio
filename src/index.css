@@ -6,11 +6,9 @@
 }
 
 #root {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  /* Основной шрифт приложения */
+
+   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+
 
   background: linear-gradient(
     390deg,
@@ -18,7 +16,7 @@
     #0f0f0f 40%,
     #16140f 70%,
     #13120d 100%
-  );
+  ); 
   /* Плавный переход фона:
      сверху почти чёрный →
      тёмно-серый →

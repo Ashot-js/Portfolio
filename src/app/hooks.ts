@@ -1,4 +1,4 @@
-// Импортируем хуки useDispatch и useSelector из react-redux
+
 import { useDispatch, useSelector } from "react-redux";
 
 // Импортируем ТОЛЬКО тип TypedUseSelectorHook (не попадает в JS-бандл)

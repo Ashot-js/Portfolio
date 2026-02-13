@@ -4,7 +4,7 @@
   cursor: pointer;
   font-family: monospace;
   font-weight: 600;
-  font-size: 16px;
+  font-size: 14px;
   transition: all 0.25s ease;
   text-align: center;
 
@@ -14,7 +14,6 @@
   &.btn--primary {
     align-self: flex-start;
     padding: 8px 16px;
-    margin-top: 2px;
     box-shadow: 0 2px 6px rgba(212, 175, 55, 0.5);
     background: linear-gradient(155deg, #2b2b2b, #3b321c);
     border-radius: 6px;

@@ -1,4 +1,3 @@
-// ProtectedRoute.tsx
 import { Navigate, Outlet } from "react-router";
 // Navigate — компонент для редиректа на другой маршрут
 // Outlet — место, куда рендерятся вложенные маршруты (children)
@@ -17,4 +16,3 @@ const ProtectedRoute = () => {
 };
 
 export default ProtectedRoute;
-// Экспортируем ProtectedRoute для использования в маршрутах
