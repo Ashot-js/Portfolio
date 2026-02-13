@@ -3,8 +3,8 @@ import { useState } from "react";
 import "./About.scss";
 import { Language, LanguageOption } from "../../types/global";
 import { ABOUT_TEXTS } from "../../types/about.texts";
-import ReactLogo from "../../assets/reactlogo.png";
-import GlobeImg from "../../assets/earth.jpg";
+import ReactImage from "../../assets/reactimage.jpg";
+import GlobeImg from "../../assets/reactglobe.jpg";
 import Button from "../../components/ui/button/Button";
 
 export default function About() {
@@ -25,12 +25,12 @@ export default function About() {
       <div className="AboutGlobeWrapper">
         <div className="AboutGlobeContainer">
           <div className="AboutGlobeHighlight" />
-          <img src={GlobeImg} alt="Globe Eurasia" className="AboutGlobe" />
+          <img src={GlobeImg} alt="Globe" className="AboutGlobe" />
         </div>
       </div>
       <div className="AboutContainer">
         <div className="AboutImageWrapper">
-          <img src={ReactLogo} alt="Avatar" className="AboutImage" />
+          <img src={ReactImage} alt="Avatar" className="AboutImage" />
         </div>
 
         <div className="AboutLang">

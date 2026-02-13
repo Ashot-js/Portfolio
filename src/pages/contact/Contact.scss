@@ -40,13 +40,10 @@
 /* ===== ОБЩИЕ СТИЛИ КОНТЕЙНЕРОВ ===== */
 .ContactContainer {
   max-width: 580px;
-  padding: 18px;
-  border-radius: 12px;
+  border-radius: 10px;
   box-shadow: 0 1px 4px 1px rgba(181, 155, 68, 0.5);
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  border-left: 3px solid rgba(212, 175, 55, 0.6);
   animation: slideIn 1.2s cubic-bezier(0.25, 0.9, 0.25, 1) forwards;
 
   &:hover {
@@ -57,8 +54,11 @@
 
 /* ===== ВЕРХНИЙ БЛОК: ИНФОРМАЦИЯ ===== */
 .ContactContainer--info {
+  gap: 30px;
+  padding: 20px;
   color: #fbe8a6;
   .ContactHeader {
+    font-size: 1.2em;
     font-weight: 400;
   }
 
@@ -70,26 +70,39 @@
 
 /* ===== НИЖНИЙ БЛОК: FEEDBACK ===== */
 .ContactContainer--feedback {
+  gap: 20px;
+  padding: 20px;
   opacity: 0;
   animation: slideInFeedback 1.3s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
   animation-delay: 0.4s;
 
   .ContactHeader {
+    font-size: 1em;
     color: #fbe8a6;
     font-weight: 600;
   }
 
   .Feedback_input {
     width: 100%;
-    min-height: 40px;
-    padding: 12px 14px;
+    height: auto;
     resize: vertical;
+    padding: 5px 0 0 5px; // top→5px  right→0  bottom→0 left→5px
+
+    box-sizing: border-box;
+    font-family: monospace;
+    font-size: 12px;
+    line-height: 1.4;
     background: rgba(10, 10, 10, 0.7);
     border: 1px solid rgba(212, 175, 55, 0.5);
     border-radius: 6px;
     color: #fbe8a6;
-    font-family: inherit;
+
     transition: all 0.3s ease;
+    &::placeholder {
+      color: rgba(251, 232, 166, 0.5);
+      font-size: 10px;
+      padding-left: 2px;
+    }
 
     &:focus {
       border-color: #d4af37;

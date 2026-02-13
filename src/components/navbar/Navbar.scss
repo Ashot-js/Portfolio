@@ -28,9 +28,10 @@
   .Nav_links {
     display: flex;
     gap: 120px;
+
     a {
       text-decoration: none;
-      color: #e0d19c; /* золотистый текст по общему стилю */
+      color: #e0d19c;
       font-weight: 600;
       font-family: monospace;
       font-size: 1.2rem;
@@ -46,16 +47,37 @@
         position: absolute;
         left: 0;
         bottom: -2px;
-        width: 0;
         height: 2px;
+        width: 100%;
         border-radius: 2px;
-        background-color: #cbb260; /* золотая линия под ссылкой */
-        transition: width 0.4s ease;
+        background-color: #cbb260;
+
+        transform: scaleX(0);
+        transform-origin: left;
+        opacity: 0;
       }
 
       &:hover::after {
-        width: 100%;
+        animation: underlineSwipe 0.9s ease forwards;
       }
+    }
+  }
+
+  /* 🔥 Анимация: появление → исчезновение */
+  @keyframes underlineSwipe {
+    0% {
+      transform: scaleX(0);
+      opacity: 1;
+    }
+
+    40% {
+      transform: scaleX(1);
+      opacity: 1;
+    }
+
+    100% {
+      transform: scaleX(1);
+      opacity: 0;
     }
   }
 
