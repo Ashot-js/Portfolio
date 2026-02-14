@@ -5,7 +5,7 @@
   justify-content: center;
   margin-top: 100px;
   font-family: monospace;
-  gap: 30px;
+  gap: 20px;
   overflow-x: hidden; // ✅ фикс
   overflow-y: auto;
   padding: 8px;
@@ -16,11 +16,11 @@
   max-width: 900px;
   display: flex;
   flex-direction: column;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 1px 4px rgba(212, 175, 55, 0.5);
+  padding: 22px;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(212, 175, 55, 0.5);
   animation: slideIn 0.7s ease forwards;
-  gap: 50px;
+  gap: 40px;
   position: relative;
   overflow: hidden;
 }
@@ -32,7 +32,7 @@
 }
 
 .AboutImage {
-  width: 160px;
+  width: 200px;
   border-radius: 6px;
   border: 1px solid #d4af37;
   opacity: 0;
@@ -48,7 +48,7 @@
 }
 
 .AboutLang_menu {
-  margin-top: 4px;
+  margin-top: 2px;
   display: flex;
   flex-direction: column;
   box-shadow: 0 2px 6px rgba(42, 41, 16, 0.6);
@@ -72,85 +72,7 @@
   font-family: monospace;
 }
 
-/* Globe */
-.AboutGlobeWrapper {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  animation: slideInGlobe 1s ease forwards;
-}
-
-.AboutGlobeContainer {
-  position: relative;
-  width: 120px;
-  aspect-ratio: 1 / 1;
-  border-radius: 50%;
-  overflow: hidden;
-}
-
-.AboutGlobe {
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  animation: rotateGlobe 30s linear infinite;
-  position: relative;
-  z-index: 2;
-}
-
-.AboutGlobeHighlight {
-  position: absolute;
-  inset: -15%;
-  border-radius: 50%;
-  background: radial-gradient(
-    circle,
-    rgba(212, 175, 55, 0.25),
-    transparent 70%
-  );
-  filter: blur(14px);
-  animation: pulseHighlight 3.5s ease-in-out infinite;
-  z-index: 1;
-  pointer-events: none;
-}
-
 /* Animations */
-@keyframes slideIn {
-  from {
-    transform: translateX(-50px);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
-}
-
-@keyframes slideInGlobe {
-  from {
-    transform: translateX(50px) scale(0.85);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0) scale(1);
-    opacity: 1;
-  }
-}
-
-@keyframes rotateGlobe {
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes pulseHighlight {
-  0% {
-    transform: scale(0.95);
-    opacity: 0.35;
-  }
-  100% {
-    transform: scale(1.1);
-    opacity: 0.7;
-  }
-}
 
 @keyframes imageAppear {
   from {
@@ -168,10 +90,6 @@
   .AboutPage {
     flex-direction: column;
     align-items: center;
-  }
-
-  .AboutGlobeWrapper {
-    margin-top: 12px;
   }
 
   .AboutImage {
