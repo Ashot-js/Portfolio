@@ -3,14 +3,9 @@ import "./About.scss";
 // Импортируем типы языка и опций языка
 import { Language, LanguageOption } from "../../types/global";
 import { ABOUT_TEXTS } from "../../types/about.texts";
-
-// Импортируем изображение аватара
 import ReactImage from "../../assets/reactimage.jpg";
-
-// Импортируем UI-компонент кнопки
 import Button from "../../components/ui/button/Button";
 
-// Экспортируем компонент About по умолчанию
 export default function About() {
   // Состояние текущего выбранного языка (по умолчанию английский)
   const [lang, setLang] = useState<Language>("en");
@@ -20,32 +15,19 @@ export default function About() {
 
   // Список доступных языков для переключения
   const languages: LanguageOption[] = [
-    // Английский язык
     { code: "en", label: "English" },
-
-    // Русский язык
     { code: "ru", label: "Русский" },
-
-    // Французский язык
     { code: "fr", label: "Français" },
-
-    // Итальянский язык
     { code: "it", label: "Italiano" },
-
-    // Армянский язык
     { code: "am", label: "Հայերեն" },
-
     // Немецкий язык
     { code: "de", label: "Deutsch" },
   ];
 
-  // Возвращаем JSX-разметку страницы About
   return (
     // Корневой контейнер страницы About
     <div className="AboutPage">
-      {/* Основной контент страницы */}
       <div className="AboutContainer">
-        {/* Обёртка для изображения профиля */}
         <div className="AboutImageWrapper">
           {/* Аватар / изображение */}
           <img src={ReactImage} alt="Avatar" className="AboutImage" />
