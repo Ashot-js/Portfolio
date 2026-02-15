@@ -12,7 +12,7 @@ type ButtonProps =
     // primary — основная
     // secondary — вторичная
     // lang — кнопка выбора языка
-    variant?: "primary" | "secondary" | "lang";
+    variant?: "primary" | "secondary" | "lang" | "comment";
   };
 
 // Объявляем функциональный компонент Button

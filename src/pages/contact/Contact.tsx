@@ -46,12 +46,10 @@ export default function Contact() {
 
   return (
     <>
-      {/* 🔹 Новый fixed div с картинкой */}
       <div className="ContactBackground">
         <img src={ContactBg} alt="Contact background" />
       </div>
 
-      {/* 🔹 Старые блоки — НЕ ТРОГАЕМ */}
       <div className="ContactWrapper">
         <div className="ContactContainer ContactContainer--info">
           <h2 className="ContactHeader">Get in Touch</h2>
@@ -65,17 +63,30 @@ export default function Contact() {
               ashotg771@gmail.com
             </a>
           </p>
-          {/* <p>
-            💬 Telegram:
+        </div>
+        <div className="ContactContainer ContactContainer--extra">
+          <h2 className="ContactHeader">More ways to connect</h2>
+
+          <p>
+            🌍 Location:
+            <span className="ContactText"> Armenia, Yerevan</span>
+          </p>
+
+          <p>
+            💼 GitHub:
             <a
-              className="ContactWrapper_a_tg"
-              href="https://t.me/IE_YU"
+              className="ContactWrapper_a_github"
+              href="https://github.com/Ashot-js/Portfolio"
               target="_blank"
-              rel="noopener noreferrer"
+              rel="noreferrer"
             >
-              @IE_YU
+              github.com/Ashot-js/Portfolio
             </a>
-          </p> */}
+          </p>
+
+          <p className="ContactHint">
+            Fast replies • Open to collaboration • Freelance friendly
+          </p>
         </div>
 
         <div className="ContactContainer ContactContainer--feedback">
@@ -88,7 +99,7 @@ export default function Contact() {
             onChange={(e) => setComment(e.target.value)}
           />
 
-          <Button variant="primary" onClick={sendComment} disabled={sending}>
+          <Button variant="comment" onClick={sendComment} disabled={sending}>
             {sending ? "sending..." : "send"}
           </Button>
         </div>
