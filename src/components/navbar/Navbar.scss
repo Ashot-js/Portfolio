@@ -86,7 +86,7 @@
 
     a {
       text-decoration: none;
-      color: #e0d19c;
+      color: #bda344;
       font-weight: 600;
       font-family: monospace;
       font-size: 1.2rem;
@@ -95,7 +95,7 @@
       transition: color 0.4s ease;
 
       &:hover {
-        color: #d4af37;
+        color: #e9b716;
       }
 
       &::after {
@@ -103,12 +103,11 @@
         position: absolute;
         left: 0;
         bottom: -2px;
-
         height: 2px;
         width: 100%;
         border-radius: 2px;
 
-        background-color: #cbb260;
+        background-color: #bda344;
 
         transform: scaleX(0);
         transform-origin: left;
