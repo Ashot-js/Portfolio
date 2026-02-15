@@ -12,12 +12,13 @@
   /* PRIMARY BUTTON */
   /* ============================= */
   &.btn--primary {
-    padding: 10px 14px;
-    border-radius: 12px;
-    color: #fbe8a6; /* золотой текст */
-    background: transparent; /* прозрачный фон */
-    box-shadow: 0 1px 4px rgba(212, 175, 55, 0.5); /* золотая тень */
-    border: 1px solid rgba(212, 175, 55, 0.5);
+    padding: 12px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #b59854;
+    border-radius: 14px;
+    box-shadow: inset 0 0 10px rgba(212, 175, 55, 0.5);
+    background: transparent;
     transition: all 0.35s ease;
     cursor: pointer;
 
@@ -30,8 +31,9 @@
     }
 
     &:active {
-      transform: translateY(0);
-      box-shadow: 0 1px 4px rgba(212, 175, 55, 0.5);
+      background: linear-gradient(155deg, #494330, #b0934a);
+
+      box-shadow: inset 0 2px 4px rgba(212, 175, 55, 0.5);
     }
   }
 

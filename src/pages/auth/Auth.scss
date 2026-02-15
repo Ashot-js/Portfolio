@@ -1,81 +1,39 @@
 .AuthPageWrapper {
   background-size: cover;
-  // фоновое изображение растягивается по всему контейнеру
   background-repeat: no-repeat;
-  // фон не повторяется
   background-position: center;
-  // центрируем фон
   height: 100vh;
-  // высота контейнера на весь экран
   display: flex;
-  // используем flex для вертикального расположения
-  padding-top: 180px;
-  // отступ сверху для заголовка и формы
+  padding-top: 200px;
   flex-direction: column;
-  // элементы располагаются вертикально
-  gap: 50px;
-  // промежуток между заголовком и формой
+  gap: 40px;
   justify-content: start;
-  // элементы прижаты к верху
   align-items: center;
-  // выравнивание по центру по горизонтали
   flex: 1;
-  // контейнер растягивается в доступном пространстве
   overflow-y: auto;
   // если контента больше, появляется вертикальный скролл
   position: relative;
   // для ::before и позиционирования элементов
-  &::before {
-    content: "";
-    // псевдоэлемент для тёмного оверлея
-
-    position: absolute;
-    inset: 0;
-    // занимает весь контейнер
-    background: rgba(22, 18, 18, 0.6);
-    // полупрозрачный тёмный слой
-    z-index: 0;
-    // отправляем позади контента
-    transition: background 0.6s ease;
-    // плавное изменение цвета фона при переключении
-  }
-
-  &.login::before {
-    background: rgba(43, 48, 43, 0.55);
-    // цвет оверлея для режима login
-  }
-
-  &.register::before {
-    background: rgba(44, 49, 44, 0.56);
-    // цвет оверлея для режима register
-  }
 
   &_title {
     z-index: 1;
-    // заголовок поверх оверлея
     color: #ece194;
-    // цвет текста заголовка
     font-family: monospace;
-    // моноширинный шрифт
-    font-size: 20px;
-    font-weight: 600;
+    font-size: 18px;
+    font-weight: 700;
     text-align: center;
-    // стили текста заголовка
 
     transition: all 0.6s ease;
     // плавная анимация для заголовка
 
     &.fade-out {
       opacity: 0;
-      // исчезновение заголовка
-
-      transform: translateY(-16px);
+      transform: translateY(-18px);
       // сдвиг вверх при исчезновении
     }
 
     &.fade-in {
       opacity: 1;
-      // видимый заголовок
 
       transform: translateY(0);
       // положение по умолчанию
@@ -89,39 +47,26 @@
 .AuthPage {
   display: grid;
   // используем grid, чтобы форма автоматически подстраивалась под контент
-
   grid-template-rows: auto;
   // количество строк определяется автоматически
-
   align-content: start;
-  // контент прижат к верху контейнера
-
   z-index: 1;
   // поверх оверлея
-
   max-width: 500px;
   width: 90%;
-  // размеры контейнера формы
-
   padding: 22px;
-  // внутренние отступы
+  gap: 20px;
+  border-radius: 25px;
+  box-shadow: inset 0 0 20px rgba(212, 175, 55, 0.5);
 
-  border-radius: 28px;
-  // скругленные углы
-
-  box-shadow: 0 1px 3px 1px rgba(212, 175, 55, 0.5);
-  // тень вокруг формы
-
-  /* плавный градиент и тень */
   transition:
     background 0.7s ease,
     box-shadow 0.7s ease;
   // анимация изменения градиента и тени при переключении login/register
 }
 
-/* ============================= */
 /* Градиенты с лёгкой анимацией движения */
-/* ============================= */
+
 .AuthPageWrapper.login .AuthPage {
   background: linear-gradient(155deg, rgba(54, 51, 51, 0), rgba(57, 54, 48, 0));
 
@@ -202,70 +147,30 @@
   }
 }
 
-/* ============================= */
 /* Toggle */
-/* ============================= */
+
 .AuthPage_toggle {
   display: flex;
-  // горизонтальный контейнер переключателя
+  justify-content: space-around;
 
-  box-shadow: 0 1px 3px rgba(212, 175, 55, 0.5);
-  // тень для toggle
-
-  border-radius: 14px;
-  // скругляем углы toggle
-
-  overflow: hidden;
-  // скрываем лишнее
-
-  margin-bottom: 16px;
-  // отступ снизу toggle
-
+  border-radius: 12px;
   .segment {
-    flex: 1;
-    // каждый сегмент занимает равное место
-
-    text-align: center;
-    // текст по центру
-
+    border-radius: 12px;
     padding: 10px;
     font-weight: 600;
     font-size: 14px;
-
-    background: linear-gradient(
-      155deg,
-      rgba(54, 51, 51, 0),
-      rgba(57, 54, 48, 0)
-    );
-
-    // цвет сегмента по умолчанию
-
-    color: #e4d291;
-    // цвет текста
-
+    color: #ffffff;
     cursor: pointer;
-    // курсор при наведении
-
-    transition: all 0.4s ease;
-    // плавное изменение всех свойств
 
     &.active {
-      background: linear-gradient(
-        155deg,
-        rgba(16, 15, 15, 0),
-        rgba(26, 25, 23, 0)
-      );
-
-      box-shadow: inset 0 0 8px rgba(232, 191, 57, 0.35);
-      // стили активного сегмента
+      color: #b59854;
     }
 
     &:hover {
-      background: rgba(212, 175, 55, 0.1);
-      color: #fff;
-      transform: translateY(-1px);
-      box-shadow: 0 1px 1px rgba(212, 175, 55, 0.6);
-      border-color: rgba(212, 175, 55, 0.6);
+      flex-basis: 100%;
+      box-shadow: inset 0 0 10px rgba(212, 175, 55, 0.5);
+      color: #ffffff;
+      text-align: center;
     }
   }
 }

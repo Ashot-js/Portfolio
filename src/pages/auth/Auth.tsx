@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import LoginForm from "../login/LoginForm";
 import RegisterForm from "../register/RegisterForm";
 import "./Auth.scss";
-import BgImage from "../../assets/bg.jpg";
+import BgImage from "../../assets/auth-bg.jpg";
 import type { BrowserTimer } from "../../types/global"; // импорт типа таймера
 
 const Auth = () => {
