@@ -57,3 +57,21 @@ export interface LanguageOption {
   code: Language;
   label: string;
 }
+export interface SiteAge {
+  years: number;
+  months: number;
+  days: number;
+}
+// src/
+//  ├─ app
+//  ├─ assets
+//  ├─ components
+//  │   └─ SiteAge.tsx
+//  ├─ pages
+//  ├─ services
+//  ├─ store
+//  ├─ types
+//  │   ├─ types.ts
+//  │   └─ env.d.ts
+//  └─ utils
+//      └─ siteAge.ts

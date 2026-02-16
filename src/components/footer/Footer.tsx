@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { FaGithub, FaTelegramPlane, FaLinkedinIn } from "react-icons/fa";
+import SiteAge from "../SiteAge/SiteAge";
 // Импортируем иконки соцсетей из react-icons
 import "./Footer.scss";
 
@@ -67,8 +68,7 @@ const Footer = () => {
         {/* Внутренний контейнер для контента футера */}
 
         <span className="Footer_left">
-          {/* Левая часть футера */}© {new Date().getFullYear()} MyApp
-          {/* Текущий год генерируется автоматически */}
+          <SiteAge />
         </span>
 
         <div className="Footer_socials">

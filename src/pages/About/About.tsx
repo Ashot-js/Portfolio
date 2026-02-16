@@ -23,7 +23,6 @@ export default function About() {
     { code: "de", label: "Deutsch" },
   ];
 
-  // 📸 СЛАЙДЫ ИЗ public/images
   const slides = [
     { id: 1, src: "/images/slide1.webp" },
     { id: 2, src: "/images/slide2.webp" },
