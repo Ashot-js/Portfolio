@@ -12,15 +12,15 @@
 
 .AboutContainer {
   flex: 1;
-  max-width: 700px;
+  max-width: 720px;
   display: flex;
   flex-direction: column;
-  padding: 25px;
+  padding: 20px;
   border-radius: 12px;
   box-shadow: 0 1px 3px rgba(212, 175, 55, 0.5);
   animation: slideInFromTop 0.7s ease forwards;
   transform-origin: top center; /* для плавности */
-  gap: 25px;
+  gap: 40px;
   position: relative;
   overflow: hidden;
 }
@@ -32,9 +32,9 @@
 }
 
 .AboutImage {
-  width: 160px;
-  border-radius: 6px;
-  border: 1px solid #d4af37;
+  width: 145px;
+  border-radius: 5px;
+  border: 1px solid #cdac3e;
   opacity: 0;
   animation: imageAppear 0.7s ease forwards;
   animation-delay: 0.2s; /* появляется чуть позже */
@@ -43,19 +43,18 @@
 /* Language */
 .AboutLang {
   position: absolute;
-  top: 20px;
+  top: 14px;
   right: 16px;
   z-index: 5;
 }
 
 .AboutLang_menu {
-  margin-top: 1px;
   display: flex;
   flex-direction: column;
 
   .AboutLang_item {
-    font-size: 12px;
-    padding: 3px;
+    font-size: 10px;
+    padding: 5px;
   }
 }
 

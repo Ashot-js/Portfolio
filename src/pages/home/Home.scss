@@ -100,7 +100,7 @@
 /* Адаптив */
 @media (max-width: 1024px) {
   .Home_left .Home_title {
-    font-size: 48px;
+    font-size: 32px;
   }
 }
 
@@ -109,8 +109,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 32px;
-    padding: 32px 16px;
+    gap: 36px;
+    padding: 14px 18px;
     text-align: center;
   }
 
@@ -121,8 +121,8 @@
   }
 
   .Home_cube {
-    width: 120px;
-    height: 120px;
+    width: 100px;
+    height: 100px;
 
     .face {
       width: 128px;

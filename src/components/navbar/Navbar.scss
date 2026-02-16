@@ -1,7 +1,7 @@
 .Nav {
   user-select: none;
   position: fixed;
-  top: 6px;
+  top: 8px;
   left: 12px;
   right: 12px;
 
@@ -9,7 +9,7 @@
   align-items: center;
   justify-content: space-between;
 
-  padding: 0.5rem;
+  padding: 0.4em;
 
   // Базовый фон (fallback для mobile и Safari)
   background: linear-gradient(
@@ -65,7 +65,7 @@
      LOGO
      =============================== */
   .Nav_logo img {
-    width: 42px;
+    width: 40px;
     border-radius: 50%;
     cursor: pointer;
 
@@ -82,14 +82,14 @@
      =============================== */
   .Nav_links {
     display: flex;
-    gap: 120px;
+    gap: 140px;
 
     a {
       text-decoration: none;
       color: #bda344;
       font-weight: 600;
       font-family: monospace;
-      font-size: 1.2rem;
+      font-size: 1.1rem;
 
       position: relative;
       transition: color 0.4s ease;
@@ -152,17 +152,17 @@
       gap: 40px;
 
       a {
-        font-size: 1rem;
+        font-size: 0.9rem;
       }
     }
 
     .Nav_logo img {
-      width: 24px;
+      width: 28px;
     }
 
     .Nav_logout {
-      padding: 2px;
-      font-size: 0.8rem;
+      padding: 5px;
+      font-size: 0.9rem;
     }
   }
 }

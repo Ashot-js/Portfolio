@@ -24,7 +24,11 @@ const Navbar = () => {
       </div>
 
       {user && (
-        <Button variant="secondary" onClick={() => dispatch(logout())}>
+        <Button
+          variant="secondary"
+          className="Nav_logout"
+          onClick={() => dispatch(logout())}
+        >
           Logout
         </Button>
       )}
