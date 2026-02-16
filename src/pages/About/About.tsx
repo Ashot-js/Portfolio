@@ -1,66 +1,87 @@
 import { useState } from "react";
+import Slider from "react-slick";
 import "./About.scss";
-// Импортируем типы языка и опций языка
+
 import { Language, LanguageOption } from "../../types/global";
 import { ABOUT_TEXTS } from "../../types/about.texts";
 import ReactImage from "../../assets/reactimage.jpg";
 import Button from "../../components/ui/button/Button";
 
-export default function About() {
-  // Состояние текущего выбранного языка (по умолчанию английский)
-  const [lang, setLang] = useState<Language>("en");
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
-  // Состояние открытия / закрытия выпадающего меню языков
+export default function About() {
+  const [lang, setLang] = useState<Language>("en");
   const [open, setOpen] = useState(false);
 
-  // Список доступных языков для переключения
   const languages: LanguageOption[] = [
     { code: "en", label: "English" },
     { code: "ru", label: "Русский" },
     { code: "fr", label: "Français" },
     { code: "it", label: "Italiano" },
     { code: "am", label: "Հայերեն" },
-    // Немецкий язык
     { code: "de", label: "Deutsch" },
   ];
 
+  // 📸 СЛАЙДЫ ИЗ public/images
+  const slides = [
+    { id: 1, src: "/images/slide1.webp" },
+    { id: 2, src: "/images/slide2.webp" },
+    { id: 3, src: "/images/slide3.webp" },
+    { id: 4, src: "/images/slide4.webp" },
+    { id: 5, src: "/images/slide5.webp" },
+  ];
+
+  const sliderSettings = {
+    dots: false,
+    arrows: true,
+    infinite: slides.length > 1,
+    speed: 500,
+    slidesToShow: Math.min(3, slides.length),
+    slidesToScroll: 1,
+    adaptiveHeight: true,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: Math.min(2, slides.length),
+        },
+      },
+      {
+        breakpoint: 728,
+        settings: {
+          slidesToShow: 1,
+        },
+      },
+    ],
+  };
+
   return (
-    // Корневой контейнер страницы About
     <div className="AboutPage">
       <div className="AboutContainer">
         <div className="AboutImageWrapper">
-          {/* Аватар / изображение */}
           <img src={ReactImage} alt="Avatar" className="AboutImage" />
         </div>
 
-        {/* Блок переключения языка */}
         <div className="AboutLang">
-          {/* Кнопка текущего языка */}
-          <Button variant="lang" onClick={() => setOpen((prev) => !prev)}>
-            {/* Отображаем название текущего языка */}
+          <Button variant="lang" onClick={() => setOpen((p) => !p)}>
             {languages.find((l) => l.code === lang)?.label}
           </Button>
 
-          {/* Выпадающее меню языков */}
           {open && (
             <div className="AboutLang_menu">
               {languages.map((l) => (
                 <Button
-                  // Уникальный ключ для React
                   key={l.code}
-                  // Вариант кнопки для языкового меню
                   variant="lang"
-                  // Добавляем класс active для выбранного языка
                   className={`AboutLang_item ${
                     l.code === lang ? "active" : ""
                   }`}
-                  // При клике меняем язык и закрываем меню
                   onClick={() => {
                     setLang(l.code);
                     setOpen(false);
                   }}
                 >
-                  {/* Название языка */}
                   {l.label}
                 </Button>
               ))}
@@ -68,23 +89,29 @@ export default function About() {
           )}
         </div>
 
-        {/* Контент с текстом About */}
         <div className="AboutContent AboutContent--bottom">
-          {/* Заголовок страницы */}
           <h1 className="AboutTitle">{ABOUT_TEXTS[lang].title}</h1>
 
-          {/* Параграфы текста About */}
           {ABOUT_TEXTS[lang].paragraphs.map((p, i) => (
-            <p
-              // Ключ для каждого параграфа
-              key={i}
-              className="AboutText"
-            >
+            <p key={i} className="AboutText">
               {p}
             </p>
           ))}
         </div>
       </div>
+
+      {/* 🔽 СЛАЙДЕР ПОД КОНТЕЙНЕРОМ */}
+      {slides.length > 0 && (
+        <div className="AboutSlider">
+          <Slider {...sliderSettings}>
+            {slides.map((slide) => (
+              <div key={slide.id} className="AboutSlide">
+                <img src={slide.src} alt={`slide-${slide.id}`} />
+              </div>
+            ))}
+          </Slider>
+        </div>
+      )}
     </div>
   );
 }
