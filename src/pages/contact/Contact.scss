@@ -17,13 +17,12 @@
 
 /* ===== WRAPPER ===== */
 .ContactWrapper {
-  margin-top: 100px;
+  margin-top: 90px;
   display: flex;
   flex-direction: column;
-  font-size: 1em;
-  gap: 50px;
+  gap: 40px;
   z-index: 2;
-  padding: 12px;
+  padding: 14px;
 
   &_a_tg,
   &_a_github,
