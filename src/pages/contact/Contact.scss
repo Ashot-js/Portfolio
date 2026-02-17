@@ -41,8 +41,21 @@
 /* ===== BASE CONTAINER ===== */
 .ContactContainer {
   max-width: 550px;
-  border-radius: 10px;
-  box-shadow: 0 1px 3px 1px rgba(181, 155, 68, 0.5);
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.3); // прозрачный фон, чтобы свет был виден
+
+  /* Внутреннее свечение со всех сторон */
+  box-shadow:
+    inset 0 0 4px rgba(212, 175, 55, 0.7),
+    // мягкий общий glow
+    inset 1px 0 2px rgba(212, 175, 55, 0.5),
+    // слева
+    inset -1px 0 2px rgba(212, 175, 55, 0.5),
+    // справа
+    inset 0 2px 4px rgba(212, 175, 55, 0.5),
+    // сверху
+    inset 0 -2px 3px rgba(212, 175, 55, 0.5); // снизу
+
   display: flex;
   flex-direction: column;
   align-items: start;
@@ -50,14 +63,14 @@
 
   &:hover {
     transform: translateY(-2px);
-    transition: transform 0.3s ease;
+    transition: transform 0.4s ease;
   }
 }
 
 /* ===== INFO — 1 ===== */
 .ContactContainer--info {
   gap: 20px;
-  padding: 14px;
+  padding: 18px;
   color: #bda344;
 
   animation: slideIn 1.1s cubic-bezier(0.25, 0.9, 0.25, 1) forwards;
@@ -69,15 +82,15 @@
   }
 
   p {
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     color: #bda344;
   }
 }
 
 /* ===== EXTRA — 2 ===== */
 .ContactContainer--extra {
-  gap: 10px;
-  padding: 12px;
+  gap: 12px;
+  padding: 14px;
 
   animation: slideInFeedback 1.1s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
   animation-delay: 0.35s;
@@ -97,7 +110,7 @@
 /* ===== FEEDBACK — 3 ===== */
 .ContactContainer--feedback {
   gap: 12px;
-  padding: 12px;
+  padding: 14px;
 
   animation: slideInFeedback 1.1s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
   animation-delay: 0.7s;
