@@ -4,68 +4,31 @@
   top: 8px;
   left: 12px;
   right: 12px;
-
   display: flex;
   align-items: center;
   justify-content: space-between;
-
-  padding: 0.4em;
-
-  // Базовый фон (fallback для mobile и Safari)
+  padding: 0.5em;
+  border-radius: 26px;
   background: linear-gradient(
-    155deg,
-    rgba(72, 68, 61, 0.92),
-    rgba(73, 72, 62, 0.92)
+    145deg,
+    rgba(146, 128, 77, 0.18),
+    rgba(0, 0, 0, 0.25)
   );
 
-  border-radius: 28px;
-  box-shadow: 0 0.5px 2px 1.5px rgba(215, 179, 60, 0.5);
-
+  box-shadow:
+    inset 0 0 2px rgba(212, 175, 55, 0.7),
+    // мягкий общий glow
+    inset 1px 0 1px rgba(212, 175, 55, 0.5),
+    // слева
+    inset -1px 0 1px rgba(212, 175, 55, 0.5),
+    // справа
+    inset 0 1px 3px rgba(212, 175, 55, 0.5),
+    // сверху
+    inset 0 -1px 2px rgba(212, 175, 55, 0.5);
   z-index: 1000;
 
-  // GPU-оптимизация
-  will-change: transform;
-  contain: layout paint;
-
-  /* ===============================
-     BLUR LAYER (DESKTOP ONLY)
-     =============================== */
-  &::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-
-    border-radius: inherit;
-
-    // blur выключен по умолчанию (mobile)
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
-
-    background: transparent;
-
-    z-index: -1;
-  }
-
-  /* ===== DESKTOP: включаем blur ===== */
-  @media (min-width: 769px) {
-    &::before {
-      backdrop-filter: blur(6px);
-      -webkit-backdrop-filter: blur(6px);
-
-      // Safari fallback, если blur не поддерживается
-      background: linear-gradient(
-        155deg,
-        rgba(20, 19, 19, 0.85),
-        rgba(57, 54, 48, 0.85)
-      );
-    }
-  }
-
-  /* ===============================
-     LOGO
-     =============================== */
   .Nav_logo img {
-    width: 40px;
+    width: 38px;
     border-radius: 50%;
     cursor: pointer;
 
@@ -82,7 +45,7 @@
      =============================== */
   .Nav_links {
     display: flex;
-    gap: 140px;
+    gap: 150px;
 
     a {
       text-decoration: none;
@@ -146,23 +109,23 @@
      MOBILE (NO BLUR)
      =============================== */
   @media (max-width: 768px) {
-    padding: 0.4rem 0.8rem;
+    padding: 0.4rem;
 
     .Nav_links {
-      gap: 40px;
+      gap: 36px;
 
       a {
-        font-size: 0.95rem;
+        font-size: 0.9rem;
       }
     }
 
     .Nav_logo img {
-      width: 30px;
+      width: 26px;
     }
 
     .Nav_logout {
       padding: 5px;
-      font-size: 0.9rem;
+      font-size: 0.7rem;
     }
   }
 }
