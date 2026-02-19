@@ -82,12 +82,11 @@
 /* 📱 MOBILE */
 @media (max-width: 768px) {
   .Footer {
-    padding: 12px;
-
+    padding: 10px;
+    flex-direction: column;
+    gap: 5px;
     &_inner {
-      flex-direction: column;
-      gap: 4px;
-      text-align: center;
+      font-size: 10px;
     }
 
     &_socials {
