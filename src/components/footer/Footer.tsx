@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { FaGithub, FaTelegramPlane, FaLinkedinIn } from "react-icons/fa";
 import SiteAge from "../SiteAge/SiteAge";
-// Импортируем иконки соцсетей из react-icons
 import "./Footer.scss";
 
 const Footer = () => {
@@ -67,34 +66,31 @@ const Footer = () => {
       <div className="Footer_inner">
         {/* Внутренний контейнер для контента футера */}
 
-        <span className="Footer_left">
-          <SiteAge />
-        </span>
+        <SiteAge />
+      </div>
+      <div className="Footer_socials">
+        {/* Блок с иконками соцсетей */}
 
-        <div className="Footer_socials">
-          {/* Блок с иконками соцсетей */}
+        <a href="https://github.com/" target="_blank" rel="noreferrer">
+          {/* Ссылка на GitHub */}
 
-          <a href="https://github.com/" target="_blank" rel="noreferrer">
-            {/* Ссылка на GitHub */}
+          <FaGithub />
+          {/* Иконка GitHub */}
+        </a>
 
-            <FaGithub />
-            {/* Иконка GitHub */}
-          </a>
+        <a href="https://t.me/" target="_blank" rel="noreferrer">
+          {/* Ссылка на Telegram */}
 
-          <a href="https://t.me/" target="_blank" rel="noreferrer">
-            {/* Ссылка на Telegram */}
+          <FaTelegramPlane />
+          {/* Иконка Telegram */}
+        </a>
 
-            <FaTelegramPlane />
-            {/* Иконка Telegram */}
-          </a>
+        <a href="https://linkedin.com/" target="_blank" rel="noreferrer">
+          {/* Ссылка на LinkedIn */}
 
-          <a href="https://linkedin.com/" target="_blank" rel="noreferrer">
-            {/* Ссылка на LinkedIn */}
-
-            <FaLinkedinIn />
-            {/* Иконка LinkedIn */}
-          </a>
-        </div>
+          <FaLinkedinIn />
+          {/* Иконка LinkedIn */}
+        </a>
       </div>
     </footer>
   );
