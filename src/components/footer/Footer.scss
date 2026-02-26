@@ -23,9 +23,9 @@
     // Ставим линию по центру по горизонтали
     transform: translateX(-50%);
     // Смещаем линию ровно в центр
-    width: 80%;
+    width: 50%;
     // Ширина линии — 80% от ширины футера
-    height: 0.5px;
+    height: 0.6px;
     background: linear-gradient(
       100deg,
       rgba(212, 175, 55, 0.2),
@@ -82,9 +82,9 @@
 /* 📱 MOBILE */
 @media (max-width: 768px) {
   .Footer {
-    padding: 10px;
     flex-direction: column;
-    gap: 5px;
+    padding: 12px;
+    gap: 6px;
     &_inner {
       font-size: 10px;
     }

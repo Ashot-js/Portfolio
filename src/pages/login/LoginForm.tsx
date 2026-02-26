@@ -1,5 +1,4 @@
 import { useState } from "react";
-// Хук useState из React для управления локальным состоянием (например, показать/скрыть пароль)
 
 import { Formik, Form, Field, ErrorMessage } from "formik";
 // Импортируем компоненты из Formik:
@@ -24,17 +23,12 @@ import { api } from "../../services/api";
 // Axios-инстанс для API-запросов
 
 import Button from "../../components/ui/button/Button";
-// Кастомная кнопка Button с вариантами стилей
 
 import { Eye, EyeOff } from "lucide-react";
-// Иконки показать/скрыть пароль
 
 import "./Login.scss";
-// Стили для формы логина
 
 const LoginForm = () => {
-  // Основной компонент формы логина
-
   const [showPassword, setShowPassword] = useState(false);
   // Состояние, показывать ли пароль (true — видимый, false — скрытый)
 
@@ -85,9 +79,8 @@ const LoginForm = () => {
       // Функция при отправке формы
     >
       <Form className="LoginForm">
-        {/* Email */}
         <Field name="email" placeholder="Email" />
-        {/* Поле ввода email */}
+
         <ErrorMessage name="email" component="div" className="error" />
 
         <div className="password-wrapper">
@@ -117,4 +110,3 @@ const LoginForm = () => {
 };
 
 export default LoginForm;
-// Экспортируем компонент LoginForm для использования в Auth.tsx

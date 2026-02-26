@@ -17,7 +17,7 @@
 
 /* ===== WRAPPER ===== */
 .ContactWrapper {
-  margin-top: 90px;
+  margin-top: 100px;
   display: flex;
   flex-direction: column;
   gap: 40px;
@@ -30,7 +30,7 @@
     color: #fbe8a6;
     padding-left: 4px;
     transition: color 0.3s ease;
-
+    font-size: 12px;
     &:hover {
       color: #d4af37;
     }
@@ -180,15 +180,46 @@
 }
 
 /* ===== MOBILE ===== */
-@media (max-width: 768px) {
+@media (max-width: 728px) {
   .ContactWrapper {
-    left: 2.5%;
-    right: 2.5%;
-    bottom: 60px;
+    max-width: 480px;
+    padding: 40px;
   }
+  .ContactContainer--info {
+    gap: 10px;
 
+    .ContactHeader {
+      font-size: 0.8rem;
+    }
+    p {
+      font-size: 0.8rem;
+    }
+    a {
+      font-size: 0.7rem;
+    }
+  }
+  .ContactContainer--extra {
+    .ContactText {
+      font-size: 0.7rem;
+    }
+    .ContactHeader {
+      font-size: 0.8rem;
+    }
+    .ContactHint {
+      font-size: 0.7rem;
+    }
+    gap: 6px;
+    a {
+      font-size: 10px;
+    }
+  }
+  .ContactContainer--feedback {
+    .ContactHeader {
+      font-size: 0.8rem;
+    }
+  }
   .ContactContainer {
-    padding: 12px 18px;
+    padding: 8px 18px;
   }
 
   .ContactBackground img {

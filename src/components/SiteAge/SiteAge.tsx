@@ -1,5 +1,5 @@
 import { getSiteAge } from "../../utils/siteAge";
-import "./SiteAge.scss";
+
 export default function SiteAge() {
   const startDate = import.meta.env.VITE_SITE_START;
 

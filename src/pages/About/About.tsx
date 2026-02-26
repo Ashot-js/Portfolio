@@ -49,7 +49,7 @@ export default function About() {
       {
         breakpoint: 728,
         settings: {
-          slidesToShow: 1,
+          slidesToShow: 2,
         },
       },
     ],
@@ -57,23 +57,23 @@ export default function About() {
 
   return (
     <div className="AboutPage">
-      <div className="AboutContainer">
-        <div className="AboutImageWrapper">
+      <div className="AboutPage_container">
+        <div className="AboutPage_wrapper">
           <img src={ReactImage} alt="Avatar" className="AboutImage" />
         </div>
 
-        <div className="AboutLang">
+        <div className="AboutPage_lang">
           <Button variant="lang" onClick={() => setOpen((p) => !p)}>
             {languages.find((l) => l.code === lang)?.label}
           </Button>
 
           {open && (
-            <div className="AboutLang_menu">
+            <div className="AboutPage_menu">
               {languages.map((l) => (
                 <Button
                   key={l.code}
                   variant="lang"
-                  className={`AboutLang_item ${
+                  className={`AboutPage_item ${
                     l.code === lang ? "active" : ""
                   }`}
                   onClick={() => {
@@ -88,23 +88,22 @@ export default function About() {
           )}
         </div>
 
-        <div className="AboutContent AboutContent--bottom">
-          <h1 className="AboutTitle">{ABOUT_TEXTS[lang].title}</h1>
+        <div className="AboutPage_content">
+          <h1 className="AboutPage_title">{ABOUT_TEXTS[lang].title}</h1>
 
           {ABOUT_TEXTS[lang].paragraphs.map((p, i) => (
-            <p key={i} className="AboutText">
+            <p key={i} className="AboutPage_text">
               {p}
             </p>
           ))}
         </div>
       </div>
 
-      {/* 🔽 СЛАЙДЕР ПОД КОНТЕЙНЕРОМ */}
       {slides.length > 0 && (
-        <div className="AboutSlider">
+        <div className="AboutPage_slider">
           <Slider {...sliderSettings}>
             {slides.map((slide) => (
-              <div key={slide.id} className="AboutSlide">
+              <div key={slide.id} className="AboutPage_slide">
                 <img src={slide.src} alt={`slide-${slide.id}`} />
               </div>
             ))}
