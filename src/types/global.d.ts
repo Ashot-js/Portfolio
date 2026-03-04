@@ -1,8 +1,8 @@
 // User.ts
 export interface User {
-  id: number;
+  id: number | string; // number — json-server, string — Firebase localId
   email: string;
-  password: string; // пароль нужен только для запросов к json-server, не хранить в Redux
+  password?: string;
 }
 
 // types.ts
