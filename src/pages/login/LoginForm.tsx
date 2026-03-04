@@ -1,26 +1,14 @@
 import { useState } from "react";
-
 import { Formik, Form, Field, ErrorMessage } from "formik";
-// Импортируем компоненты из Formik:
-// Formik - контейнер для формы
-// Form - тег формы
-// Field - поле ввода
-// ErrorMessage - вывод ошибок валидации
-
 import * as Yup from "yup";
-// Yup используется для валидации данных формы
 
 import { useAppDispatch } from "../../app/hooks";
-// Хук Redux для отправки action (dispatch) в store
 
 import { loginSuccess } from "../../store/authSlice";
-// Экшен Redux для сохранения авторизованного пользователя
 
 import { useNavigate } from "react-router";
-// Хук для программной навигации между страницами
 
 import { api } from "../../services/api";
-// Axios-инстанс для API-запросов
 
 import Button from "../../components/ui/button/Button";
 
@@ -38,7 +26,6 @@ const LoginForm = () => {
   const navigate = useNavigate();
   // Получаем функцию navigate для программной навигации
 
-  // Схема валидации только для логина
   const schema = Yup.object({
     email: Yup.string().email("Invalid email").required("Email required"),
     // Поле email должно быть валидным email и обязательным
