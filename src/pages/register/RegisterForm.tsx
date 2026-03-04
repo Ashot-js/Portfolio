@@ -20,9 +20,7 @@ import { loginSuccess } from "../../store/authSlice";
 import { useNavigate } from "react-router";
 // Хук для программной навигации между страницами
 
-import { api } from "../../services/api";
-// Axios-инстанс для API-запросов
-
+import keys from "../../configs/keys";
 import Button from "../../components/ui/button/Button";
 // Кастомная кнопка Button с вариантами стилей
 
@@ -59,33 +57,31 @@ const RegisterForm = () => {
     // confirmPassword обязательное поле
   });
 
-  // Обработка отправки формы регистрации
   const handleSubmit = async (values: {
     email: string;
     password: string;
     confirmPassword: string;
   }) => {
     try {
-      // Проверяем, существует ли уже пользователь с таким email
-      const existing = await api.get(`/users?email=${values.email}`);
-      if (existing.data.length) return alert("User already exists");
-      // Если пользователь найден, выводим alert и прекращаем выполнение
-
-      // Создаем нового пользователя на сервере
-      const res = await api.post("/users", {
-        email: values.email,
-        password: values.password,
+      const res = await fetch(keys.SIGN_UP_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email: values.email,
+          password: values.password,
+          returnSecureToken: true,
+        }),
       });
-
-      dispatch(loginSuccess(res.data));
-      // Сохраняем нового пользователя в Redux store
-
+      const data = await res.json();
+      if (!res.ok) {
+        const msg = data?.error?.message || "Registration failed";
+        return alert(msg);
+      }
+      dispatch(loginSuccess({ id: data.localId, email: data.email }));
       navigate("/");
-      // Переходим на главную страницу после успешной регистрации
     } catch (err) {
       console.error(err);
       alert("Something went wrong");
-      // Обработка ошибок при запросе к серверу
     }
   };
 

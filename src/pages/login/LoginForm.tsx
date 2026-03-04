@@ -8,8 +8,7 @@ import { loginSuccess } from "../../store/authSlice";
 
 import { useNavigate } from "react-router";
 
-import { api } from "../../services/api";
-
+import keys from "../../configs/keys";
 import Button from "../../components/ui/button/Button";
 
 import { Eye, EyeOff } from "lucide-react";
@@ -33,26 +32,27 @@ const LoginForm = () => {
     // Поле password должно быть минимум 6 символов и обязательным
   });
 
-  // Обработка submit логина
   const handleSubmit = async (values: { email: string; password: string }) => {
     try {
-      const res = await api.get(
-        `/users?email=${values.email}&password=${values.password}`,
-      );
-      // Отправляем GET-запрос на сервер для проверки пользователя
-
-      if (!res.data.length) return alert("Wrong email or password");
-      // Если пользователь не найден, показываем alert
-
-      dispatch(loginSuccess(res.data[0]));
-      // Сохраняем пользователя в Redux store
-
+      const res = await fetch(keys.SIGN_IN_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email: values.email,
+          password: values.password,
+          returnSecureToken: true,
+        }),
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        const msg = data?.error?.message || "Wrong email or password";
+        return alert(msg);
+      }
+      dispatch(loginSuccess({ id: data.localId, email: data.email }));
       navigate("/");
-      // Переходим на главную страницу после успешного логина
     } catch (err) {
       console.error(err);
       alert("Something went wrong");
-      // Обработка ошибок при запросе к серверу
     }
   };
 

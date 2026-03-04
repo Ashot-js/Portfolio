@@ -1,3 +1,10 @@
+// User.ts
+export interface User {
+  id: number | string; // number — json-server, string — Firebase localId
+  email: string;
+  password?: string;
+}
+
 // types.ts
 // ----------------------------
 // CSS / SCSS
