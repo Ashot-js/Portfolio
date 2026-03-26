@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
+import { toast } from "react-toastify";
 
 import { useAppDispatch } from "../../app/hooks";
 
@@ -8,8 +9,9 @@ import { loginSuccess } from "../../store/authSlice";
 
 import { useNavigate } from "react-router";
 
-import keys from "../../configs/keys";
 import Button from "../../components/ui/button/Button";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../../configs/firebase";
 
 import { Eye, EyeOff } from "lucide-react";
 
@@ -34,25 +36,21 @@ const LoginForm = () => {
 
   const handleSubmit = async (values: { email: string; password: string }) => {
     try {
-      const res = await fetch(keys.SIGN_IN_URL, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          email: values.email,
-          password: values.password,
-          returnSecureToken: true,
-        }),
-      });
-      const data = await res.json();
-      if (!res.ok) {
-        const msg = data?.error?.message || "Wrong email or password";
-        return alert(msg);
-      }
-      dispatch(loginSuccess({ id: data.localId, email: data.email }));
+      const credential = await signInWithEmailAndPassword(
+        auth,
+        values.email,
+        values.password
+      );
+      dispatch(
+        loginSuccess({
+          id: credential.user.uid,
+          email: credential.user.email ?? values.email,
+        })
+      );
       navigate("/");
     } catch (err) {
       console.error(err);
-      alert("Something went wrong");
+      toast.error("Wrong email or password");
     }
   };
 

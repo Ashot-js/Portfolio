@@ -1,6 +1,8 @@
 import { useState } from "react";
+import { toast } from "react-toastify";
 import { useAppSelector } from "../../app/hooks";
 import Button from "../../components/ui/button/Button";
+import { saveComment } from "../../services/comments";
 import "./Contact.scss";
 
 import ContactBg from "../../assets/contact-bg.jpg"; // пример картинки
@@ -14,31 +16,20 @@ export default function Contact() {
     if (!comment.trim()) return;
 
     if (!user) {
-      alert("You must be logged in to post a comment ❌");
+      toast.error("You must be logged in to post a comment");
       return;
     }
 
     setSending(true);
 
     try {
-      await fetch("http://localhost:3000/comments", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          text: comment,
-          createdAt: new Date().toISOString(),
-          user: {
-            id: user.id,
-            email: user.email,
-          },
-        }),
-      });
+      await saveComment(comment, { id: user.id, email: user.email });
 
       setComment("");
-      alert("Comment saved✅");
+
     } catch (err) {
       console.error(err);
-      alert("Sending failed ❌");
+      toast.error("Sending failed");
     } finally {
       setSending(false);
     }
@@ -96,6 +87,8 @@ export default function Contact() {
             className="Feedback_input"
             placeholder="Type your message here..."
             value={comment}
+            minLength={1}
+            maxLength={500}
             onChange={(e) => setComment(e.target.value)}
           />
 

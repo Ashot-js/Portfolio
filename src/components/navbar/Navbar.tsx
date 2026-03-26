@@ -2,12 +2,21 @@ import { Link } from "react-router";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { logout } from "../../store/authSlice";
 import Button from "../ui/button/Button";
+import { signOut } from "firebase/auth";
+import { auth } from "../../configs/firebase";
 import "./Navbar.scss";
 import ReactLogo from "../../assets/logo.jpg";
 
 const Navbar = () => {
   const user = useAppSelector((s) => s.auth.user);
   const dispatch = useAppDispatch();
+  const handleLogout = async () => {
+    try {
+      await signOut(auth);
+    } finally {
+      dispatch(logout());
+    }
+  };
 
   return (
     <nav className="Nav">
@@ -27,7 +36,7 @@ const Navbar = () => {
         <Button
           variant="secondary"
           className="Nav_logout"
-          onClick={() => dispatch(logout())}
+          onClick={handleLogout}
         >
           Logout
         </Button>
