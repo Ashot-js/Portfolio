@@ -1,7 +1,7 @@
 import { getSiteAge } from "../../utils/siteAge";
 
 export default function SiteAge() {
-  const startDate = import.meta.env.VITE_SITE_START;
+  const startDate = "2026-02-23";
 
   const { years, months, days } = getSiteAge(startDate);
 

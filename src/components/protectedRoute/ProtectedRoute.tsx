@@ -8,6 +8,11 @@ import { useAppSelector } from "../../app/hooks";
 const ProtectedRoute = () => {
   // Получаем текущего пользователя из Redux store
   const user = useAppSelector((state) => state.auth.user);
+  const isAuthChecked = useAppSelector((state) => state.auth.isAuthChecked);
+
+  if (!isAuthChecked) {
+    return <div>Loading...</div>;
+  }
 
   // Если user есть → рендерим дочерние маршруты через <Outlet />
   // Если user нет → делаем редирект на /auth

@@ -1,7 +1,15 @@
 import { SiteAge } from "../types/global";
 
-export function getSiteAge(startDate: string): SiteAge {
+export function getSiteAge(startDate?: string): SiteAge {
+  if (!startDate) {
+    return { years: 0, months: 0, days: 0 };
+  }
+
   const start = new Date(startDate);
+  if (Number.isNaN(start.getTime())) {
+    return { years: 0, months: 0, days: 0 };
+  }
+
   const now = new Date();
 
   let years = now.getFullYear() - start.getFullYear();
