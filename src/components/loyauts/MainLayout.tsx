@@ -1,31 +1,71 @@
-// Импортируем компонент Outlet из react-router.
-// Он используется для отображения вложенных страниц (роутов).
+import { useEffect, useState } from "react";
 import { Outlet } from "react-router";
 import Navbar from "../navbar/Navbar";
 import Footer from "../footer/Footer";
 import "./MainLayout.scss";
 
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "../../configs/firebase";
+import { useAppDispatch } from "../../app/hooks";
+import { loginSuccess } from "../../store/authSlice";
+
 const MainLayout = () => {
-  // Возвращаем JSX-разметку layout-а.
+  const dispatch = useAppDispatch();
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        dispatch(
+          loginSuccess({
+            id: user.uid,
+            email: user.email ?? "", // ✅ фикс ошибки
+          }),
+        );
+      }
+      setLoading(false);
+    });
+
+    return () => unsubscribe();
+  }, [dispatch]);
+
+  // ⛔ ждём пока Firebase проверит пользователя
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
   return (
-    // Корневой контейнер layout-а основного сайта.
     <div className="MainLayout">
-      {/* Верхняя навигационная панель */}
       <Navbar />
 
-      {/* Основная область контента страниц */}
       <main className="MainLayout_mainContent">
-        {/* Outlet рендерит текущий вложенный роут
-            (Home, About, Contact и т.д.) */}
         <Outlet />
       </main>
 
-      {/* Подвал сайта */}
       <Footer />
     </div>
   );
 };
 
-// Экспортируем MainLayout по умолчанию,
-// чтобы использовать его в системе маршрутизации.
 export default MainLayout;
+
+// import { Outlet } from "react-router";
+// import Navbar from "../navbar/Navbar";
+// import Footer from "../footer/Footer";
+// import "./MainLayout.scss";
+
+// const MainLayout = () => {
+//   return (
+//     <div className="MainLayout">
+//       <Navbar />
+
+//       <main className="MainLayout_mainContent">
+//         <Outlet />
+//       </main>
+
+//       <Footer />
+//     </div>
+//   );
+// };
+
+// export default MainLayout;
