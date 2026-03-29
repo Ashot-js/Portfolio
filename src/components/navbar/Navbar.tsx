@@ -1,46 +1,24 @@
-import { Link } from "react-router";
-import { useAppDispatch, useAppSelector } from "../../app/hooks";
-import { logout } from "../../store/authSlice";
-import Button from "../ui/button/Button";
-import { signOut } from "firebase/auth";
-import { auth } from "../../configs/firebase";
+import { Link, useLocation } from "react-router";
 import "./Navbar.scss";
-import ReactLogo from "../../assets/logo.jpg";
 
 const Navbar = () => {
-  const user = useAppSelector((s) => s.auth.user);
-  const dispatch = useAppDispatch();
-  const handleLogout = async () => {
-    try {
-      await signOut(auth);
-    } finally {
-      dispatch(logout());
-    }
-  };
+  const location = useLocation();
+  const isActive = (path: string) => location.pathname === path;
 
   return (
     <nav className="Nav">
       <div className="Nav_logo">
         <Link to="/">
-          <img src={ReactLogo} alt="Logo" />
+          <span className="Nav_logoText">AG</span>
         </Link>
       </div>
 
       <div className="Nav_links">
-        <Link to="/">Home</Link>
-        <Link to="/about">About</Link>
-        <Link to="/contact">Contact</Link>
+        <Link to="/" className={isActive("/") ? "active" : ""}>Home</Link>
+        <Link to="/about" className={isActive("/about") ? "active" : ""}>About</Link>
+        <Link to="/projects" className={isActive("/projects") ? "active" : ""}>Projects</Link>
+        <Link to="/contact" className={isActive("/contact") ? "active" : ""}>Contact</Link>
       </div>
-
-      {user && (
-        <Button
-          variant="secondary"
-          className="Nav_logout"
-          onClick={handleLogout}
-        >
-          Logout
-        </Button>
-      )}
     </nav>
   );
 };

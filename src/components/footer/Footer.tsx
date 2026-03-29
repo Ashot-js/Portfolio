@@ -1,95 +1,52 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { FaGithub, FaTelegramPlane, FaLinkedinIn } from "react-icons/fa";
 import SiteAge from "../SiteAge/SiteAge";
 import "./Footer.scss";
 
 const Footer = () => {
   const [hidden, setHidden] = useState(false);
-  // Состояние: скрыт ли футер (true = скрыт)
-
-  const [lastScroll, setLastScroll] = useState(0);
-  // Храним предыдущую позицию скролла страницы
-
-  const [glowOffset, setGlowOffset] = useState(0);
-  // Смещение glow-линии для параллакс-эффекта
+  const lastScrollRef = useRef(0);
+  const glowRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // useEffect срабатывает при изменении lastScroll
-
     const onScroll = () => {
-      // Функция-обработчик события scroll
-
       const current = window.scrollY;
-      // Текущая позиция скролла по вертикали
 
-      // 🔁 hide / show footer
-      if (current > lastScroll && current > 120) {
-        // Если пользователь скроллит вниз и уже проскроллил больше 120px
-
+      if (current > lastScrollRef.current && current > 120) {
         setHidden(true);
-        // Скрываем футер
       } else {
-        // Если пользователь скроллит вверх
-
         setHidden(false);
-        // Показываем футер
       }
 
-      setLastScroll(current);
-      // Обновляем последнюю позицию скролла
+      lastScrollRef.current = current;
 
-      // 🌌 parallax glow
-      setGlowOffset(current * 0.15);
-      // Создаём параллакс-эффект для glow-линии
+      if (glowRef.current) {
+        glowRef.current.style.transform = `translate(-50%, ${current * 0.15}px)`;
+      }
     };
 
     window.addEventListener("scroll", onScroll);
-    // Подписываемся на событие scroll
-
     return () => window.removeEventListener("scroll", onScroll);
-    // Убираем обработчик при размонтировании компонента
-  }, [lastScroll]);
-  // Эффект пересчитывается при изменении lastScroll
+  }, []);
 
   return (
     <footer className={`Footer ${hidden ? "Footer--hidden" : ""}`}>
-      {/* Основной контейнер футера + класс скрытия */}
-
-      <div
-        className="Footer_glowLine"
-        // Светящаяся линия над футером
-
-        style={{ transform: `translate(-50%, ${glowOffset}px)` }}
-        // Двигаем линию вниз/вверх в зависимости от скролла
-      />
+      <div className="Footer_glowLine" ref={glowRef} />
 
       <div className="Footer_inner">
-        {/* Внутренний контейнер для контента футера */}
-
         <SiteAge />
       </div>
       <div className="Footer_socials">
-        {/* Блок с иконками соцсетей */}
-
-        <a href="https://github.com/" target="_blank" rel="noreferrer">
-          {/* Ссылка на GitHub */}
-
+        <a href="https://github.com/Ashot-js" target="_blank" rel="noreferrer">
           <FaGithub />
-          {/* Иконка GitHub */}
         </a>
 
-        <a href="https://t.me/" target="_blank" rel="noreferrer">
-          {/* Ссылка на Telegram */}
-
+        <a href="https://t.me/Ashot_js" target="_blank" rel="noreferrer">
           <FaTelegramPlane />
-          {/* Иконка Telegram */}
         </a>
 
-        <a href="https://linkedin.com/" target="_blank" rel="noreferrer">
-          {/* Ссылка на LinkedIn */}
-
+        <a href="https://linkedin.com/in/ashot-js" target="_blank" rel="noreferrer">
           <FaLinkedinIn />
-          {/* Иконка LinkedIn */}
         </a>
       </div>
     </footer>
@@ -97,4 +54,3 @@ const Footer = () => {
 };
 
 export default Footer;
-// Экспортируем компонент Footer

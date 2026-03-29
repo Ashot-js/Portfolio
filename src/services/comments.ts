@@ -1,21 +1,20 @@
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { db } from "../configs/firebase";
 
-interface CommentAuthor {
-  id: number | string;
+interface ContactMessage {
+  name: string;
   email: string;
+  message: string;
 }
 
-export const saveComment = async (text: string, user: CommentAuthor) => {
-  const trimmedText = text.trim();
-  if (!trimmedText) return;
+export const saveMessage = async (data: ContactMessage) => {
+  const trimmed = data.message.trim();
+  if (!trimmed) return;
 
-  await addDoc(collection(db, "comments"), {
-    text: trimmedText,
+  await addDoc(collection(db, "messages"), {
+    name: data.name.trim(),
+    email: data.email.trim(),
+    message: trimmed,
     createdAt: serverTimestamp(),
-    user: {
-      id: user.id,
-      email: user.email,
-    },
   });
 };

@@ -1,26 +1,40 @@
-/* Сброс отступов и box-sizing */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-#root {
-
-   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-
-
-  background: linear-gradient(
-    390deg,
-    #050505 0%,
-    #0f0f0f 40%,
-    #16140f 70%,
-    #13120d 100%
-  ); 
-  /* Плавный переход фона:
-     сверху почти чёрный →
-     тёмно-серый →
-     тёплый тёмно-золотой →
-     чистый золотой внизу */
+html {
+  scroll-behavior: smooth;
 }
 
+#root {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: linear-gradient(
+    180deg,
+    #050505 0%,
+    #0a0a08 40%,
+    #0f0e0b 100%
+  );
+  min-height: 100vh;
+  color: #e8e0c8;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: rgba(212, 175, 55, 0.3);
+  color: #fff;
+}
+
+.page-loader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  color: #bda344;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.9rem;
+}

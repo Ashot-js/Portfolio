@@ -3,20 +3,18 @@ import LoginForm from "../login/LoginForm";
 import RegisterForm from "../register/RegisterForm";
 import "./Auth.scss";
 import BgImage from "../../assets/auth-bg.jpg";
-import type { BrowserTimer } from "../../types/global"; // импорт типа таймера
+import type { BrowserTimer } from "../../types/global";
 
 const Auth = () => {
   const [isLogin, setIsLogin] = useState(true);
   const [titleText, setTitleText] = useState("Welcome back! Please sign in");
   const [animClass, setAnimClass] = useState("fade-in");
 
-  // useRef для хранения таймера
   const timeoutRef = useRef<BrowserTimer>(null);
 
   const toggleTitle = (login: boolean) => {
     setAnimClass("fade-out");
 
-    // очищаем старый таймер, если он есть
     if (timeoutRef.current) clearTimeout(timeoutRef.current);
 
     timeoutRef.current = setTimeout(() => {
@@ -24,7 +22,7 @@ const Auth = () => {
         login ? "Welcome back! Please sign in" : "Welcome! Create your account",
       );
       setAnimClass("fade-in");
-      timeoutRef.current = null; // обнуляем после выполнения
+      timeoutRef.current = null;
     }, 600);
   };
 
@@ -34,7 +32,6 @@ const Auth = () => {
     toggleTitle(login);
   };
 
-  // Очистка таймера при размонтировании компонента
   useEffect(() => {
     return () => {
       if (timeoutRef.current) clearTimeout(timeoutRef.current);
@@ -50,23 +47,23 @@ const Auth = () => {
 
       <div className="AuthPage">
         <div className="AuthPage_toggle" role="tablist">
-          <div
+          <button
             className={`segment ${isLogin ? "active" : ""}`}
             role="tab"
             aria-selected={isLogin}
             onClick={() => handleToggle(true)}
           >
             Login
-          </div>
+          </button>
 
-          <div
+          <button
             className={`segment ${!isLogin ? "active" : ""}`}
             role="tab"
             aria-selected={!isLogin}
             onClick={() => handleToggle(false)}
           >
             Register
-          </div>
+          </button>
         </div>
 
         {isLogin ? <LoginForm key="login" /> : <RegisterForm key="register" />}
