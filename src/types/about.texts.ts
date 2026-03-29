@@ -20,7 +20,7 @@ export const ABOUT_TEXTS: Record<Language, LanguageText> = {
   },
 
   am: {
-    title: "Բարև, delays Delays — Full Stack Delays",
+    title: "Ողջույն, ես Աշոտն եմ՝ Full Stack ծրագրավորող",
     paragraphs: [
       "Ես Full-stack ծրագրավորող եմ Երևանից՝ 2.5 տարվա փորձով։ Մշակում եմ վեբ հավելվածներ սկզբից մինչև վերջ՝ React frontend-ից (TypeScript-ով) մինչև Node.js/Express API-ներ, որոնք աշխատում են PostgreSQL, MongoDB և Redis տվյալների բազաներով։ ",
 "Իմ փորձառությունը ներառում է պատրաստի պրոդուկտների թողարկում, այդ թվում՝ նույնականացման համակարգեր (authentication), էլեկտրոնային առևտրի հարթակներ և իրական ժամանակում հաղորդակցման գործիքներ։ Ազատ տիրապետում եմ ամբողջ ստեկին՝ UI դիզայն, state management, REST API-ների նախագծում, տվյալների բազաների մոդելավորում, քեշավորում և դեպլոյ (deployment)՝ Docker-ի կիրառմամբ։ ",
