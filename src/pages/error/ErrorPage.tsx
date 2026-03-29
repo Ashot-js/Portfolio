@@ -1,24 +1,20 @@
-import { useRouteError, isRouteErrorResponse } from "react-router";
+import { useRouteError, isRouteErrorResponse, Link } from "react-router";
+import "./ErrorPage.scss";
 
 const ErrorPage = () => {
-  const error = useRouteError(); // тип автоматически inferred как unknown
+  const error = useRouteError();
 
-  if (isRouteErrorResponse(error)) {
-    // TS понимает, что это RouteErrorResponse
-    return (
-      <div style={{ padding: 20 }}>
-        <h1>Oops! Something went wrong.</h1>
-        <p>Status: {error.status}</p>
-        <p>{error.statusText}</p>
-      </div>
-    );
-  }
-
-  // fallback для любых других ошибок
   return (
-    <div style={{ padding: 20 }}>
-      <h1>Oops! Something went wrong.</h1>
-      <p>{(error as Error)?.message || "Unknown error"}</p>
+    <div className="ErrorPage">
+      <h1 className="ErrorPage_code">
+        {isRouteErrorResponse(error) ? error.status : "Error"}
+      </h1>
+      <p className="ErrorPage_message">
+        {isRouteErrorResponse(error)
+          ? error.statusText
+          : (error as Error)?.message || "Something went wrong"}
+      </p>
+      <Link to="/" className="ErrorPage_link">Back to Home</Link>
     </div>
   );
 };

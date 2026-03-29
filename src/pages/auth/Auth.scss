@@ -6,7 +6,7 @@
   display: flex;
   padding-top: 160px;
   flex-direction: column;
-  gap: 60px;
+  gap: 48px;
   justify-content: start;
   align-items: center;
   flex: 1;
@@ -14,195 +14,118 @@
   position: relative;
   user-select: none;
 
-  /* ===== Затемняющий overlay ===== */
   &::before {
     content: "";
     position: absolute;
     inset: 0;
-    background: linear-gradient(
-      180deg,
-      rgba(0, 0, 0, 0.65),
-      rgba(0, 0, 0, 0.9)
-    );
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.9));
     z-index: 0;
     pointer-events: none;
   }
 
-  /* ===== Заголовок ===== */
   &_title {
     z-index: 1;
-    color: #ece194;
-    font-family: monospace;
-    font-size: 20px;
+    color: #e8e0c8;
+    font-size: 1.25rem;
     font-weight: 700;
     text-align: center;
+    transition: all 0.5s ease;
 
-    transition: all 0.6s ease;
-
-    &.fade-out {
-      opacity: 0;
-      transform: translateY(-18px);
-    }
-
-    &.fade-in {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    &.fade-out { opacity: 0; transform: translateY(-14px); }
+    &.fade-in  { opacity: 1; transform: translateY(0); }
   }
 }
-
-/* ============================= */
-/* Контейнер формы (GRID) */
-/* ============================= */
 
 .AuthPage {
   position: relative;
   z-index: 1;
-
   display: grid;
   grid-template-rows: auto;
   align-content: start;
-
   max-width: 500px;
   width: 90%;
-  padding: 25px;
+  padding: 24px;
   gap: 18px;
-
-  border-radius: 25px;
-  box-shadow: inset 0 0 22px rgba(212, 175, 55, 0.5);
-
-  transition:
-    background 0.7s ease,
-    box-shadow 0.7s ease;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(212, 175, 55, 0.1);
+  transition: all 0.25s ease;
 }
-
-/* ============================= */
-/* Градиенты формы + анимация */
-/* ============================= */
-
-.AuthPageWrapper.login .AuthPage,
-.AuthPageWrapper.register .AuthPage {
-  background: linear-gradient(155deg, rgba(54, 51, 51, 0), rgba(57, 54, 48, 0));
-
-  background-size: 200% 200%;
-  animation: gradientShift 12s ease infinite;
-}
-
-@keyframes gradientShift {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-/* ============================= */
-/* Inputs / кнопки — появление */
-/* ============================= */
 
 .AuthPage form > * {
   opacity: 0;
-  transform: translateY(18px);
-  animation: fadeSlideUp 0.6s forwards;
+  transform: translateY(14px);
+  animation: fadeSlideUp 0.5s forwards;
 }
 
-.AuthPage form > *:nth-child(1) {
-  animation-delay: 0.1s;
-}
-.AuthPage form > *:nth-child(2) {
-  animation-delay: 0.2s;
-}
-.AuthPage form > *:nth-child(3) {
-  animation-delay: 0.3s;
-}
-.AuthPage form > *:nth-child(4) {
-  animation-delay: 0.4s;
-}
+.AuthPage form > *:nth-child(1) { animation-delay: 0.05s; }
+.AuthPage form > *:nth-child(2) { animation-delay: 0.1s; }
+.AuthPage form > *:nth-child(3) { animation-delay: 0.15s; }
+.AuthPage form > *:nth-child(4) { animation-delay: 0.2s; }
 
 @keyframes fadeSlideUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .AuthPage_toggle {
   display: flex;
   gap: 6px;
-  border-radius: 12px;
+  border-radius: 8px;
 
   .segment {
     flex: 1;
     padding: 10px;
-    border-radius: 12px;
+    border: none;
+    border-radius: 8px;
+    font-family: 'Inter', sans-serif;
     font-weight: 600;
-    font-size: 14px;
+    font-size: 0.85rem;
     text-align: center;
     cursor: pointer;
-
-    color: #ffffff;
+    color: #8a8060;
     background: transparent;
+    transition: all 0.25s ease;
 
-    transition: 0.25s ease;
-  }
+    &:hover {
+      color: #e8e0c8;
+      background: rgba(212, 175, 55, 0.06);
+    }
 
-  /* hover — ТОЛЬКО одна кнопка */
-  .segment:hover {
-    transform: translateY(-2px);
-    background: linear-gradient(
-      155deg,
-      rgba(212, 175, 55, 0.08),
-      rgba(212, 175, 55, 0.02)
-    );
-    box-shadow:
-      0 2px 6px rgba(212, 175, 55, 0.25),
-      inset 0 0 8px rgba(212, 175, 55, 0.4);
-  }
+    &:active {
+      transform: translateY(1px);
+    }
 
-  /* ❗ остальные кнопки ЧИСТЫЕ */
-  &:hover .segment:not(:hover) {
-    background: transparent;
-    box-shadow: none;
-    transform: none;
-  }
+    &:focus-visible {
+      outline: 2px solid #d4af37;
+      outline-offset: 2px;
+    }
 
-  /* active — отдельно, стабильно */
-  .segment.active {
-    cursor: pointer;
-    background: linear-gradient(
-      155deg,
-      rgba(212, 175, 55, 0.12),
-      rgba(212, 175, 55, 0.04)
-    );
-    box-shadow: inset 0 0 8px rgba(212, 175, 55, 0.5);
-    color: #b59854;
+    &.active {
+      color: #d4af37;
+      background: rgba(212, 175, 55, 0.1);
+      border: 1px solid rgba(212, 175, 55, 0.15);
+    }
   }
 }
 
-/* ============================= */
-/* Mobile */
-/* ============================= */
-
 @media (max-width: 768px) {
   .AuthPageWrapper {
-    padding-top: 160px;
-    gap: 32px;
+    padding-top: 120px;
+    gap: 28px;
   }
 
-  .AuthPage {
-    padding: 20px;
+  .AuthPage { padding: 20px; }
+  .AuthPageWrapper_title { font-size: 1rem; }
+  .segment { font-size: 0.8rem; padding: 8px 0; }
+}
+
+@media (max-width: 480px) {
+  .AuthPageWrapper {
+    padding-top: 80px;
+    gap: 20px;
   }
 
-  .AuthPageWrapper_title {
-    font-size: 16px;
-  }
-
-  .segment {
-    font-size: 0.85rem;
-    padding: 6px 0;
-  }
+  .AuthPage { padding: 16px; width: 95%; }
+  .AuthPageWrapper_title { font-size: 0.9rem; }
+  .segment { font-size: 0.75rem; padding: 7px 0; }
 }

@@ -1,128 +1,132 @@
 .Nav {
   user-select: none;
   position: fixed;
-  top: 8px;
-  left: 12px;
-  right: 12px;
+  top: 0;
+  left: 0;
+  right: 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.5em;
-  border-radius: 26px;
-  background: linear-gradient(
-    145deg,
-    rgba(146, 128, 77, 0.18),
-    rgba(0, 0, 0, 0.25)
-  );
-
-  box-shadow:
-    inset 0 0 2px rgba(212, 175, 55, 0.7),
-    // мягкий общий glow
-    inset 1px 0 1px rgba(212, 175, 55, 0.5),
-    // слева
-    inset -1px 0 1px rgba(212, 175, 55, 0.5),
-    // справа
-    inset 0 1px 3px rgba(212, 175, 55, 0.5),
-    // сверху
-    inset 0 -1px 2px rgba(212, 175, 55, 0.5);
+  padding: 12px 32px;
+  background: rgba(5, 5, 5, 0.85);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(212, 175, 55, 0.06);
   z-index: 1000;
 
-  &_logo img {
-    width: 36px;
-    border-radius: 50%;
+  &_logo a {
+    text-decoration: none;
+  }
+
+  &_logoText {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+    background: rgba(212, 175, 55, 0.08);
+    border: 1px solid rgba(212, 175, 55, 0.15);
+    color: #d4af37;
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 700;
+    font-size: 0.8rem;
+    transition: all 0.25s ease;
+    letter-spacing: -0.5px;
     cursor: pointer;
 
-    transition: transform 0.25s ease;
-    will-change: transform;
-
     &:hover {
-      transform: scale(1.1);
+      border-color: rgba(212, 175, 55, 0.3);
+      background: rgba(212, 175, 55, 0.12);
     }
   }
 
-  /* ===============================
-     LINKS
-     =============================== */
   &_links {
     display: flex;
-    gap: 140px;
+    gap: 40px;
 
     a {
       text-decoration: none;
-      color: #c8aa3d;
-      font-weight: 600;
-      font-family: monospace;
-      font-size: 1rem;
-
+      color: #8a8060;
+      font-weight: 500;
+      font-size: 0.85rem;
       position: relative;
-      transition: color 0.4s ease;
+      transition: color 0.25s ease;
+      letter-spacing: 0.2px;
+      padding: 4px 0;
 
-      &:hover {
-        color: #e9b716;
+      &:hover { color: #d4af37; }
+
+      &:focus-visible {
+        outline: 2px solid #d4af37;
+        outline-offset: 4px;
+        border-radius: 2px;
       }
 
-      &::after {
-        content: "";
-        position: absolute;
-        left: 0;
-        bottom: -2px;
-        height: 1.5px;
-        width: 100%;
-        background-color: #bda344;
-        transform: scaleX(0);
-        transform-origin: left;
-        opacity: 0;
-        will-change: transform, opacity;
-      }
+      &:active { color: #e0bd45; }
 
-      &:hover::after {
-        animation: underlineSwipe 0.9s ease forwards;
+      &.active {
+        color: #e8e0c8;
+
+        &::after {
+          content: "";
+          position: absolute;
+          left: 0;
+          bottom: 0;
+          height: 1.5px;
+          width: 100%;
+          background: #d4af37;
+          border-radius: 1px;
+        }
       }
     }
   }
 
-  /* ===============================
-     UNDERLINE ANIMATION
-     =============================== */
-  @keyframes underlineSwipe {
-    0% {
-      transform: scaleX(0);
-      opacity: 1;
-    }
-
-    40% {
-      transform: scaleX(1);
-      opacity: 1;
-    }
-
-    100% {
-      transform: scaleX(1);
-      opacity: 0;
-    }
+  &_auth,
+  &_logout {
+    font-size: 0.78rem;
+    padding: 6px 16px;
   }
 
-  /* ===============================
-     MOBILE (NO BLUR)
-     =============================== */
-  @media (max-width: 728px) {
-    padding: 0.3rem;
+  @media (max-width: 768px) {
+    padding: 10px 16px;
 
     &_links {
       gap: 18px;
-
-      a {
-        font-size: 0.8rem;
-      }
+      a { font-size: 0.75rem; }
     }
 
-    &_logo img {
-      width: 24px;
+    &_logoText {
+      width: 28px;
+      height: 28px;
+      font-size: 0.7rem;
+      border-radius: 6px;
     }
 
-    &_logout {
-      border-radius: 8px;
-      padding: 3px;
-      font-size: 0.5rem;
+    &_logout,
+    &_auth {
+      padding: 4px 10px;
+      font-size: 0.65rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    padding: 8px 12px;
+
+    &_links {
+      gap: 12px;
+      a { font-size: 0.7rem; }
+    }
+
+    &_logoText {
+      width: 26px;
+      height: 26px;
+      font-size: 0.65rem;
+    }
+
+    &_logout,
+    &_auth {
+      padding: 3px 8px;
+      font-size: 0.6rem;
     }
   }
 }

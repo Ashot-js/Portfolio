@@ -1,3 +1,4 @@
+import React from "react";
 import ReactDOM from "react-dom/client";
 import { Provider } from "react-redux";
 import { RouterProvider } from "react-router";
@@ -10,7 +11,7 @@ import { setAuthChecked, setUser } from "./store/authSlice";
 import "./index.css";
 import "react-toastify/dist/ReactToastify.css";
 
-onAuthStateChanged(auth, async (firebaseUser) => {
+onAuthStateChanged(auth, (firebaseUser) => {
   if (firebaseUser?.email) {
     store.dispatch(
       setUser({
@@ -18,18 +19,17 @@ onAuthStateChanged(auth, async (firebaseUser) => {
         email: firebaseUser.email,
       })
     );
-    store.dispatch(setAuthChecked(true));
-    return;
+  } else {
+    store.dispatch(setUser(null));
   }
-
-  store.dispatch(setUser(null));
   store.dispatch(setAuthChecked(true));
 });
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
-  <Provider store={store}>
-    <RouterProvider router={router} />
-    <ToastContainer position="top-right" autoClose={3000} />
-  </Provider>
+  <React.StrictMode>
+    <Provider store={store}>
+      <RouterProvider router={router} />
+      <ToastContainer position="top-right" autoClose={3000} />
+    </Provider>
+  </React.StrictMode>
 );
-

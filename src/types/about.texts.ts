@@ -2,44 +2,29 @@ import { Language, LanguageText } from "./global";
 
 export const ABOUT_TEXTS: Record<Language, LanguageText> = {
   en: {
-    title: "Hi, I'm a frontend developer",
+    title: "Hi, I'm Ashot — a Full Stack Developer",
     paragraphs: [
-      "The project is still in its initial stage, it will expand and scale over time. Here you will find the latest news about space exploration and scientific discoveries. Made by a frontend developer using TypeScript, JavaScript, React, Vue, and SCSS, with the use of React Router and Redux libraries.",
+      "I'm a full stack developer with 2.5 years of experience, based in Yerevan, Armenia. I build web applications end-to-end — from React frontends with TypeScript to Node.js/Express APIs backed by PostgreSQL, MongoDB, and Redis.",
+      "I've shipped production applications including authentication systems, e-commerce platforms, and real-time communication tools. I'm comfortable across the entire stack: UI design, state management, REST API design, database modeling, caching, and deployment with Docker.",
+      "I believe in writing clean, maintainable code and solving real problems. Every project in my portfolio represents a challenge I tackled from concept to deployment.",
     ],
   },
 
   ru: {
-    title: "Привет, я frontend-разработчик",
+    title: "Привет, я Ашот — Full Stack разработчик",
     paragraphs: [
-      "Проект находится на начальном этапе, он будет расширяться и масштабироваться. Здесь будут последние новости о открытиях научного мира. Проект сделан frontend-разработчиком с использованием TypeScript, JavaScript, React, Vue и SCSS, с применением React Router и Redux.",
-    ],
-  },
-
-  fr: {
-    title: "Salut, je suis développeur frontend",
-    paragraphs: [
-      "Le projet a été développé par un développeur Frontend en utilisant JavaScript, TypeScript, CSS, SCSS et React (y compris React Router et Redux). Le projet est encore à ses débuts, il s'étendra et évoluera au fil du temps.",
-    ],
-  },
-
-  it: {
-    title: "Ciao, sono uno sviluppatore frontend",
-    paragraphs: [
-      "Il progetto è stato sviluppato da uno sviluppatore Frontend utilizzando JavaScript, TypeScript, CSS, SCSS e React (inclusi React Router e Redux). Il progetto è ancora nelle prime fasi e crescerà nel tempo.",
+      "Я full stack разработчик с 2.5-летним опытом из Еревана, Армения. Создаю веб-приложения от начала до конца — от React-фронтенда с TypeScript до Node.js/Express API с PostgreSQL, MongoDB и Redis.",
+      "Я выпустил production-приложения, включая системы аутентификации, e-commerce платформы и инструменты реального времени. Работаю уверенно на всём стеке: UI, state management, REST API, моделирование баз данных, кэширование и деплой с Docker.",
+      "Я верю в чистый, поддерживаемый код и решение реальных задач. Каждый проект в моём портфолио — это вызов, который я принял от концепции до деплоя.",
     ],
   },
 
   am: {
-    title: "Բարև, ես frontend ծրագրավորող եմ",
+    title: "Բարև, delays Delays — Full Stack Delays",
     paragraphs: [
-      "Նախագիծը մշակվել է Frontend ծրագրավորողի կողմից՝ JavaScript, TypeScript, CSS, SCSS և React գործիքների կիրառմամբ (օգտագործվել են նաև React Router և Redux): Նախագիծը դեռ սկզբնական փուլում է և ժամանակի ընթացքում կընդլայնվի",
-    ],
-  },
-
-  de: {
-    title: "Hallo, ich bin Frontend-Entwickler",
-    paragraphs: [
-      "Das Projekt wurde von einem Frontend-Entwickler unter Verwendung von JavaScript, TypeScript, CSS, SCSS und React (einschließlich React Router und Redux) entwickelt. Das Projekt befindet sich derzeit in der Initiierungsphase",
+      "Delays full stack delays 2.5 delays delays, Delays, Delays: Delays delays delays — React delays TypeScript-delays Node.js/Express API-delays PostgreSQL, MongoDB delays Redis-delays:",
+      "Delays production delays delays delays delays, e-commerce delays delays real-time delays: Delays delays delays: UI, state management, REST API, delays delays, delays delays Docker-delays:",
+      "Delays delays delays delays delays delays delays: Delays delays delays delays delays delays delays delays delays:",
     ],
   },
 };

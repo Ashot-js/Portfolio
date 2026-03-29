@@ -1,100 +1,68 @@
-/* Основной контейнер Footer */
 .Footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
   position: fixed;
-  // Фиксируем футер относительно окна браузера
   bottom: 0;
   left: 0;
   width: 100%;
-  padding: 15px;
-  backdrop-filter: blur(6px);
-  box-shadow: 0 -4px 6px rgba(212, 175, 55, 0.12);
-  font-family: monospace;
-  color: #fbe8a6;
+  padding: 12px 32px;
+  background: rgba(5, 5, 5, 0.85);
+  backdrop-filter: blur(16px);
+  border-top: 1px solid rgba(212, 175, 55, 0.06);
+  color: #8a8060;
   z-index: 100;
-  /* 🌟 Красивая подсветка сверху */
+  transition: transform 0.25s ease;
+
+  &--hidden {
+    transform: translateY(100%);
+  }
+
   &_glowLine {
-    position: absolute;
-    top: -6px;
-    // Поднимаем линию чуть выше футера
-    left: 50%;
-    // Ставим линию по центру по горизонтали
-    transform: translateX(-50%);
-    // Смещаем линию ровно в центр
-    width: 50%;
-    // Ширина линии — 80% от ширины футера
-    height: 0.6px;
-    background: linear-gradient(
-      100deg,
-      rgba(212, 175, 55, 0.2),
-      rgba(158, 135, 60, 0.8),
-      rgba(212, 175, 55, 0.2)
-    );
-    // Золотой градиент с усилением в центре
-    border-radius: 50px;
-    // Скругляем концы линии
-    filter: blur(3px);
-    // Добавляем мягкое свечение
-    pointer-events: none;
-    // Линия не реагирует на клики мыши
-    z-index: 101;
-    // Линия находится поверх футера
+    display: none;
   }
 
   &_inner {
-    font-size: 12px;
-    flex-basis: 90%;
-    position: relative;
-    // Нужно для корректного отображения glowLine
+    font-size: 0.75rem;
+    flex-basis: 80%;
   }
 
   &_socials {
-    // Контейнер иконок соцсетей
     display: flex;
-    flex-basis: 10%;
+    flex-basis: 20%;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: flex-end;
+    gap: 20px;
 
     a {
-      color: #fbe8a6;
-      font-size: 1.2rem;
-      transition:
-        transform 0.25s ease,
-        color 0.25s ease,
-        text-shadow 0.25s ease;
-      // Плавные анимации при наведении
+      color: #8a8060;
+      font-size: 1rem;
+      transition: all 0.25s ease;
 
-      &:hover {
-        // Стили при наведени
-        color: #ffd700;
-        transform: translateY(-2px) scale(1.1);
-        // Лёгкий подъём и увеличение иконки
+      &:hover { color: #d4af37; }
+      &:active { color: #e0bd45; }
 
-        text-shadow: 0 0 8px rgba(212, 175, 55, 0.8);
-        // Свечение вокруг иконки
+      &:focus-visible {
+        outline: 2px solid #d4af37;
+        outline-offset: 4px;
+        border-radius: 2px;
       }
     }
   }
 }
 
-/* 📱 MOBILE */
 @media (max-width: 768px) {
   .Footer {
     flex-direction: column;
-    padding: 12px;
+    padding: 10px 24px;
     gap: 6px;
-    &_inner {
-      font-size: 10px;
-    }
+    text-align: center;
 
+    &_inner { font-size: 0.7rem; }
     &_socials {
-      gap: 25px;
-
-      a {
-        font-size: 1rem;
-      }
+      justify-content: center;
+      gap: 20px;
+      a { font-size: 0.9rem; }
     }
   }
 }
