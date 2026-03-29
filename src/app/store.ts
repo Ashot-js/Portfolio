@@ -1,10 +1,5 @@
-// Импортируем функцию configureStore из Redux Toolkit.
-// Она упрощает создание Redux-хранилища и автоматически
-// настраивает DevTools, middleware и проверку типов.
-import { configureStore } from "@reduxjs/toolkit";
 
-// Импортируем редьюсер авторизации из authSlice.
-// Этот редьюсер будет отвечать за состояние auth в сторе.
+import { configureStore } from "@reduxjs/toolkit";
 import authReducer from "../store/authSlice";
 
 // Создаём Redux-хранилище

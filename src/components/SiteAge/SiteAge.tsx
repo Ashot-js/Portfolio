@@ -6,7 +6,7 @@ export default function SiteAge() {
 
   return (
     <div className="SitePage">
-      Site online for {years} {years === 1 ? "year" : "years"} {months}{" "}
+      Online for {years} {years === 1 ? "year" : "years"} {months}{" "}
       {months === 1 ? "month" : "months"} {days} {days === 1 ? "day" : "days"}
     </div>
   );
