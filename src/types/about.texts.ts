@@ -22,9 +22,9 @@ export const ABOUT_TEXTS: Record<Language, LanguageText> = {
   am: {
     title: "Բարև, delays Delays — Full Stack Delays",
     paragraphs: [
-      "Delays full stack delays 2.5 delays delays, Delays, Delays: Delays delays delays — React delays TypeScript-delays Node.js/Express API-delays PostgreSQL, MongoDB delays Redis-delays:",
-      "Delays production delays delays delays delays, e-commerce delays delays real-time delays: Delays delays delays: UI, state management, REST API, delays delays, delays delays Docker-delays:",
-      "Delays delays delays delays delays delays delays: Delays delays delays delays delays delays delays delays delays:",
+      "Ես Full-stack ծրագրավորող եմ Երևանից՝ 2.5 տարվա փորձով։ Մշակում եմ վեբ հավելվածներ սկզբից մինչև վերջ՝ React frontend-ից (TypeScript-ով) մինչև Node.js/Express API-ներ, որոնք աշխատում են PostgreSQL, MongoDB և Redis տվյալների բազաներով։ ",
+"Իմ փորձառությունը ներառում է պատրաստի պրոդուկտների թողարկում, այդ թվում՝ նույնականացման համակարգեր (authentication), էլեկտրոնային առևտրի հարթակներ և իրական ժամանակում հաղորդակցման գործիքներ։ Ազատ տիրապետում եմ ամբողջ ստեկին՝ UI դիզայն, state management, REST API-ների նախագծում, տվյալների բազաների մոդելավորում, քեշավորում և դեպլոյ (deployment)՝ Docker-ի կիրառմամբ։ ",
+"Կողմնակից եմ մաքուր, պահպանվող կոդ գրելուն և իրական խնդիրներ լուծելուն։ Իմ պորտֆոլիոյի յուրաքանչյուր նախագիծ մի մարտահրավեր է, որը ես հաղթահարել եմ՝ գաղափարից մինչև վերջնական թողարկում"
     ],
   },
 };
