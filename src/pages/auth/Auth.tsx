@@ -2,7 +2,6 @@ import { useState, useRef, useEffect } from "react";
 import LoginForm from "../login/LoginForm";
 import RegisterForm from "../register/RegisterForm";
 import "./Auth.scss";
-import BgImage from "../../assets/auth-bg.jpg";
 import type { BrowserTimer } from "../../types/global";
 
 const Auth = () => {
@@ -39,10 +38,7 @@ const Auth = () => {
   }, []);
 
   return (
-    <div
-      className={`AuthPageWrapper ${isLogin ? "login" : "register"}`}
-      style={{ backgroundImage: `url(${BgImage})` }}
-    >
+    <div className={`AuthPageWrapper ${isLogin ? "login" : "register"}`}>
       <h1 className={`AuthPageWrapper_title ${animClass}`}>{titleText}</h1>
 
       <div className="AuthPage">
