@@ -7,7 +7,7 @@ const PROJECTS = [
     description:
       "Multi-app consumer authentication system with JWT tokens, role-based access control, refresh token rotation, and session management across microservices.",
     tech: ["React", "Node.js", "Express", "MongoDB", "JWT", "Redis"],
-    github: "https://github.com/Ashot-js/Portfolio",
+    github: "https://github.com/Ashot-js/auth-gate",
     live: null,
   },
   {
@@ -47,7 +47,7 @@ const PROJECTS = [
     description:
       "Full-stack weather app with Node.js proxy server for API key security, Redis caching for rate limiting, city search, and 5-day forecasts.",
     tech: ["React", "TypeScript", "Node.js", "Redis", "REST API"],
-    github: "https://github.com/Ashot-js",
+    github: "https://github.com/Ashot-js/my-weather-app",
     live: null,
   },
 ];
@@ -58,7 +58,8 @@ export default function Projects() {
       <div className="ProjectsPage_header">
         <h1 className="ProjectsPage_title">Projects</h1>
         <p className="ProjectsPage_subtitle">
-          Full-stack applications I've designed and built — from database schema to deployed product.
+          Full-stack applications I've designed and built — from database schema
+          to deployed product.
         </p>
       </div>
 
@@ -73,16 +74,28 @@ export default function Projects() {
             <div className="PCard_bottom">
               <div className="PCard_tech">
                 {project.tech.map((t) => (
-                  <span key={t} className="PCard_tag">{t}</span>
+                  <span key={t} className="PCard_tag">
+                    {t}
+                  </span>
                 ))}
               </div>
 
               <div className="PCard_links">
-                <a href={project.github} target="_blank" rel="noreferrer" title="GitHub">
+                <a
+                  href={project.github}
+                  target="_blank"
+                  rel="noreferrer"
+                  title="GitHub"
+                >
                   <FaGithub />
                 </a>
                 {project.live && (
-                  <a href={project.live} target="_blank" rel="noreferrer" title="Live Demo">
+                  <a
+                    href={project.live}
+                    target="_blank"
+                    rel="noreferrer"
+                    title="Live Demo"
+                  >
                     <FaExternalLinkAlt />
                   </a>
                 )}
