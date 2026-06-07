@@ -15,7 +15,7 @@ const PROJECTS = [
     description:
       "Full-stack e-commerce with product catalog, shopping cart, Stripe payment integration, order management, and admin dashboard with analytics.",
     tech: ["React", "TypeScript", "Node.js", "PostgreSQL", "Redis", "Docker"],
-    github: "https://github.com/Ashot-js",
+    github: "https://github.com/Ashot-js/ecommerce-luxecart",
     live: null,
   },
   {
