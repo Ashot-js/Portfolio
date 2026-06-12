@@ -16,7 +16,7 @@ const PROJECTS = [
       "Full-stack e-commerce with product catalog, shopping cart, Stripe payment integration, order management, and admin dashboard with analytics.",
     tech: ["React", "TypeScript", "Node.js", "PostgreSQL", "Redis", "Docker"],
     github: "https://github.com/Ashot-js/ecommerce-luxecart",
-    live: null,
+    live: "https://ecommerce-luxecart.web.app",
   },
   {
     title: "Real-Time Chat",
@@ -32,7 +32,7 @@ const PROJECTS = [
       "This portfolio — built with React 19, TypeScript, Vite, and Firebase. Features multilingual support, lazy-loaded routes, and responsive design.",
     tech: ["React 19", "TypeScript", "SCSS", "Vite", "Firebase"],
     github: "https://github.com/Ashot-js/Portfolio",
-    live: null,
+    live: "https://mysite2025-25a7b.web.app",
   },
   {
     title: "Task Management API",
@@ -48,7 +48,7 @@ const PROJECTS = [
       "Full-stack weather app with Node.js proxy server for API key security, Redis caching for rate limiting, city search, and 5-day forecasts.",
     tech: ["React", "TypeScript", "Node.js", "Redis", "REST API"],
     github: "https://github.com/Ashot-js/my-weather-app",
-    live: null,
+    live: "https://pogoda-weather-app.web.app",
   },
 ];
 
