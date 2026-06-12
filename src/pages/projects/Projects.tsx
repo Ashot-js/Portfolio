@@ -15,7 +15,7 @@ const PROJECTS = [
     description:
       "Full-stack e-commerce with product catalog, shopping cart, Stripe payment integration, order management, and admin dashboard with analytics.",
     tech: ["React", "TypeScript", "Node.js", "PostgreSQL", "Redis", "Docker"],
-    github: "https://github.com/Ashot-js/ecommerce-luxecartgit init",
+    github: "https://github.com/Ashot-js/ecommerce-luxecart",
     live: null,
   },
   {
@@ -23,8 +23,8 @@ const PROJECTS = [
     description:
       "Scalable messaging platform with WebSocket connections, message persistence, user presence indicators, and Redis pub/sub for horizontal scaling.",
     tech: ["React", "Node.js", "Socket.io", "MongoDB", "Redis"],
-    github: "https://github.com/Ashot-js",
-    live: null,
+    github: "https://github.com/Ashot-js/realChatBot",
+    live: "https://realchatbot-app.web.app",
   },
   {
     title: "Portfolio Website",
