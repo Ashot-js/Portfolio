@@ -35,22 +35,25 @@ const SKILLS = [
 
 const FEATURED_PROJECTS = [
   {
-    title: "Auth Gate",
-    description: "Multi-app consumer authentication system with JWT tokens, role-based access control, and session management across microservices.",
-    tech: ["React", "Node.js", "Express", "MongoDB", "JWT"],
-    github: "https://github.com/Ashot-js/Portfolio",
-  },
-  {
     title: "E-Commerce Platform",
     description: "Full-stack e-commerce application with product catalog, cart, checkout, payment integration, and admin dashboard.",
     tech: ["React", "TypeScript", "Node.js", "PostgreSQL", "Redis"],
-    github: "https://github.com/Ashot-js",
+    github: "https://github.com/Ashot-js/ecommerce-luxecart",
+    live: "https://ecommerce-luxecart.web.app",
   },
   {
     title: "Real-Time Chat",
     description: "Scalable messaging platform with WebSocket connections, message persistence, user presence, and Redis pub/sub for horizontal scaling.",
     tech: ["React", "Node.js", "MongoDB", "Redis", "Socket.io"],
-    github: "https://github.com/Ashot-js",
+    github: "https://github.com/Ashot-js/realChatBot",
+    live: "https://realchatbot-app.web.app",
+  },
+  {
+    title: "Weather Dashboard",
+    description: "Full-stack weather app with city search, live conditions, and 5-day forecasts — served with a dark navy theme.",
+    tech: ["React", "TypeScript", "Redux", "Tailwind", "REST API"],
+    github: "https://github.com/Ashot-js/my-weather-app",
+    live: "https://pogoda-weather-app.web.app",
   },
 ];
 
@@ -108,7 +111,7 @@ function Home() {
           {FEATURED_PROJECTS.map((project) => (
             <a
               key={project.title}
-              href={project.github}
+              href={project.live}
               target="_blank"
               rel="noreferrer"
               className="ProjectCard"
