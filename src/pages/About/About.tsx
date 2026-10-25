@@ -36,7 +36,7 @@ const EDUCATION = [
   {
     period: "2023 — Present",
     degree: "Computer Science",
-    school: "University (to be updated)",
+    school: "Artsakh State University",
     details: "Studying core CS fundamentals including algorithms, data structures, networking, databases, and software engineering principles.",
   },
 ];
