@@ -1,6 +1,6 @@
 .ContactPage {
   color: #e8e0c8;
-  padding: 100px 80px 80px;
+  padding: 48px 80px 80px;
   max-width: 1000px;
   margin: 0 auto;
 
@@ -62,8 +62,8 @@
     background: rgba(255, 255, 255, 0.02);
     color: #e8e0c8;
     font-family: 'Inter', sans-serif;
-    font-size: 0.85rem;
-    transition: all 0.25s ease;
+    font-size: 1rem; // < 16px — iOS приближает страницу при фокусе
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
 
     &::placeholder {
       color: rgba(138, 128, 96, 0.6);
@@ -162,7 +162,7 @@
 /* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
   .ContactPage {
-    padding: 80px 20px 48px;
+    padding: 32px 20px 48px;
   }
 
   .ContactPage_grid {
@@ -181,7 +181,7 @@
 
 @media (max-width: 480px) {
   .ContactPage {
-    padding: 72px 16px 40px;
+    padding: 24px 16px 40px;
   }
 
   .ContactPage_title { font-size: 1.3rem; }

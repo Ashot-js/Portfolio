@@ -8,8 +8,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  min-height: 100vh;
-  padding: 100px 80px 80px;
+  min-height: calc(100vh - 61px);
+  padding: 48px 80px 80px;
   gap: 80px;
   max-width: 1200px;
   margin: 0 auto;
@@ -294,7 +294,7 @@
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 1024px) {
-  .Hero { padding: 100px 40px 64px; }
+  .Hero { padding: 48px 40px 64px; }
   .Hero_name { font-size: 2.4rem; }
   .Skills, .Featured { padding: 60px 40px; }
   .Featured_grid { grid-template-columns: repeat(2, 1fr); }
@@ -304,7 +304,7 @@
   .Hero {
     flex-direction: column;
     text-align: center;
-    padding: 80px 20px 40px;
+    padding: 32px 20px 40px;
     gap: 32px;
     min-height: auto;
   }
@@ -321,7 +321,7 @@
 }
 
 @media (max-width: 480px) {
-  .Hero { padding: 72px 16px 32px; }
+  .Hero { padding: 24px 16px 32px; }
   .Hero_name { font-size: 1.5rem; }
   .Hero_title { font-size: 1rem; }
   .Hero_tagline { font-size: 0.8rem; }
@@ -330,7 +330,7 @@
   .Hero_btn { width: 100%; text-align: center; }
   .Hero_codeBlock { font-size: 0.65rem; padding: 16px; }
   .Skills, .Featured { padding: 32px 16px; }
-  .Skills_grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+  .Skills_grid { grid-template-columns: repeat(3, 1fr); gap: 8px; }
   .Skills_item { padding: 14px 8px; }
   .Section_title { font-size: 1.15rem; margin-bottom: 24px; }
   .ProjectCard { padding: 18px; }

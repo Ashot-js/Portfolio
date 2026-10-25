@@ -45,6 +45,9 @@ export default function Contact() {
           <input
             type="text"
             placeholder="Your name"
+            aria-label="Your name"
+            autoComplete="name"
+            maxLength={100}
             value={name}
             required
             onChange={(e) => setName(e.target.value)}
@@ -53,6 +56,9 @@ export default function Contact() {
           <input
             type="email"
             placeholder="Your email"
+            aria-label="Your email"
+            autoComplete="email"
+            maxLength={254}
             value={email}
             required
             onChange={(e) => setEmail(e.target.value)}
@@ -60,9 +66,9 @@ export default function Contact() {
 
           <textarea
             placeholder="Your message..."
+            aria-label="Your message"
             value={message}
             required
-            minLength={1}
             maxLength={1000}
             onChange={(e) => setMessage(e.target.value)}
           />

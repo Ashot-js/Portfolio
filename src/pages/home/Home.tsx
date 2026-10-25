@@ -1,6 +1,6 @@
 import { Link } from "react-router";
 import {
-  FaReact, FaJsSquare, FaGitAlt, FaNodeJs, FaGithub, FaDocker, FaDatabase, FaRobot,
+  FaReact, FaJsSquare, FaGitAlt, FaNodeJs, FaDocker, FaDatabase, FaRobot,
 } from "react-icons/fa";
 import {
   SiTypescript, SiRedux, SiFirebase, SiSass, SiVite, SiMongodb, SiPostgresql, SiExpress, SiRedis, SiOpenai,

@@ -1,9 +1,10 @@
+$gold: #d4af37;
+$muted: #8a8060;
+
 .Nav {
-  user-select: none;
-  position: fixed;
+  position: sticky;
   top: 0;
-  left: 0;
-  right: 0;
+  z-index: 1000;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -11,58 +12,40 @@
   background: rgba(5, 5, 5, 0.85);
   backdrop-filter: blur(16px);
   border-bottom: 1px solid rgba(212, 175, 55, 0.06);
-  z-index: 1000;
+  user-select: none;
 
-  &_logo a {
-    text-decoration: none;
-  }
-
-  &_logoText {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 34px;
-    height: 34px;
+  &_logo {
+    display: grid;
+    place-items: center;
+    width: 36px;
+    height: 36px;
     border-radius: 8px;
     background: rgba(212, 175, 55, 0.08);
     border: 1px solid rgba(212, 175, 55, 0.15);
-    color: #d4af37;
-    font-family: 'JetBrains Mono', monospace;
+    color: $gold;
+    font-family: "JetBrains Mono", monospace;
     font-weight: 700;
     font-size: 0.8rem;
-    transition: all 0.25s ease;
-    letter-spacing: -0.5px;
-    cursor: pointer;
+    text-decoration: none;
+    transition: border-color 0.2s ease, background 0.2s ease;
 
-    &:hover {
-      border-color: rgba(212, 175, 55, 0.3);
-      background: rgba(212, 175, 55, 0.12);
-    }
+    &:hover { border-color: rgba(212, 175, 55, 0.3); background: rgba(212, 175, 55, 0.12); }
   }
 
   &_links {
     display: flex;
-    gap: 40px;
+    gap: 32px;
 
     a {
-      text-decoration: none;
-      color: #8a8060;
-      font-weight: 500;
-      font-size: 0.85rem;
       position: relative;
-      transition: color 0.25s ease;
-      letter-spacing: 0.2px;
-      padding: 4px 0;
+      padding: 6px 0;
+      color: $muted;
+      font-size: 0.9rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: color 0.2s ease;
 
-      &:hover { color: #d4af37; }
-
-      &:focus-visible {
-        outline: 2px solid #d4af37;
-        outline-offset: 4px;
-        border-radius: 2px;
-      }
-
-      &:active { color: #e0bd45; }
+      &:hover { color: $gold; }
 
       &.active {
         color: #e8e0c8;
@@ -71,62 +54,80 @@
           content: "";
           position: absolute;
           left: 0;
+          right: 0;
           bottom: 0;
           height: 1.5px;
-          width: 100%;
-          background: #d4af37;
-          border-radius: 1px;
+          background: $gold;
         }
       }
     }
   }
 
-  &_auth,
-  &_logout {
-    font-size: 0.78rem;
-    padding: 6px 16px;
+  a:focus-visible,
+  &_toggle:focus-visible {
+    outline: 2px solid $gold;
+    outline-offset: 4px;
+    border-radius: 4px;
   }
 
-  @media (max-width: 768px) {
-    padding: 10px 16px;
+  // Гамбургер: три полоски из одного span и его псевдоэлементов.
+  &_toggle {
+    display: none;
+    width: 44px;
+    height: 44px;
+    margin-right: -8px;
+    border: 0;
+    background: none;
+    cursor: pointer;
 
-    &_links {
-      gap: 18px;
-      a { font-size: 0.75rem; }
+    span,
+    span::before,
+    span::after {
+      display: block;
+      width: 22px;
+      height: 2px;
+      margin: 0 auto;
+      background: $gold;
+      transition: transform 0.2s ease, background 0.2s ease;
     }
 
-    &_logoText {
-      width: 28px;
-      height: 28px;
-      font-size: 0.7rem;
-      border-radius: 6px;
-    }
-
-    &_logout,
-    &_auth {
-      padding: 4px 10px;
-      font-size: 0.65rem;
-    }
+    span { position: relative; }
+    span::before,
+    span::after { content: ""; position: absolute; left: 0; }
+    span::before { top: -7px; }
+    span::after { top: 7px; }
   }
 
-  @media (max-width: 480px) {
-    padding: 8px 12px;
+  @media (max-width: 640px) {
+    padding: 8px 16px;
+
+    &_toggle { display: block; }
 
     &_links {
-      gap: 12px;
-      a { font-size: 0.7rem; }
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      flex-direction: column;
+      gap: 0;
+      padding: 8px 16px 16px;
+      background: #070706;
+      border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+      display: none;
+
+      a {
+        padding: 14px 4px;
+        font-size: 1rem;
+        &:not(:last-child) { border-bottom: 1px solid rgba(212, 175, 55, 0.06); }
+
+        &.active::after { display: none; }
+        &.active { color: $gold; }
+      }
     }
 
-    &_logoText {
-      width: 26px;
-      height: 26px;
-      font-size: 0.65rem;
-    }
-
-    &_logout,
-    &_auth {
-      padding: 3px 8px;
-      font-size: 0.6rem;
-    }
+    &--open &_links { display: flex; }
+    &--open &_toggle span { background: transparent; }
+    &--open &_toggle span::before { transform: translateY(7px) rotate(45deg); }
+    &--open &_toggle span::after { transform: translateY(-7px) rotate(-45deg); }
   }
 }

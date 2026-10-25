@@ -1,6 +1,6 @@
 .AboutPage {
   color: #e8e0c8;
-  padding: 100px 80px 80px;
+  padding: 48px 80px 80px;
   max-width: 800px;
   margin: 0 auto;
   display: flex;
@@ -196,7 +196,7 @@
 /* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
   .AboutPage {
-    padding: 80px 20px 48px;
+    padding: 32px 20px 48px;
     gap: 36px;
   }
 
@@ -217,7 +217,7 @@
 
 @media (max-width: 480px) {
   .AboutPage {
-    padding: 72px 16px 40px;
+    padding: 24px 16px 40px;
     gap: 28px;
   }
 
