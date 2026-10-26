@@ -39,8 +39,8 @@ const PROJECTS = [
     description:
       "RESTful API for task management with CRUD operations, user authentication, role permissions, pagination, filtering, and automated testing.",
     tech: ["Node.js", "Express", "PostgreSQL", "Jest", "Docker"],
-    github: "https://github.com/Ashot-js",
-    live: null,
+    github: "https://github.com/Ashot-js/task-manager-api",
+    live: "https://task-manager-api-3t5y.onrender.com/docs",
   },
   {
     title: "Weather Dashboard",
