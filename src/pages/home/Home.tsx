@@ -35,6 +35,12 @@ const SKILLS = [
 
 const FEATURED_PROJECTS = [
   {
+    title: "gtnel.com — Business Directory",
+    description: "Live business directory for Armenia on its own domain: categories, reviews, job listings, chat, owner and admin moderation, SEO. Runs on my own server with HTTPS, monitoring and backups.",
+    tech: ["React", "TypeScript", "Node.js", "PostgreSQL", "Docker"],
+    live: "https://gtnel.com",
+  },
+  {
     title: "E-Commerce Platform",
     description: "Full-stack e-commerce application with product catalog, cart, checkout, payment integration, and admin dashboard.",
     tech: ["React", "TypeScript", "Node.js", "PostgreSQL", "Redis"],
