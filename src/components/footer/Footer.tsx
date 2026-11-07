@@ -5,7 +5,7 @@ import "./Footer.scss";
 const SOCIALS = [
   { href: "https://github.com/Ashot-js", label: "GitHub", Icon: FaGithub },
   { href: "https://t.me/Ashot_js", label: "Telegram", Icon: FaTelegramPlane },
-  { href: "https://linkedin.com/in/ashot-js", label: "LinkedIn", Icon: FaLinkedinIn },
+  { href: "https://www.linkedin.com/in/ashot-grigoryan-a0a21a391", label: "LinkedIn", Icon: FaLinkedinIn },
 ];
 
 const Footer = () => (

@@ -103,6 +103,13 @@ export default function Contact() {
             </a>
           </div>
 
+          <div className="ContactInfo_item">
+            <span className="ContactInfo_label">LinkedIn</span>
+            <a href="https://www.linkedin.com/in/ashot-grigoryan-a0a21a391" target="_blank" rel="noreferrer">
+              linkedin.com/in/ashot-grigoryan
+            </a>
+          </div>
+
           <p className="ContactInfo_hint">
             Fast replies &middot; Open to collaboration &middot; Freelance friendly
           </p>
