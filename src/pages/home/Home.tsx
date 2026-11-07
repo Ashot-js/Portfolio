@@ -46,7 +46,7 @@ const FEATURED_PROJECTS = [
   {
     title: "E-Commerce Platform",
     description: "Full-stack e-commerce application with product catalog, cart, checkout, payment integration, and admin dashboard.",
-    tech: ["React", "TypeScript", "Node.js", "PostgreSQL", "Redis"],
+    tech: ["React", "TypeScript", "Node.js", "PostgreSQL", "Redis", "Docker"],
     github: "https://github.com/Ashot-js/ecommerce-luxecart",
     live: "https://ecommerce-luxecart.web.app",
   },
@@ -59,8 +59,8 @@ const FEATURED_PROJECTS = [
   },
   {
     title: "Weather Dashboard",
-    description: "Full-stack weather app with city search, live conditions, and 5-day forecasts — served with a dark navy theme.",
-    tech: ["React", "TypeScript", "Redux", "Tailwind", "REST API"],
+    description: "Full-stack weather app with a Node.js proxy server for API key security, Redis caching, city search, and 5-day forecasts.",
+    tech: ["React", "TypeScript", "Node.js", "Redis", "REST API"],
     github: "https://github.com/Ashot-js/my-weather-app",
     live: "https://pogoda-weather-app.web.app",
   },

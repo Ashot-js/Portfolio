@@ -13,22 +13,16 @@ const LANGUAGES: LanguageOption[] = [
 
 const EXPERIENCE = [
   {
-    period: "2024 — Present",
+    period: "2023 — Present",
     role: "Full Stack Developer",
     company: "Production Projects & Freelance",
-    description: "Building end-to-end web applications with React, Node.js, Express, PostgreSQL, and MongoDB. Designing REST APIs, implementing authentication, managing deployments with Docker.",
-  },
-  {
-    period: "2023 — 2024",
-    role: "Frontend Developer",
-    company: "Internship & Contract Work",
-    description: "Developed and maintained React/TypeScript applications, integrated third-party APIs, implemented state management with Redux, and collaborated in agile teams.",
+    description: "Building end-to-end web applications with React, TypeScript and Redux Toolkit; Node.js/Express REST APIs with JWT authentication; PostgreSQL, MongoDB and Redis caching; real-time features with Socket.io and testing with Jest. Deploying with Docker, Firebase and AWS, managing servers over SSH and Cloudflare (DNS, SSL/HTTPS, CDN, protection). Using AI tools (Claude, Codex, Cursor) to speed up development.",
   },
   {
     period: "2023 — Present",
-    role: "Full Stack Projects & Open Source",
-    company: "Personal",
-    description: "Built production-grade applications including authentication systems, e-commerce platforms, real-time chat, and this portfolio — covering frontend, backend, databases, and caching with Redis.",
+    role: "JavaScript Instructor",
+    company: "Online Courses",
+    description: "Teaching JavaScript, TypeScript, React, Node.js, Git/GitHub and Docker to beginner and intermediate students. Creating learning materials and hands-on projects.",
   },
 ];
 

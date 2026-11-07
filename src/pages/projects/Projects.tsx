@@ -3,6 +3,14 @@ import "./Projects.scss";
 
 const PROJECTS = [
   {
+    title: "gtnel.com — Business Directory",
+    description:
+      "Live business directory for Armenia on its own domain: categories, reviews, job listings, chat, owner and admin moderation, SEO. Runs on my own server with HTTPS, monitoring and backups.",
+    tech: ["React", "TypeScript", "Node.js", "PostgreSQL", "Docker"],
+    github: null,
+    live: "https://gtnel.com",
+  },
+  {
     title: "Auth Gate",
     description:
       "Multi-app consumer authentication system with JWT tokens, role-based access control, refresh token rotation, and session management across microservices.",
@@ -81,14 +89,16 @@ export default function Projects() {
               </div>
 
               <div className="PCard_links">
-                <a
-                  href={project.github}
-                  target="_blank"
-                  rel="noreferrer"
-                  title="GitHub"
-                >
-                  <FaGithub />
-                </a>
+                {project.github && (
+                  <a
+                    href={project.github}
+                    target="_blank"
+                    rel="noreferrer"
+                    title="GitHub"
+                  >
+                    <FaGithub />
+                  </a>
+                )}
                 {project.live && (
                   <a
                     href={project.live}
