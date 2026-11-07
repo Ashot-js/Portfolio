@@ -1,7 +1,4 @@
-declare module "*.css";
-declare module "*.scss";
-
-export type Language = "en" | "ru" | "am";
+export type Language = "en" | "ru" | "hy";
 
 export interface LanguageText {
   title: string;

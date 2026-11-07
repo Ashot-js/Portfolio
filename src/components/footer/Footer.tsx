@@ -1,11 +1,12 @@
 import { FaGithub, FaTelegramPlane, FaLinkedinIn } from "react-icons/fa";
 import SiteAge from "../SiteAge/SiteAge";
+import { PROFILE } from "../../data/profile";
 import "./Footer.scss";
 
 const SOCIALS = [
-  { href: "https://github.com/Ashot-js", label: "GitHub", Icon: FaGithub },
-  { href: "https://t.me/Ashot_js", label: "Telegram", Icon: FaTelegramPlane },
-  { href: "https://www.linkedin.com/in/ashot-grigoryan-a0a21a391", label: "LinkedIn", Icon: FaLinkedinIn },
+  { href: PROFILE.github, label: "GitHub", Icon: FaGithub },
+  { href: PROFILE.telegram, label: "Telegram", Icon: FaTelegramPlane },
+  { href: PROFILE.linkedin, label: "LinkedIn", Icon: FaLinkedinIn },
 ];
 
 const Footer = () => (

@@ -1,4 +1,4 @@
-import { addDoc, collection, serverTimestamp } from "firebase/firestore";
+import { addDoc, collection, serverTimestamp } from "firebase/firestore/lite";
 import { db } from "../configs/firebase";
 
 interface ContactMessage {

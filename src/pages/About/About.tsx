@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./About.scss";
 
 import { Language, LanguageOption } from "../../types/global";
@@ -8,7 +8,7 @@ import Button from "../../components/ui/button/Button";
 const LANGUAGES: LanguageOption[] = [
   { code: "en", label: "English" },
   { code: "ru", label: "Русский" },
-  { code: "am", label: "Հայերեն" },
+  { code: "hy", label: "Հայերեն" },
 ];
 
 const EXPERIENCE = [
@@ -44,6 +44,22 @@ const EDUCATION = [
 export default function About() {
   const [lang, setLang] = useState<Language>("en");
   const [open, setOpen] = useState(false);
+  const menuRef = useRef<HTMLDivElement>(null);
+
+  // Close the language menu on outside click or Escape.
+  useEffect(() => {
+    if (!open) return;
+    const onClick = (e: MouseEvent) => {
+      if (!menuRef.current?.contains(e.target as Node)) setOpen(false);
+    };
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
+    document.addEventListener("mousedown", onClick);
+    document.addEventListener("keydown", onKey);
+    return () => {
+      document.removeEventListener("mousedown", onClick);
+      document.removeEventListener("keydown", onKey);
+    };
+  }, [open]);
 
   return (
     <div className="AboutPage">
@@ -57,7 +73,7 @@ export default function About() {
       <section className="About_section">
         <div className="About_sectionHeader">
           <h2 className="About_sectionTitle">About Me</h2>
-          <div className="About_lang">
+          <div className="About_lang" ref={menuRef}>
             <Button
               variant="lang"
               onClick={() => setOpen((p) => !p)}

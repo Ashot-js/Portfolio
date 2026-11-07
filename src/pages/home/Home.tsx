@@ -4,8 +4,10 @@ import {
 } from "react-icons/fa";
 import {
   SiTypescript, SiRedux, SiFirebase, SiSass, SiVite, SiMongodb, SiPostgresql, SiExpress, SiRedis, SiOpenai, SiCloudflare,
+  SiSocketdotio, SiJest, SiTailwindcss,
 } from "react-icons/si";
 import { BsStars } from "react-icons/bs";
+import { FEATURED_PROJECTS } from "../../data/projects";
 import "./Home.scss";
 
 const SKILLS = [
@@ -15,12 +17,15 @@ const SKILLS = [
   { icon: <SiPostgresql />, name: "PostgreSQL", highlight: true },
   { icon: <SiMongodb />, name: "MongoDB", highlight: true },
   { icon: <SiRedis />, name: "Redis", highlight: true },
+  { icon: <SiSocketdotio />, name: "Socket.io" },
+  { icon: <SiJest />, name: "Jest" },
   // Frontend
   { icon: <FaReact />, name: "React" },
   { icon: <SiTypescript />, name: "TypeScript" },
   { icon: <FaJsSquare />, name: "JavaScript" },
   { icon: <SiRedux />, name: "Redux" },
   { icon: <SiSass />, name: "SCSS" },
+  { icon: <SiTailwindcss />, name: "Tailwind" },
   // DevOps & Tools
   { icon: <FaDocker />, name: "Docker" },
   { icon: <FaAws />, name: "AWS" },
@@ -36,35 +41,6 @@ const SKILLS = [
   { icon: <FaRobot />, name: "Cursor" },
 ];
 
-const FEATURED_PROJECTS = [
-  {
-    title: "gtnel.com — Business Directory",
-    description: "Live business directory for Armenia on its own domain: categories, reviews, job listings, chat, owner and admin moderation, SEO. Runs on my own server with HTTPS, monitoring and backups.",
-    tech: ["React", "TypeScript", "Node.js", "PostgreSQL", "Docker"],
-    live: "https://gtnel.com",
-  },
-  {
-    title: "E-Commerce Platform",
-    description: "Full-stack e-commerce application with product catalog, cart, checkout, payment integration, and admin dashboard. Hosted on a free tier — the first load may take up to 1 minute while the server wakes up.",
-    tech: ["React", "TypeScript", "Node.js", "PostgreSQL", "Redis", "Docker"],
-    github: "https://github.com/Ashot-js/ecommerce-luxecart",
-    live: "https://ecommerce-luxecart.web.app",
-  },
-  {
-    title: "Real-Time Chat",
-    description: "Scalable messaging platform with WebSocket connections, message persistence, user presence, and Redis pub/sub for horizontal scaling. Hosted on a free tier — the first load may take up to 1 minute while the server wakes up.",
-    tech: ["React", "Node.js", "MongoDB", "Redis", "Socket.io"],
-    github: "https://github.com/Ashot-js/realChatBot",
-    live: "https://realchatbot-app.web.app",
-  },
-  {
-    title: "Weather Dashboard",
-    description: "Full-stack weather app with a Node.js proxy server for API key security, Redis caching, city search, and 5-day forecasts.",
-    tech: ["React", "TypeScript", "Node.js", "Redis", "REST API"],
-    github: "https://github.com/Ashot-js/my-weather-app",
-    live: "https://pogoda-weather-app.web.app",
-  },
-];
 
 function Home() {
   return (

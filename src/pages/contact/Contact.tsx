@@ -1,8 +1,17 @@
 import { useState } from "react";
 import { toast } from "react-toastify";
 import Button from "../../components/ui/button/Button";
-import { saveMessage } from "../../services/comments";
+import { saveMessage } from "../../services/messages";
+import { PROFILE, displayUrl } from "../../data/profile";
 import "./Contact.scss";
+
+const CONTACTS = [
+  { label: "Email", value: PROFILE.email, href: `mailto:${PROFILE.email}` },
+  { label: "Phone", value: PROFILE.phone, href: PROFILE.phoneHref },
+  { label: "Location", value: PROFILE.location },
+  { label: "GitHub", value: displayUrl(PROFILE.github), href: PROFILE.github },
+  { label: "LinkedIn", value: displayUrl(PROFILE.linkedin), href: PROFILE.linkedin },
+];
 
 export default function Contact() {
   const [name, setName] = useState("");
@@ -81,34 +90,18 @@ export default function Contact() {
         <div className="ContactInfo">
           <h2 className="ContactInfo_heading">Contact Info</h2>
 
-          <div className="ContactInfo_item">
-            <span className="ContactInfo_label">Email</span>
-            <a href="mailto:ashotg771@gmail.com">ashotg771@gmail.com</a>
-          </div>
-
-          <div className="ContactInfo_item">
-            <span className="ContactInfo_label">Phone</span>
-            <a href="tel:+37499769898">+374 99 769 898</a>
-          </div>
-
-          <div className="ContactInfo_item">
-            <span className="ContactInfo_label">Location</span>
-            <span>Yerevan, Armenia</span>
-          </div>
-
-          <div className="ContactInfo_item">
-            <span className="ContactInfo_label">GitHub</span>
-            <a href="https://github.com/Ashot-js" target="_blank" rel="noreferrer">
-              github.com/Ashot-js
-            </a>
-          </div>
-
-          <div className="ContactInfo_item">
-            <span className="ContactInfo_label">LinkedIn</span>
-            <a href="https://www.linkedin.com/in/ashot-grigoryan-a0a21a391" target="_blank" rel="noreferrer">
-              linkedin.com/in/ashot-grigoryan
-            </a>
-          </div>
+          {CONTACTS.map(({ label, value, href }) => (
+            <div key={label} className="ContactInfo_item">
+              <span className="ContactInfo_label">{label}</span>
+              {href ? (
+                <a href={href} {...(href.startsWith("http") && { target: "_blank", rel: "noreferrer" })}>
+                  {value}
+                </a>
+              ) : (
+                <span>{value}</span>
+              )}
+            </div>
+          ))}
 
           <p className="ContactInfo_hint">
             Fast replies &middot; Open to collaboration &middot; Freelance friendly
