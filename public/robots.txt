@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://mysite2025-25a7b.web.app/sitemap.xml

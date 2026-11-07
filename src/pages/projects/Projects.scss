@@ -1,5 +1,5 @@
 .ProjectsPage {
-  color: #e8e0c8;
+  color: var(--text);
   padding: 48px 80px 80px;
 
   max-width: 1200px;
@@ -15,14 +15,14 @@
   &_title {
     font-size: 1.8rem;
     font-weight: 700;
-    color: #e8e0c8;
+    color: var(--text);
     margin-bottom: 10px;
     letter-spacing: -0.3px;
   }
 
   &_subtitle {
     font-size: 0.9rem;
-    color: #8a8060;
+    color: var(--muted);
     max-width: 460px;
     margin: 0 auto;
     line-height: 1.6;
@@ -43,15 +43,15 @@
   justify-content: space-between;
   padding: 24px;
   border-radius: 12px;
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(212, 175, 55, 0.08);
+  background: var(--surface);
+  border: 1px solid rgba(var(--gold-rgb), 0.08);
   transition: all 0.25s ease;
   opacity: 0;
   animation: fadeUp 0.4s ease forwards;
 
 
   &:hover {
-    border-color: rgba(212, 175, 55, 0.25);
+    border-color: rgba(var(--gold-rgb), 0.25);
     transform: translateY(-3px);
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
   }
@@ -63,13 +63,13 @@
   &_title {
     font-size: 1rem;
     font-weight: 600;
-    color: #e8e0c8;
+    color: var(--text);
     margin-bottom: 10px;
   }
 
   &_desc {
     font-size: 0.82rem;
-    color: #8a8060;
+    color: var(--muted);
     line-height: 1.6;
     margin-bottom: 18px;
   }
@@ -93,15 +93,15 @@
     gap: 12px;
 
     a {
-      color: #8a8060;
+      color: var(--muted);
       font-size: 1.1rem;
       transition: all 0.25s ease;
 
-      &:hover { color: #d4af37; }
-      &:active { color: #e0bd45; }
+      &:hover { color: var(--gold); }
+      &:active { color: var(--gold-light); }
 
       &:focus-visible {
-        outline: 2px solid #d4af37;
+        outline: 2px solid var(--gold);
         outline-offset: 4px;
         border-radius: 2px;
       }

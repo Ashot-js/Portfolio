@@ -1,5 +1,5 @@
 .AboutPage {
-  color: #e8e0c8;
+  color: var(--text);
   padding: 48px 80px 80px;
   max-width: 800px;
   margin: 0 auto;
@@ -26,29 +26,29 @@
   font-family: 'JetBrains Mono', monospace;
   font-size: 1.6rem;
   font-weight: 700;
-  color: #d4af37;
-  background: rgba(212, 175, 55, 0.06);
-  border: 1.5px solid rgba(212, 175, 55, 0.2);
+  color: var(--gold);
+  background: rgba(var(--gold-rgb), 0.06);
+  border: 1.5px solid rgba(var(--gold-rgb), 0.2);
 }
 
 .About_name {
   font-size: 1.8rem;
   font-weight: 700;
-  color: #e8e0c8;
+  color: var(--text);
   margin-bottom: 6px;
   letter-spacing: -0.3px;
 }
 
 .About_role {
   font-size: 1rem;
-  color: #d4af37;
+  color: var(--gold);
   margin-bottom: 4px;
   font-weight: 500;
 }
 
 .About_location {
   font-size: 0.82rem;
-  color: #8a8060;
+  color: var(--muted);
 }
 
 /* ===== SECTIONS ===== */
@@ -71,7 +71,7 @@
 .About_sectionTitle {
   font-size: 1.2rem;
   font-weight: 700;
-  color: #d4af37;
+  color: var(--gold);
   margin-bottom: 20px;
   letter-spacing: -0.2px;
 
@@ -94,7 +94,7 @@
   flex-direction: column;
   background: rgba(12, 12, 10, 0.97);
   border-radius: 8px;
-  border: 1px solid rgba(212, 175, 55, 0.12);
+  border: 1px solid rgba(var(--gold-rgb), 0.12);
   padding: 4px;
   backdrop-filter: blur(12px);
 }
@@ -103,20 +103,20 @@
 .About_bio {
   padding: 24px;
   border-radius: 10px;
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(212, 175, 55, 0.08);
+  background: var(--surface);
+  border: 1px solid rgba(var(--gold-rgb), 0.08);
 }
 
 .About_bioTitle {
   font-size: 0.95rem;
-  color: #e8e0c8;
+  color: var(--text);
   margin-bottom: 14px;
   font-weight: 600;
 }
 
 .About_bioText {
   font-size: 0.85rem;
-  color: #8a8060;
+  color: var(--muted);
   line-height: 1.7;
   margin-bottom: 10px;
 
@@ -129,7 +129,7 @@
 .Timeline {
   position: relative;
   padding-left: 28px;
-  border-left: 1.5px solid rgba(212, 175, 55, 0.12);
+  border-left: 1.5px solid rgba(var(--gold-rgb), 0.12);
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -145,45 +145,45 @@
     width: 10px;
     height: 10px;
     border-radius: 50%;
-    background: #d4af37;
-    box-shadow: 0 0 6px rgba(212, 175, 55, 0.3);
+    background: var(--gold);
+    box-shadow: 0 0 6px rgba(var(--gold-rgb), 0.3);
   }
 
   &_content {
     padding: 20px 24px;
     border-radius: 10px;
-    background: rgba(255, 255, 255, 0.02);
-    border: 1px solid rgba(212, 175, 55, 0.08);
+    background: var(--surface);
+    border: 1px solid rgba(var(--gold-rgb), 0.08);
     transition: all 0.25s ease;
 
     &:hover {
-      border-color: rgba(212, 175, 55, 0.15);
+      border-color: rgba(var(--gold-rgb), 0.15);
     }
   }
 
   &_period {
     font-family: 'JetBrains Mono', monospace;
     font-size: 0.7rem;
-    color: #bda344;
+    color: var(--gold-dim);
     letter-spacing: 0.5px;
   }
 
   &_role {
     font-size: 0.95rem;
     font-weight: 600;
-    color: #e8e0c8;
+    color: var(--text);
     margin: 6px 0 2px;
   }
 
   &_company {
     font-size: 0.8rem;
-    color: #a89d6e;
+    color: var(--muted-light);
     margin-bottom: 8px;
   }
 
   &_desc {
     font-size: 0.82rem;
-    color: #8a8060;
+    color: var(--muted);
     line-height: 1.6;
   }
 }

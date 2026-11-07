@@ -11,13 +11,13 @@
   &_code {
     font-size: 4rem;
     font-weight: 700;
-    color: #d4af37;
+    color: var(--gold);
     letter-spacing: -1px;
   }
 
   &_message {
     font-size: 1rem;
-    color: #8a8060;
+    color: var(--muted);
     max-width: 400px;
     line-height: 1.6;
   }
@@ -27,20 +27,20 @@
     padding: 10px 28px;
     border-radius: 8px;
     background: transparent;
-    color: #d4af37;
-    border: 1.5px solid rgba(212, 175, 55, 0.35);
+    color: var(--gold);
+    border: 1.5px solid rgba(var(--gold-rgb), 0.35);
     text-decoration: none;
     font-weight: 600;
     font-size: 0.85rem;
     transition: all 0.25s ease;
 
     &:hover {
-      border-color: rgba(212, 175, 55, 0.6);
-      background: rgba(212, 175, 55, 0.06);
+      border-color: rgba(var(--gold-rgb), 0.6);
+      background: rgba(var(--gold-rgb), 0.06);
     }
 
     &:focus-visible {
-      outline: 2px solid #d4af37;
+      outline: 2px solid var(--gold);
       outline-offset: 2px;
     }
   }

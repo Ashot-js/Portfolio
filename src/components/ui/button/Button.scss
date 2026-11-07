@@ -10,7 +10,7 @@
   letter-spacing: 0.1px;
 
   &:focus-visible {
-    outline: 2px solid #d4af37;
+    outline: 2px solid var(--gold);
     outline-offset: 2px;
   }
 
@@ -23,25 +23,25 @@
   &.btn--primary {
     padding: 10px 20px;
     font-size: 0.82rem;
-    color: #d4af37;
+    color: var(--gold);
     border-radius: 8px;
-    border: 1.5px solid rgba(212, 175, 55, 0.3);
+    border: 1.5px solid rgba(var(--gold-rgb), 0.3);
     background: transparent;
 
-    &:hover { background: rgba(212, 175, 55, 0.08); border-color: rgba(212, 175, 55, 0.5); color: #e8e0c8; }
-    &:active { background: rgba(212, 175, 55, 0.15); transform: translateY(1px); }
+    &:hover { background: rgba(var(--gold-rgb), 0.08); border-color: rgba(var(--gold-rgb), 0.5); color: var(--text); }
+    &:active { background: rgba(var(--gold-rgb), 0.15); transform: translateY(1px); }
   }
 
   &.btn--lang {
     padding: 5px 10px;
     border-radius: 4px;
     background: transparent;
-    color: #8a8060;
+    color: var(--muted);
     font-size: 0.75rem;
     border: 1px solid transparent;
 
-    &:hover { color: #d4af37; background: rgba(212, 175, 55, 0.06); }
-    &:active { background: rgba(212, 175, 55, 0.1); }
-    &.active { color: #d4af37; background: rgba(212, 175, 55, 0.1); border-color: rgba(212, 175, 55, 0.15); }
+    &:hover { color: var(--gold); background: rgba(var(--gold-rgb), 0.06); }
+    &:active { background: rgba(var(--gold-rgb), 0.1); }
+    &.active { color: var(--gold); background: rgba(var(--gold-rgb), 0.1); border-color: rgba(var(--gold-rgb), 0.15); }
   }
 }

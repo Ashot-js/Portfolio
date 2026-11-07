@@ -1,5 +1,5 @@
 .ContactPage {
-  color: #e8e0c8;
+  color: var(--text);
   padding: 48px 80px 80px;
   max-width: 1000px;
   margin: 0 auto;
@@ -14,14 +14,14 @@
   &_title {
     font-size: 1.8rem;
     font-weight: 700;
-    color: #e8e0c8;
+    color: var(--text);
     margin-bottom: 10px;
     letter-spacing: -0.3px;
   }
 
   &_subtitle {
     font-size: 0.9rem;
-    color: #8a8060;
+    color: var(--muted);
     max-width: 420px;
     margin: 0 auto;
     line-height: 1.6;
@@ -42,15 +42,15 @@
   gap: 16px;
   padding: 28px;
   border-radius: 12px;
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(212, 175, 55, 0.08);
+  background: var(--surface);
+  border: 1px solid rgba(var(--gold-rgb), 0.08);
   opacity: 0;
   animation: fadeUp 0.5s ease 0.1s forwards;
 
   &_heading {
     font-size: 1rem;
     font-weight: 600;
-    color: #d4af37;
+    color: var(--gold);
     margin-bottom: 4px;
   }
 
@@ -58,9 +58,9 @@
   textarea {
     padding: 12px;
     border-radius: 8px;
-    border: 1px solid rgba(212, 175, 55, 0.12);
-    background: rgba(255, 255, 255, 0.02);
-    color: #e8e0c8;
+    border: 1px solid rgba(var(--gold-rgb), 0.12);
+    background: var(--surface);
+    color: var(--text);
     font-family: 'Inter', sans-serif;
     font-size: 1rem; // < 16px — iOS приближает страницу при фокусе
     transition: border-color 0.2s ease, box-shadow 0.2s ease;
@@ -71,14 +71,14 @@
 
     &:focus {
       outline: none;
-      border-color: rgba(212, 175, 55, 0.35);
-      box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.15);
+      border-color: rgba(var(--gold-rgb), 0.35);
+      box-shadow: 0 0 0 2px rgba(var(--gold-rgb), 0.15);
     }
 
     &:focus-visible {
       outline: none;
-      border-color: #d4af37;
-      box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.25);
+      border-color: var(--gold);
+      box-shadow: 0 0 0 2px rgba(var(--gold-rgb), 0.25);
     }
   }
 
@@ -113,8 +113,8 @@
   gap: 20px;
   padding: 28px;
   border-radius: 12px;
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(212, 175, 55, 0.08);
+  background: var(--surface);
+  border: 1px solid rgba(var(--gold-rgb), 0.08);
   opacity: 0;
   animation: fadeUp 0.5s ease 0.2s forwards;
   justify-content: space-between;
@@ -122,7 +122,7 @@
   &_heading {
     font-size: 1rem;
     font-weight: 600;
-    color: #d4af37;
+    color: var(--gold);
   }
 
   &_item {
@@ -134,7 +134,7 @@
   &_label {
     font-size: 0.7rem;
     font-family: 'JetBrains Mono', monospace;
-    color: #8a8060;
+    color: var(--muted);
     text-transform: uppercase;
     letter-spacing: 0.5px;
   }
@@ -142,21 +142,21 @@
   a,
   span:not(.ContactInfo_label) {
     font-size: 0.88rem;
-    color: #e8e0c8;
+    color: var(--text);
     text-decoration: none;
     transition: color 0.25s ease;
   }
 
   a {
-    color: #d4af37;
+    color: var(--gold);
     text-decoration: underline;
-    text-decoration-color: rgba(212, 175, 55, 0.3);
+    text-decoration-color: rgba(var(--gold-rgb), 0.3);
     text-underline-offset: 2px;
 
-    &:hover { color: #e0bd45; text-decoration-color: rgba(212, 175, 55, 0.6); }
+    &:hover { color: var(--gold-light); text-decoration-color: rgba(var(--gold-rgb), 0.6); }
 
     &:focus-visible {
-      outline: 2px solid #d4af37;
+      outline: 2px solid var(--gold);
       outline-offset: 2px;
       border-radius: 2px;
     }
@@ -164,10 +164,10 @@
 
   &_hint {
     font-size: 0.8rem;
-    color: #8a8060;
+    color: var(--muted);
     margin-top: auto;
     padding-top: 20px;
-    border-top: 1px solid rgba(212, 175, 55, 0.1);
+    border-top: 1px solid rgba(var(--gold-rgb), 0.1);
   }
 }
 
