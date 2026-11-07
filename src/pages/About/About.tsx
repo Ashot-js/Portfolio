@@ -30,7 +30,7 @@ const EDUCATION = [
   {
     period: "2023 — 2024",
     degree: "Diploma — Full-Stack Web Development",
-    school: "Cube",
+    school: "Cube Academy",
     details: "Completed a full-stack web development program at one of the best IT schools in Yerevan.",
   },
   {
