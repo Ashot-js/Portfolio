@@ -53,7 +53,7 @@ const PROJECTS = [
   {
     title: "Weather Dashboard",
     description:
-      "Full-stack weather app with Node.js proxy server for API key security, Redis caching for rate limiting, city search, and 5-day forecasts. Hosted on a free tier — the first load may take up to 1 minute while the server wakes up.",
+      "Full-stack weather app with Node.js proxy server for API key security, Redis caching for rate limiting, city search, and 5-day forecasts.",
     tech: ["React", "TypeScript", "Node.js", "Redis", "REST API"],
     github: "https://github.com/Ashot-js/my-weather-app",
     live: "https://pogoda-weather-app.web.app",
