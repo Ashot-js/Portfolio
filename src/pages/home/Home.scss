@@ -135,11 +135,6 @@
   }
 }
 
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(16px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
 /* ===== SECTION TITLE ===== */
 .Section_title {
   font-size: 1.5rem;
@@ -282,15 +277,6 @@
     gap: 6px;
   }
 
-  &_tag {
-    padding: 3px 10px;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.65rem;
-    border-radius: 4px;
-    background: rgba(212, 175, 55, 0.08);
-    color: #bda344;
-    letter-spacing: 0.2px;
-  }
 }
 
 /* ===== RESPONSIVE ===== */

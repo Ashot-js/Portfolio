@@ -12,7 +12,7 @@
 .About_hero {
   text-align: center;
   opacity: 0;
-  animation: aboutFadeUp 0.5s ease forwards;
+  animation: fadeUp 0.5s ease forwards;
 }
 
 .About_avatar {
@@ -54,7 +54,7 @@
 /* ===== SECTIONS ===== */
 .About_section {
   opacity: 0;
-  animation: aboutFadeUp 0.5s ease forwards;
+  animation: fadeUp 0.5s ease forwards;
 
   &:nth-of-type(1) { animation-delay: 0.15s; }
   &:nth-of-type(2) { animation-delay: 0.25s; }
@@ -186,11 +186,6 @@
     color: #8a8060;
     line-height: 1.6;
   }
-}
-
-@keyframes aboutFadeUp {
-  from { opacity: 0; transform: translateY(16px); }
-  to   { opacity: 1; transform: translateY(0); }
 }
 
 /* ===== RESPONSIVE ===== */

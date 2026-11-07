@@ -24,9 +24,6 @@ function getSiteAge(startDate: string) {
 
 export default function SiteAge() {
   const { years, months, days } = getSiteAge(START);
-  return (
-    <div className="SitePage">
-      Online for {plural(years, "year")} {plural(months, "month")} {plural(days, "day")}
-    </div>
-  );
+  const parts = [plural(years, "year"), plural(months, "month"), plural(days, "day")].filter((p) => !p.startsWith("0 "));
+  return <div className="SitePage">Online for {parts.join(" ") || "less than a day"}</div>;
 }

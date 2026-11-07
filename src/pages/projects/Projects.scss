@@ -9,7 +9,7 @@
     text-align: center;
     margin-bottom: 56px;
     opacity: 0;
-    animation: projFadeUp 0.5s ease forwards;
+    animation: fadeUp 0.5s ease forwards;
   }
 
   &_title {
@@ -47,14 +47,8 @@
   border: 1px solid rgba(212, 175, 55, 0.08);
   transition: all 0.25s ease;
   opacity: 0;
-  animation: projFadeUp 0.4s ease forwards;
+  animation: fadeUp 0.4s ease forwards;
 
-  &:nth-child(1) { animation-delay: 0.05s; }
-  &:nth-child(2) { animation-delay: 0.1s; }
-  &:nth-child(3) { animation-delay: 0.15s; }
-  &:nth-child(4) { animation-delay: 0.2s; }
-  &:nth-child(5) { animation-delay: 0.25s; }
-  &:nth-child(6) { animation-delay: 0.3s; }
 
   &:hover {
     border-color: rgba(212, 175, 55, 0.25);
@@ -93,15 +87,6 @@
     gap: 5px;
   }
 
-  &_tag {
-    padding: 3px 10px;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.65rem;
-    border-radius: 4px;
-    background: rgba(212, 175, 55, 0.08);
-    color: #bda344;
-    letter-spacing: 0.2px;
-  }
 
   &_links {
     display: flex;
@@ -122,11 +107,6 @@
       }
     }
   }
-}
-
-@keyframes projFadeUp {
-  from { opacity: 0; transform: translateY(16px); }
-  to   { opacity: 1; transform: translateY(0); }
 }
 
 /* ===== RESPONSIVE ===== */
@@ -150,5 +130,5 @@
   .PCard { padding: 20px; }
   .PCard_title { font-size: 0.92rem; }
   .PCard_desc { font-size: 0.78rem; }
-  .PCard_tag { font-size: 0.6rem; padding: 2px 8px; }
+  .Tag { font-size: 0.6rem; padding: 2px 8px; }
 }

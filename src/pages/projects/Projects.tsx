@@ -2,7 +2,6 @@ import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
 import { PROJECTS } from "../../data/projects";
 import "./Projects.scss";
 
-
 export default function Projects() {
   return (
     <div className="ProjectsPage">
@@ -15,8 +14,8 @@ export default function Projects() {
       </div>
 
       <div className="ProjectsPage_grid">
-        {PROJECTS.map((project) => (
-          <div key={project.title} className="PCard">
+        {PROJECTS.map((project, i) => (
+          <div key={project.title} className="PCard" style={{ animationDelay: `${0.05 * (i + 1)}s` }}>
             <div className="PCard_top">
               <h3 className="PCard_title">{project.title}</h3>
               <p className="PCard_desc">{project.description}</p>
@@ -25,9 +24,7 @@ export default function Projects() {
             <div className="PCard_bottom">
               <div className="PCard_tech">
                 {project.tech.map((t) => (
-                  <span key={t} className="PCard_tag">
-                    {t}
-                  </span>
+                  <span key={t} className="Tag">{t}</span>
                 ))}
               </div>
 

@@ -3,6 +3,11 @@ import Button from "../../components/ui/button/Button";
 import { ABOUT_TEXTS, EDUCATION, EXPERIENCE, LANGUAGES, type Language } from "../../data/about";
 import "./About.scss";
 
+const TIMELINES = [
+  { title: "Experience", items: EXPERIENCE },
+  { title: "Education", items: EDUCATION },
+];
+
 export default function About() {
   const [lang, setLang] = useState<Language>("en");
   const [open, setOpen] = useState(false);
@@ -71,39 +76,24 @@ export default function About() {
         </div>
       </section>
 
-      <section className="About_section">
-        <h2 className="About_sectionTitle">Experience</h2>
-        <div className="Timeline">
-          {EXPERIENCE.map((item) => (
-            <div key={item.role} className="Timeline_item">
-              <div className="Timeline_dot" />
-              <div className="Timeline_content">
-                <span className="Timeline_period">{item.period}</span>
-                <h3 className="Timeline_role">{item.role}</h3>
-                <p className="Timeline_company">{item.company}</p>
-                <p className="Timeline_desc">{item.description}</p>
+      {TIMELINES.map(({ title, items }) => (
+        <section key={title} className="About_section">
+          <h2 className="About_sectionTitle">{title}</h2>
+          <div className="Timeline">
+            {items.map((item) => (
+              <div key={item.title} className="Timeline_item">
+                <div className="Timeline_dot" />
+                <div className="Timeline_content">
+                  <span className="Timeline_period">{item.period}</span>
+                  <h3 className="Timeline_role">{item.title}</h3>
+                  <p className="Timeline_company">{item.place}</p>
+                  <p className="Timeline_desc">{item.text}</p>
+                </div>
               </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section className="About_section">
-        <h2 className="About_sectionTitle">Education</h2>
-        <div className="Timeline">
-          {EDUCATION.map((item) => (
-            <div key={item.degree} className="Timeline_item">
-              <div className="Timeline_dot" />
-              <div className="Timeline_content">
-                <span className="Timeline_period">{item.period}</span>
-                <h3 className="Timeline_role">{item.degree}</h3>
-                <p className="Timeline_company">{item.school}</p>
-                <p className="Timeline_desc">{item.details}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
+            ))}
+          </div>
+        </section>
+      ))}
     </div>
   );
 }

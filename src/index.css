@@ -36,3 +36,28 @@ html {
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.9rem;
 }
+
+.Tag {
+  padding: 3px 10px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  border-radius: 4px;
+  background: rgba(212, 175, 55, 0.08);
+  color: #bda344;
+  letter-spacing: 0.2px;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Respect the OS "reduce motion" setting. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-delay: 0s !important;
+    transition-duration: 0.01ms !important;
+  }
+  html { scroll-behavior: auto; }
+}

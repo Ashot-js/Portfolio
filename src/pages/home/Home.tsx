@@ -105,7 +105,7 @@ function Home() {
               <p className="ProjectCard_desc">{project.description}</p>
               <div className="ProjectCard_tech">
                 {project.tech.map((t) => (
-                  <span key={t} className="ProjectCard_tag">{t}</span>
+                  <span key={t} className="Tag">{t}</span>
                 ))}
               </div>
             </a>

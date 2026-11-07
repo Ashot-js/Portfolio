@@ -38,29 +38,29 @@ export const ABOUT_TEXTS: Record<Language, { title: string; paragraphs: string[]
 export const EXPERIENCE = [
   {
     period: "2023 — Present",
-    role: "Full Stack Developer",
-    company: "Production Projects & Freelance",
-    description: "Building end-to-end web applications with React, TypeScript and Redux Toolkit; Node.js/Express REST APIs with JWT authentication; PostgreSQL, MongoDB and Redis caching; real-time features with Socket.io and testing with Jest. Deploying with Docker, Firebase and AWS, managing servers over SSH and Cloudflare (DNS, SSL/HTTPS, CDN, protection). Using AI tools (Claude, Codex, Cursor) to speed up development.",
+    title: "Full Stack Developer",
+    place: "Production Projects & Freelance",
+    text: "Building end-to-end web applications with React, TypeScript and Redux Toolkit; Node.js/Express REST APIs with JWT authentication; PostgreSQL, MongoDB and Redis caching; real-time features with Socket.io and testing with Jest. Deploying with Docker, Firebase and AWS, managing servers over SSH and Cloudflare (DNS, SSL/HTTPS, CDN, protection). Using AI tools (Claude, Codex, Cursor) to speed up development.",
   },
   {
     period: "2023 — Present",
-    role: "JavaScript Instructor",
-    company: "Online Courses",
-    description: "Teaching JavaScript, TypeScript, React, Node.js, Git/GitHub and Docker to beginner and intermediate students. Creating learning materials and hands-on projects.",
+    title: "JavaScript Instructor",
+    place: "Online Courses",
+    text: "Teaching JavaScript, TypeScript, React, Node.js, Git/GitHub and Docker to beginner and intermediate students. Creating learning materials and hands-on projects.",
   },
 ];
 
 export const EDUCATION = [
   {
     period: "2023 — 2024",
-    degree: "Diploma — Full-Stack Web Development",
-    school: "Cube Academy",
-    details: "Completed a full-stack web development program at one of the best IT schools in Yerevan.",
+    title: "Diploma — Full-Stack Web Development",
+    place: "Cube Academy",
+    text: "Completed a full-stack web development program at one of the best IT schools in Yerevan.",
   },
   {
     period: "Incomplete",
-    degree: "Computer Science",
-    school: "Artsakh State University",
-    details: "Studied core CS fundamentals including algorithms, data structures, networking, databases, and software engineering principles. Studies were interrupted by the Artsakh war.",
+    title: "Computer Science",
+    place: "Artsakh State University",
+    text: "Studied core CS fundamentals including algorithms, data structures, networking, databases, and software engineering principles. Studies were interrupted by the Artsakh war.",
   },
 ];
