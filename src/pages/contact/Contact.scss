@@ -87,6 +87,23 @@
     resize: vertical;
     line-height: 1.6;
   }
+
+  // Honeypot — hidden from people, visible to bots.
+  &_hp {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+  }
+
+  &_status {
+    min-height: 1.2em;
+    font-size: 0.85rem;
+
+    &--sent { color: #9ccc65; }
+    &--error { color: #e57373; }
+  }
 }
 
 /* ===== INFO ===== */
@@ -201,7 +218,6 @@
   .ContactForm input,
   .ContactForm textarea {
     padding: 10px;
-    font-size: 0.82rem;
   }
 
   .ContactInfo_label { font-size: 0.65rem; }

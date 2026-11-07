@@ -1,45 +1,7 @@
 import { useEffect, useRef, useState } from "react";
-import "./About.scss";
-
-import { Language, LanguageOption } from "../../types/global";
-import { ABOUT_TEXTS } from "../../types/about.texts";
 import Button from "../../components/ui/button/Button";
-
-const LANGUAGES: LanguageOption[] = [
-  { code: "en", label: "English" },
-  { code: "ru", label: "Русский" },
-  { code: "hy", label: "Հայերեն" },
-];
-
-const EXPERIENCE = [
-  {
-    period: "2023 — Present",
-    role: "Full Stack Developer",
-    company: "Production Projects & Freelance",
-    description: "Building end-to-end web applications with React, TypeScript and Redux Toolkit; Node.js/Express REST APIs with JWT authentication; PostgreSQL, MongoDB and Redis caching; real-time features with Socket.io and testing with Jest. Deploying with Docker, Firebase and AWS, managing servers over SSH and Cloudflare (DNS, SSL/HTTPS, CDN, protection). Using AI tools (Claude, Codex, Cursor) to speed up development.",
-  },
-  {
-    period: "2023 — Present",
-    role: "JavaScript Instructor",
-    company: "Online Courses",
-    description: "Teaching JavaScript, TypeScript, React, Node.js, Git/GitHub and Docker to beginner and intermediate students. Creating learning materials and hands-on projects.",
-  },
-];
-
-const EDUCATION = [
-  {
-    period: "2023 — 2024",
-    degree: "Diploma — Full-Stack Web Development",
-    school: "Cube Academy",
-    details: "Completed a full-stack web development program at one of the best IT schools in Yerevan.",
-  },
-  {
-    period: "Incomplete",
-    degree: "Computer Science",
-    school: "Artsakh State University",
-    details: "Studied core CS fundamentals including algorithms, data structures, networking, databases, and software engineering principles. Studies were interrupted by the Artsakh war.",
-  },
-];
+import { ABOUT_TEXTS, EDUCATION, EXPERIENCE, LANGUAGES, type Language } from "../../data/about";
+import "./About.scss";
 
 export default function About() {
   const [lang, setLang] = useState<Language>("en");

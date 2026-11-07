@@ -1,7 +1,5 @@
 export const PROFILE = {
   email: "ashotg771@gmail.com",
-  phone: "+374 99 769 898",
-  phoneHref: "tel:+37499769898",
   location: "Yerevan, Armenia",
   github: "https://github.com/Ashot-js",
   linkedin: "https://www.linkedin.com/in/ashot-grigoryan-a0a21a391",

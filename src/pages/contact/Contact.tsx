@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { toast } from "react-toastify";
 import Button from "../../components/ui/button/Button";
 import { saveMessage } from "../../services/messages";
 import { PROFILE, displayUrl } from "../../data/profile";
@@ -7,34 +6,44 @@ import "./Contact.scss";
 
 const CONTACTS = [
   { label: "Email", value: PROFILE.email, href: `mailto:${PROFILE.email}` },
-  { label: "Phone", value: PROFILE.phone, href: PROFILE.phoneHref },
   { label: "Location", value: PROFILE.location },
   { label: "GitHub", value: displayUrl(PROFILE.github), href: PROFILE.github },
   { label: "LinkedIn", value: displayUrl(PROFILE.linkedin), href: PROFILE.linkedin },
 ];
 
+const STATUS_TEXT = {
+  idle: "",
+  sending: "",
+  sent: "Message sent! I'll reply soon.",
+  error: "Failed to send. Please email me directly.",
+};
+
 export default function Contact() {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
-  const [sending, setSending] = useState(false);
+  const [form, setForm] = useState({ name: "", email: "", message: "" });
+  const [status, setStatus] = useState<keyof typeof STATUS_TEXT>("idle");
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const update = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
+    setForm((f) => ({ ...f, [e.target.name]: e.target.value }));
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (!message.trim() || !name.trim() || !email.trim()) return;
+    const data = {
+      name: form.name.trim(),
+      email: form.email.trim(),
+      message: form.message.trim(),
+    };
+    if (!data.name || !data.email || !data.message) return;
 
-    setSending(true);
+    // Honeypot: real users never see this field, bots fill it. Pretend success.
+    const isBot = new FormData(e.currentTarget).get("website");
 
+    setStatus("sending");
     try {
-      await saveMessage({ name, email, message });
-      setName("");
-      setEmail("");
-      setMessage("");
-      toast.success("Message sent! I'll reply soon.");
+      if (!isBot) await saveMessage(data);
+      setForm({ name: "", email: "", message: "" });
+      setStatus("sent");
     } catch {
-      toast.error("Failed to send. Please email me directly.");
-    } finally {
-      setSending(false);
+      setStatus("error");
     }
   };
 
@@ -52,39 +61,47 @@ export default function Contact() {
           <h2 className="ContactForm_heading">Send a Message</h2>
 
           <input
-            type="text"
+            name="name"
             placeholder="Your name"
             aria-label="Your name"
             autoComplete="name"
             maxLength={100}
-            value={name}
+            value={form.name}
             required
-            onChange={(e) => setName(e.target.value)}
+            onChange={update}
           />
 
           <input
+            name="email"
             type="email"
             placeholder="Your email"
             aria-label="Your email"
             autoComplete="email"
             maxLength={254}
-            value={email}
+            value={form.email}
             required
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={update}
           />
 
           <textarea
+            name="message"
             placeholder="Your message..."
             aria-label="Your message"
-            value={message}
-            required
             maxLength={1000}
-            onChange={(e) => setMessage(e.target.value)}
+            value={form.message}
+            required
+            onChange={update}
           />
 
-          <Button variant="primary" type="submit" disabled={sending}>
-            {sending ? "Sending..." : "Send Message"}
+          <input name="website" className="ContactForm_hp" tabIndex={-1} autoComplete="off" aria-hidden="true" />
+
+          <Button variant="primary" type="submit" disabled={status === "sending"}>
+            {status === "sending" ? "Sending..." : "Send Message"}
           </Button>
+
+          <p className={`ContactForm_status ContactForm_status--${status}`} role="status">
+            {STATUS_TEXT[status]}
+          </p>
         </form>
 
         <div className="ContactInfo">

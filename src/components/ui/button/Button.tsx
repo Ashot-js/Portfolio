@@ -1,7 +1,7 @@
 import "./Button.scss";
 
 type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
-  variant?: "primary" | "secondary" | "lang" | "comment";
+  variant?: "primary" | "lang";
 };
 
 const Button = ({ children, variant = "primary", className = "", ...rest }: ButtonProps) => (
