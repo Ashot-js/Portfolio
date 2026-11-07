@@ -1,9 +1,9 @@
 import { Link } from "react-router";
 import {
-  FaReact, FaJsSquare, FaGitAlt, FaNodeJs, FaDocker, FaDatabase, FaRobot,
+  FaReact, FaJsSquare, FaGitAlt, FaNodeJs, FaDocker, FaDatabase, FaRobot, FaAws, FaTerminal,
 } from "react-icons/fa";
 import {
-  SiTypescript, SiRedux, SiFirebase, SiSass, SiVite, SiMongodb, SiPostgresql, SiExpress, SiRedis, SiOpenai,
+  SiTypescript, SiRedux, SiFirebase, SiSass, SiVite, SiMongodb, SiPostgresql, SiExpress, SiRedis, SiOpenai, SiCloudflare,
 } from "react-icons/si";
 import { BsStars } from "react-icons/bs";
 import "./Home.scss";
@@ -23,6 +23,9 @@ const SKILLS = [
   { icon: <SiSass />, name: "SCSS" },
   // DevOps & Tools
   { icon: <FaDocker />, name: "Docker" },
+  { icon: <FaAws />, name: "AWS" },
+  { icon: <SiCloudflare />, name: "Cloudflare" },
+  { icon: <FaTerminal />, name: "SSH" },
   { icon: <FaGitAlt />, name: "Git" },
   { icon: <FaDatabase />, name: "REST APIs" },
   { icon: <SiFirebase />, name: "Firebase" },
@@ -72,7 +75,7 @@ function Home() {
           <h1 className="Hero_name">Ashot Grigoryan</h1>
           <h2 className="Hero_title">Full Stack Developer</h2>
           <p className="Hero_tagline">
-            2.5 years of experience building modern web applications end-to-end.
+            3+ years of experience building modern web applications end-to-end.
             From React frontends to Node.js APIs and database design — I deliver
             full-stack solutions with clean, production-ready code.
           </p>
@@ -91,7 +94,7 @@ function Home() {
             <span className="Hero_codeLine"><span className="c-keyword">const</span> <span className="c-var">developer</span> = {"{"}</span>
             <span className="Hero_codeLine Hero_codeLine--indent"><span className="c-key">name</span>: <span className="c-string">'Ashot Grigoryan'</span>,</span>
             <span className="Hero_codeLine Hero_codeLine--indent"><span className="c-key">role</span>: <span className="c-string">'Full Stack Developer'</span>,</span>
-            <span className="Hero_codeLine Hero_codeLine--indent"><span className="c-key">experience</span>: <span className="c-string">'2.5 years'</span>,</span>
+            <span className="Hero_codeLine Hero_codeLine--indent"><span className="c-key">experience</span>: <span className="c-string">'3+ years'</span>,</span>
             <span className="Hero_codeLine Hero_codeLine--indent"><span className="c-key">frontend</span>: [<span className="c-string">'React'</span>, <span className="c-string">'TypeScript'</span>, <span className="c-string">'Redux'</span>],</span>
             <span className="Hero_codeLine Hero_codeLine--indent"><span className="c-key">backend</span>: [<span className="c-string">'Node.js'</span>, <span className="c-string">'Express'</span>, <span className="c-string">'MongoDB'</span>],</span>
             <span className="Hero_codeLine">{"}"}</span>

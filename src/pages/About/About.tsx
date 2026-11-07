@@ -34,10 +34,16 @@ const EXPERIENCE = [
 
 const EDUCATION = [
   {
-    period: "2023 — Present",
+    period: "2023 — 2024",
+    degree: "Diploma — Full-Stack Web Development",
+    school: "Cube",
+    details: "Completed a full-stack web development program at one of the best IT schools in Yerevan.",
+  },
+  {
+    period: "Incomplete",
     degree: "Computer Science",
     school: "Artsakh State University",
-    details: "Studying core CS fundamentals including algorithms, data structures, networking, databases, and software engineering principles.",
+    details: "Studied core CS fundamentals including algorithms, data structures, networking, databases, and software engineering principles. Studies were interrupted by the Artsakh war.",
   },
 ];
 
